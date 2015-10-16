@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/download.css" %}' type='text/css'>
+<style>
+	#id_code {
+		font-size:20pt;
+		font-family:monospace;
+		width:475px;
+	}
+	label[for=id_code] {
+		font-size:18pt;
+	}
+	#hsbc {
+		width:490px;
+	}
+	#hsbc .errorlist {
+		width:480px;
+		list-style:none;
+	}
+</style>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+<div id="aboveTheFold">
+	<h1>Enter Homeschool Buyers Co-op Code</h1>
+	<h2>Your download of Mathbreakers is available</h2>
+	<form id="hsbc" action="/HSBC/" method=POST>
+		{% csrf_token %}
+		{{ hsbc_form.as_p }}
+		<input type="submit"/>
+	</form>
+<br><div style="margin:0 auto">
+<a href="https://twitter.com/intent/tweet?button_hashtag=Mathchat&text=I%20just%20downloaded%20the%20coolest%20math%20game!%20You%20should%20try%20it%20-%20mathbreakers.com.%20The%20best%20way%20to%20learn%20fractions." class="twitter-hashtag-button" data-related="themathbreakers">Tweet #mathchat</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br><br>
+
+</div>
+{% endblock %}

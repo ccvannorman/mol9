@@ -1,0 +1,187 @@
+  PID TTY           TIME CMD
+    1 ??         3:36.19 /sbin/launchd
+   11 ??         0:12.87 /usr/libexec/UserEventAgent (System)
+   12 ??         0:02.49 /usr/libexec/kextd
+   13 ??         0:03.75 /usr/libexec/taskgated -s
+   14 ??         0:04.92 /usr/sbin/securityd -i
+   15 ??         0:20.27 /usr/sbin/notifyd
+   16 ??         0:06.23 /System/Library/CoreServices/powerd.bundle/powerd
+   17 ??         0:01.63 /usr/libexec/diskarbitrationd
+   18 ??         0:23.64 /usr/sbin/syslogd
+   19 ??         0:22.07 /usr/libexec/configd
+   21 ??         0:02.02 /usr/sbin/distnoted daemon
+   22 ??         0:44.96 /usr/libexec/opendirectoryd
+   24 ??         0:09.50 /usr/sbin/cfprefsd daemon
+   31 ??         0:00.84 com.apple.authd
+   35 ??         0:52.12 /System/Library/CoreServices/coreservicesd
+   57 ??         0:28.73 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Support/fseventsd
+   58 ??         0:02.89 /usr/libexec/usbd
+   61 ??         0:06.36 sysmond
+   70 ??         0:00.53 /usr/sbin/ntpd -c /private/etc/ntp-restrict.conf -n -g -p /var/run/ntpd.pid -f /var/db/ntp.drift
+   71 ??         0:00.02 /usr/libexec/wdhelper
+   72 ??         0:00.44 /usr/libexec/warmd
+   73 ??         0:00.70 /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd -launchd
+   76 ??         0:00.26 /usr/libexec/stackshot -t
+   79 ??         0:00.01 /System/Library/CoreServices/SleepServicesD
+   81 ??         0:01.17 /System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond
+   84 ??         0:08.82 /usr/libexec/pacemaker -b -e 0.0001 -a 10
+   87 ??         4:21.43 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Support/mds
+   88 ??         0:15.84 /usr/sbin/mDNSResponder
+   91 ??         0:23.07 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow console
+   92 ??         0:00.05 /System/Library/CoreServices/logind
+   93 ??         0:14.55 /usr/libexec/locationd
+   94 ??         0:00.01 /usr/sbin/KernelEventAgent
+   96 ??         2:34.80 /usr/libexec/hidd
+   98 ??         0:00.03 /sbin/dynamic_pager -F /private/var/vm/swapfile
+  102 ??         0:00.31 /usr/libexec/corestoraged
+  103 ??         0:19.36 /System/Library/CoreServices/launchservicesd
+  104 ??         0:00.41 /System/Library/CoreServices/appleeventsd --server
+  108 ??         0:00.26 autofsd
+  110 ??         0:00.64 /usr/libexec/aosnotifyd
+  111 ??         0:26.41 /usr/libexec/ApplicationFirewall/socketfilterfw
+  112 ??         0:14.93 /usr/libexec/airportd
+  115 ??         0:56.23 /Applications/CrashPlan.app/Contents/MacOS/CrashPlanService -Dapp=CrashPlanService -Xmn10m -Xms15m -Xmx1024m -DappBaseName=CrashPlan -Djava.awt.headless=true -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true -Dsun.net.inetaddr.ttl=300 -Dnetworkaddress.cache.ttl=300 -Dsun.net.inetaddr.negative.ttl=0 -Dnetworkaddress.cache.negative.ttl=0 -DCP_USER_NAME= -DCP_USER_HOME= -cp lib/com.backup42.desktop.jar:lang com.backup42.service.CPService CP_USER_NAME= CP_USER_HOME=
+  116 ??         1:48.75 /Library/Little Snitch/Little Snitch Daemon.bundle/Contents/MacOS/Little Snitch Daemon
+  122 ??        81:37.32 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreGraphics.framework/Resources/WindowServer -daemon
+  142 ??         3:13.83 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mds_stores
+  143 ??         0:02.36 /usr/libexec/networkd
+  144 ??         0:00.10 /usr/libexec/networkd_privileged
+  147 ??         0:01.19 /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/CVMServer
+  152 ??         0:00.28 com.apple.CodeSigningHelper
+  169 ??         0:00.08 /System/Library/PrivateFrameworks/TCC.framework/Resources/tccd system
+  181 ??         0:22.37 /System/Library/CoreServices/Software Update.app/Contents/Resources/softwareupdated
+  183 ??         0:00.33 /System/Library/PrivateFrameworks/SoftwareUpdate.framework/Resources/suhelperd
+  184 ??        23:55.63 /usr/sbin/coreaudiod
+  186 ??         0:00.05 com.apple.audio.DriverHelper
+  192 ??         0:00.37 /usr/libexec/sandboxd -n PluginProcess -n 
+  193 ??         0:00.51 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd
+  194 ??         0:00.02 com.apple.audio.SandboxHelper
+  203 ??         0:00.10 /usr/libexec/securityd_service
+  204 ??         0:13.15 /sbin/launchd
+  207 ??         0:14.80 /usr/libexec/UserEventAgent (Aqua)
+  208 ??         0:34.90 /usr/sbin/distnoted agent
+  211 ??         0:09.81 /usr/sbin/cfprefsd agent
+  214 ??         1:08.90 /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+  215 ??         2:12.23 /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer
+  216 ??         6:11.27 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
+  223 ??         0:00.01 /usr/sbin/pboard
+  224 ??         0:01.34 /usr/libexec/sharingd
+  226 ??        11:51.27 /Library/Little Snitch/Little Snitch Agent.app/Contents/MacOS/Little Snitch Agent
+  227 ??         0:01.08 /System/Library/PrivateFrameworks/TCC.framework/Resources/tccd
+  228 ??         0:00.12 /usr/libexec/librariand
+  229 ??         0:00.39 /System/Library/PrivateFrameworks/Ubiquity.framework/Versions/A/Support/ubd
+  231 ??         0:20.37 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATS.framework/Support/fontd
+  232 ??         0:01.75 /usr/sbin/usernoted
+  234 ??       139:20.06 /Library/Little Snitch/Little Snitch Network Monitor.app/Contents/MacOS/Little Snitch Network Monitor -psn_0_57358
+  237 ??         0:00.81 /usr/libexec/WiFiKeychainProxy
+  238 ??         0:00.05 /System/Library/CoreServices/SocialPushAgent.app/Contents/MacOS/SocialPushAgent
+  242 ??         0:08.26 /System/Library/CoreServices/NotificationCenter.app/Contents/MacOS/NotificationCenter
+  244 ??         0:01.22 /usr/libexec/lsboxd
+  246 ??         0:00.55 /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/Contents/MacOS/imagent
+  247 ??         0:01.97 /System/Library/PrivateFrameworks/IDSCore.framework/identityservicesd.app/Contents/MacOS/identityservicesd
+  250 ??         0:00.03 /System/Library/CoreServices/AppleIDAuthAgent
+  251 ??         0:03.12 /System/Library/PrivateFrameworks/CalendarAgent.framework/Executables/CalendarAgent
+  261 ??         0:00.29 /usr/sbin/filecoordinationd
+  263 ??         0:01.50 /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Contents/MacOS/iTunesHelper
+  265 ??         0:21.33 /Applications/Jumpcut.app/Contents/MacOS/Jumpcut
+  266 ??         3:24.11 /Applications/Dropbox.app/Contents/MacOS/Dropbox
+  268 ??         0:00.20 /System/Library/Frameworks/Accounts.framework/Versions/A/Support/accountsd
+  270 ??         0:06.78 /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+  272 ??         0:12.57 com.apple.IconServicesAgent
+  273 ??         0:00.06 com.apple.imdpersistence.IMDPersistenceAgent
+  276 ??         0:02.78 com.apple.ShareKitHelper
+  277 ??         0:00.33 /usr/libexec/secd
+  278 ??         0:03.71 /System/Library/Frameworks/GameKit.framework/Versions/A/Resources/gamed
+  281 ??         0:00.02 /System/Library/Frameworks/Security.framework/Versions/A/Resources/CloudKeychainProxy.bundle/Contents/MacOS/CloudKeychainProxy
+  282 ??         0:09.91 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/storeagent
+  290 ??         1:02.52 /Applications/Snapz Pro X.app/Contents/MacOS/Snapz Pro X
+  293 ??         0:00.29 com.ambrosiasw.registration-helper
+  294 ??         0:00.31 /System/Library/CoreServices/ScopedBookmarkAgent
+  301 ??         0:02.85 com.apple.dock.extra
+  306 ??         0:14.28 /System/Library/CoreServices/pbs
+  335 ??         0:05.56 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  336 ??         0:23.83 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  340 ??         0:17.83 /Library/DropboxHelperTools/Dropbox_u501/dbfseventsd
+  341 ??         0:03.82 /System/Library/Image Capture/Support/Image Capture Extension.app/Contents/MacOS/Image Capture Extension
+  344 ??         0:36.94 /Library/Image Capture/Support/LegacyDeviceDiscoveryHelpers/CIJScannerRegister.app/Contents/MacOS/CIJScannerRegister
+  349 ??         0:07.50 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdflagwriter
+  359 ??         0:03.07 /sbin/launchd
+  362 ??         0:00.69 /usr/sbin/distnoted agent
+ 2832 ??         0:09.01 /usr/libexec/systemstatsd
+ 5297 ??         0:02.28 /System/Library/Services/AppleSpell.service/Contents/MacOS/AppleSpell -psn_0_176171
+ 5299 ??         0:00.12 com.apple.InputMethodKit.UserDictionary
+ 5575 ??         0:00.05 com.apple.DataDetectorsDynamicData
+ 5802 ??         0:03.12 /System/Library/CoreServices/AirPlayUIAgent.app/Contents/MacOS/AirPlayUIAgent --launchd
+ 6003 ??         0:00.37 /usr/bin/ssh-agent -l
+ 6127 ??         0:00.09 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Versions/A/printtool agent
+ 6395 ??         0:00.02 /usr/libexec/USBAgent
+ 6556 ??         0:02.14 /sbin/launchd
+ 6558 ??         0:00.01 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdflagwriter
+ 6591 ??         0:00.74 /usr/sbin/systemstats --xpc
+ 6592 ??         0:00.03 com.apple.menuextra.airport.keychainproxy
+ 6595 ??         0:00.08 /System/Library/PrivateFrameworks/CloudServices.framework/Resources/com.apple.sbd
+ 7473 ??         5:28.39 /usr/bin/python manage.py runserver
+ 8184 ??         0:00.01 /usr/libexec/periodic-wrapper daily
+ 9886 ??         0:00.28 com.apple.security.XPCTimeStampingService
+ 9890 ??         0:09.19 /usr/libexec/syspolicyd
+10597 ??         0:00.02 /usr/libexec/spindump_agent
+10608 ??         0:00.04 com.apple.BKAgentService
+11458 ??         0:00.02 ssh -i /Users/charlie/.ssh/mathbreakerscom.pem ubuntu@54.215.246.1
+11707 ??         0:00.23 /System/Library/Frameworks/InputMethodKit.framework/Resources/imklaunchagent
+12831 ??         0:00.73 /System/Library/PrivateFrameworks/PackageKit.framework/Resources/installd
+12848 ??         0:00.01 corestoragehelperd
+12974 ??         0:02.99 /usr/libexec/xpcd
+12987 ??         0:00.05 /usr/libexec/xpcd
+13214 ??         0:00.09 ssh -i /Users/charlie/.ssh/mathbreakerscom.pem ubuntu@54.215.246.1
+16128 ??         0:01.13 /System/Library/PrivateFrameworks/CloudServices.framework/Resources/EscrowSecurityAlert.app/Contents/MacOS/EscrowSecurityAlert
+17006 ??       1903:41.61 /Applications/Utilities/Adobe Application Manager/UWA/AAM Updates Notifier.app/Contents/MacOS/AAM Updates Notifier
+19251 ??         0:04.83 /System/Library/PrivateFrameworks/Noticeboard.framework/Versions/A/Resources/nbagent.app/Contents/MacOS/nbagent
+19255 ??         0:00.12 /System/Library/PrivateFrameworks/Noticeboard.framework/Versions/A/Resources/nbstated
+24427 ??         0:01.20 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker-sizing -c MDSSizingWorker -m com.apple.mdworker.sizing
+29890 ??         0:00.74 /System/Library/CoreServices/rcd.app/Contents/MacOS/rcd
+36031 ??         4:50.76 /Applications/Unity/MonoDevelop.app/Contents/MacOS/../Frameworks/Mono.framework/Versions/Current/bin/mono --debug /Applications/Unity/MonoDevelop.app/Contents/MacOS/lib/monodevelop/bin/MonoDevelop.exe
+38658 ??         0:05.17 /Applications/TextEdit.app/Contents/MacOS/TextEdit
+38811 ??        10:29.38 /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+38815 ??         4:49.84 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=gpu-process --channel=38811.0.1882022146 --supports-dual-gpus=true --gpu-driver-bug-workarounds=11,13,22,26,36,37,40,45,51 --disable-accelerated-video-decode --gpu-vendor-id=0x10de --gpu-device-id=0x0fd5 --gpu-driver-vendor --gpu-driver-version
+38818 ??         1:39.98 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.2.413650305
+38819 ??         0:02.25 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.3.590962353
+38820 ??         0:35.36 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.4.478383803
+38826 ??         0:00.37 /System/Library/Frameworks/CoreMediaIO.framework/Resources/VDC.plugin/Contents/Resources/VDCAssistant
+38827 ??         0:24.12 /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal
+39632 ??         0:11.47 /Applications/iTunes.app/Contents/MacOS/iTunes
+39635 ??         0:00.28 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/bookstoreagent
+42378 ??         0:00.34 /Applications/VMware Fusion.app/Contents/Library/VMware Fusion Start Menu.app/Contents/MacOS/VMware Fusion Start Menu -psn_0_1032444
+43111 ??         0:00.01 com.apple.audio.SandboxHelper
+43112 ??         0:00.07 com.apple.audio.ComponentHelper
+45564 ??         0:09.74 /Applications/Google SketchUp 8 (OLD)/SketchUp OLD.app/Contents/MacOS/SketchUp -psn_0_1204518
+45664 ??         2:54.55 /Applications/Blender/blender.app/Contents/MacOS/blender
+46263 ??         7:56.96 /Applications/Unity/Unity.app/Contents/MacOS/Unity
+46268 ??         0:00.03 /Applications/Unity/Unity.app/Contents/Tools/UnityShaderCompiler /Applications/Unity/Unity.app/Contents ./Library/shadercompiler-1.log \\.\pipe\UnityShaderCompiler-1--1584422488
+46533 ??         0:00.02 /usr/sbin/netbiosd
+46791 ??         0:00.37 /usr/sbin/ocspd
+46792 ??         1:05.01 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.112.869396760
+46793 ??         0:00.20 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper EH.app/Contents/MacOS/Google Chrome Helper EH --type=plugin --plugin-path=/Library/Internet Plug-Ins/googletalkbrowserplugin.plugin --lang=en-US --channel=38811.113.1956774276
+46794 ??         0:01.37 /Library/Application Support/Google/GoogleTalkPlugin.app/Contents/MacOS/GoogleTalkPlugin
+46812 ??         6:39.80 /Users/charlie/Desktop/Mathbreakers Free.app/Contents/MacOS/Mathbreakers Free
+46839 ??         0:05.51 /Applications/Utilities/Activity Monitor.app/Contents/MacOS/Activity Monitor
+46849 ??         0:10.17 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.118.898724499
+46853 ??         0:00.96 /Applications/Cloak.app/Contents/MacOS/Cloak
+46854 ??         0:00.17 /Library/PrivilegedHelperTools/com.bourgeoisbits.cloak.cloakd
+46919 ??         0:01.95 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --instant-process --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.123.1512752067
+46922 ??         0:04.42 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.124.1282973100
+46959 ??         0:00.10 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared
+46977 ??         0:05.17 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.126.1979888513
+46979 ??         0:00.07 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared
+46980 ??         0:00.10 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared
+46981 ??         0:00.04 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker -s mdworker -c MDSImporterWorker -m com.apple.mdworker.shared
+46987 ??         0:01.36 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --instant-process --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.127.1144668042
+46988 ??         0:01.23 /Applications/Google Chrome.app/Contents/Versions/41.0.2272.104/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=renderer --enable-deferred-image-decoding --lang=en-US --force-fieldtrials=CTRequiredForEVTrial/RequirementEnforced/ChromeSuggestions/Default/DomRel-Enable/enable/EmbeddedSearch/Group3 pct:10c stable:pp2 prefetch_results:1 reuse_instant_search_base_page:1/EnhancedBookmarks/Default/ExtensionContentVerification/Enforce/ExtensionInstallVerification/None/FlashHardwareVideoDecode/Disabled/GoogleNow/Enable/NewProfileManagement/Enabled/OmniboxBundledExperimentV1/Preperiod_A2_StableBookmarksIndexURLs/PasswordGeneration/Disabled/PrerenderFromOmnibox/OmniboxPrerenderEnabled/QUIC/EnabledForLargePopulation/RefreshTokenDeviceId/Disabled/RememberCertificateErrorDecisions/Default/SafeBrowsingIncidentReportingService/Default/SafeBrowsingOSXClientDownloadPings/Enabled/SettingsEnforcement/no_enforcement/UMA-Dynamic-Binary-Uniformity-Trial/default/UMA-Dynamic-Uniformity-Trial/Group6/UMA-Population-Restrict/normal/UMA-Uniformity-Trial-1-Percent/group_79/UMA-Uniformity-Trial-10-Percent/group_04/UMA-Uniformity-Trial-100-Percent/group_01/UMA-Uniformity-Trial-20-Percent/group_03/UMA-Uniformity-Trial-5-Percent/group_16/UMA-Uniformity-Trial-50-Percent/group_01/UwSInterstitialStatus/On/VoiceTrigger/Install/WebRTC-IPv6Default/Disabled/ --instant-process --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --enable-pinch-virtual-viewport --enable-delegated-renderer --num-raster-threads=1 --disable-accelerated-video-decode --channel=38811.128.286836577
+40883 ttys000    0:00.09 login -pf charlie
+40884 ttys000    0:00.08 -bash
+40887 ttys000    0:00.23 vim useful.txt
+46601 ttys000    0:01.08 vim mathbreakers/management/commands/emailallcohorts.py
+46993 ttys000    0:00.01 sudo ps -ax
+46994 ttys000    0:00.00 ps -ax
+46604 ttys001    0:00.22 login -pfl charlie /bin/bash -c exec -la bash /bin/bash
+46605 ttys001    0:00.01 -bash
+46608 ttys001    0:00.56 python manage.py shell

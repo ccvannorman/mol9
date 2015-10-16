@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/commoncore.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/commoncore_highlight.js" %}'></script>
+<script src='{% static "js/commoncore_popup.js" %}'></script>
+{% endblock %}
+
+{% block content %}
+<div class="info">
+	<h2>Common Core &amp; Mathbreakers</h2>
+	<p>
+		Mathbreakers is an innovative game for teaching and practicing math skills.
+	</p>
+	<p>
+		Here you'll find a list of the Common Core mathematics standards for grades K-8. Next to each lesson you can see an icon representing the relevance of Mathbreakers to teaching this concept. 
+	</p>
+	<ul>
+		<li>
+			<div class='icon core'></div>
+			<div class='icondesc'><strong>Core:</strong> This standard is a core component of Mathbreakers gameplay.</div>
+		</li>
+		<li>
+			<div class='icon supplementary'></div>
+			<div class='icondesc'><strong>Supplementary:</strong> Mathbreakers can be used as supplementary material for training this skill.</div>
+		</li>
+		<li>
+			<div class='icon future'></div>
+			<div class='icondesc'><strong>Future:</strong> We plan to add this concept in future releases of Mathbreakers.</div>
+		</li>
+		<li>
+			<div class='icon irrelevant'></div>
+			<div class='icondesc'><strong>Not covered:</strong> This concept is not a part of Mathbreakers</div>
+		</li>						
+	</ul>
+	<div style="clear:both"></div>
+</div>
+<div class="cccontainer">
+	<table>
+		{% for cat in categories %}
+			<th style="background-color:#{{cat.color}}">{{cat.name}}</th>
+		{% endfor %}
+		{% for grade in grades %}
+			<tr>
+				<td class="gradetitle" colspan=11>{{ grade.name }}</td>
+			</tr>
+			<tr>
+				{% for cat in grade.data %}
+				<td>
+					{% for lesson in cat.data %}
+						<div class='lesson' style="background-color:#{{cat.color}}" data="{{ lesson.description }}">
+							<a class="anchor" id="{{ lesson.name }}"></a>
+							<div class='icon {{ lesson.mathbreakers }}'></div>
+							{{ lesson.shortname }}
+						</div>
+					{% endfor %}
+				</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+<div id="lessondesc"></div>
+{% endblock %}

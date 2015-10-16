@@ -1,0 +1,213 @@
+.dashboard {
+	width:100%;
+	white-space:nowrap;
+	margin:50px auto;
+	overflow-x:scroll;
+	overflow-y:hidden;
+	position:relative;
+}
+
+.group {
+	display:inline-block;
+	padding:15px 15px;
+	margin:5px;
+	position:relative;
+}
+
+.groupContainer {
+	margin:auto;
+	display:table;
+}
+
+.group h2 {
+	font-size:14pt;
+	margin-bottom:100px;
+}
+
+.group.locked {
+	background-color:#ddd;
+	border-radius:7px;
+}
+
+.lockIcon {
+	width:64px;
+	height:64px;
+	display:block;
+	margin:auto;
+	background-image:url("/static/img/lockicon.png");
+}
+
+.lockIcon:hover {
+	background-color:transparent;
+	background-position: -64px 0;
+}
+
+.group .info {
+	
+	position:absolute;
+	padding:20px 0px;
+	background-color:rgba(0,220,20,0.8);
+	color:#fff;
+	top:50%;
+	margin-top:-50px;
+	left:-2px;
+	right:-2px;
+}
+
+.studentsContainer {
+	padding-top:166px;
+	padding-right:0;
+	display:table;
+}
+
+.student {
+	height:38px;
+	text-align:right;
+	padding-top:12px;
+	padding-right:4px;
+}
+
+
+.level {
+	width:52px;
+	float:left;
+	position:relative;
+	padding-top:60px;
+	margin-right:-1px;
+}
+
+.level h3 {
+	left:-22px;
+	display:block;
+	width:50px;
+	text-align:right;
+	margin:0;
+	padding:0;
+	direction:rtl;
+	position:absolute;
+	top:30px;
+	
+    white-space: nowrap;	
+	
+    -webkit-transform-origin: 100% 50%;
+    -moz-transform-origin:    100% 50%;
+    -ms-transform-origin:     0% 50%;
+    -o-transform-origin:      0% 50%;
+    
+    -webkit-transform: rotate(45deg); 
+    -moz-transform:    rotate(45deg); 
+    -ms-transform:     rotate(45deg); 
+    -o-transform:      rotate(45deg);   
+}
+
+.cell {
+	height:47px;
+	width:50px;
+	border-top:1px solid #aaa;
+	border-left:1px solid #aaa;
+	padding-top:3px;
+	margin:0;
+	position:relative;
+}
+
+.level:last-child .cell {
+	border-right:1px solid #aaa;
+}
+
+.cell:last-child {
+	border-bottom:1px solid #aaa;
+}
+
+div.assignable {
+	width:45px;
+	height:41px;
+	cursor:pointer;
+}
+
+div.icon {
+	width:45px;
+	height:41px;
+	background-image:url("/static/img/dashicons.png");
+	background-repeat:no-repeat;
+}
+
+.onestar { background-position:0 0; }
+.twostar { background-position:-90px 0; }
+.threestar { background-position:-45px 0; }
+.started { background-position:-182px 0; }
+
+.assigned {
+	width:30px;
+	height:27px;
+	background-image:url("/static/img/dashassign.png");
+	background-repeat: no-repeat;
+	background-position:0px 0px;
+	background-size:120px 27px;
+	position:absolute;
+	top:3px;
+	left:0px;
+}
+.assignable:hover .assigned {
+	background-position:-90px 0px;
+	cursor:pointer;
+}
+
+.unassigned {
+	width:30px;
+	height:27px;
+	background-image:url("/static/img/dashassign.png");
+	background-repeat: no-repeat;
+	background-position:-30px 0px;
+	background-size:120px 27px;
+	position:absolute;
+	top:3px;
+	left:0px;
+}
+
+.assignable:hover .unassigned {
+	background-position:-60px 0px;
+	cursor:pointer;
+}
+
+#key {
+	width:300px;
+	border-right:1px solid #ddd;
+	float:left;
+}
+
+#key .icon {
+	float:left;
+	margin-top:-13px;
+	margin-bottom:13px;
+	margin-right:8px;
+}
+
+#key .row:after {
+	content:".";
+	display:block;
+	visibility:hidden;
+	clear:both;
+	line-height:0;
+}
+
+#key .row {
+	text-align:left;
+}
+
+p .keydesc {
+	padding:0px 40px;
+	float:left;
+	width:550px;
+}
+
+#assignmentLog {
+	position:absolute;
+	top:80px;
+	left:20px;
+	padding:10px;
+	background-color:#ff9;
+	border:1px solid #cc2;
+	border-radius:7px;
+	opacity:0;
+	z-index:1;
+}

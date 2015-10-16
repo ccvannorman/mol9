@@ -1,0 +1,39 @@
+{% extends "teacher/teacherbase.html" %}
+{% load static %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "js/teacher.js" %}'></script>
+<script src='{% static "js/ajaxform.js" %}'></script>
+{% endblock %}
+
+{% block teacherstep %}	
+	<div class="stepimg s1"></div>
+	<div id="stepcontent">
+		{% if user.is_authenticated %}
+			{% if has_class %}
+			<h2>Convert to teacher account</h2>
+			<p>Great, you have a class!</p>
+			{% else %}
+			<h2>Convert to teacher account</h2>
+			<p>Please fill out this brief form, and we'll convert your account to a teacher account with a fresh new empty classroom. Making a teacher account is <em>free</em> for a limited time!</p>
+			<form id="teacherConvertForm">
+		        {% csrf_token %}
+		        {{ teacher_convert_form.as_p }}
+		        <a id="teacherConvertSubmit" class="button blue" style="margin-left:30px" href="javascript:void(0)">Submit</a>
+		    </form>
+			{% endif %}
+		{% else %}
+		<h2>Make a teacher account</h2>
+		<p>Please fill out this brief form, and we'll create a teacher account with a fresh new empty classroom just for you. Making a teacher account is <em>free</em> for a limited time!</p>
+		<form id="teacherSignupForm">
+	        {% csrf_token %}
+	        {{ teacher_form.as_p }}
+	        <a id="teacherSignupSubmit" class="button blue" style="margin-left:30px" href="javascript:void(0)">Submit</a>
+	    </form>
+	    {% endif %}
+	</div>
+	{% if user.is_authenticated and has_class %}	
+	<a class="button blue" href="/teacher/setup/2/" style="margin:20px auto">Step 2</a>
+	{% endif %}
+{% endblock %}

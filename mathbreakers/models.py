@@ -1,0 +1,507 @@
+import math
+
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
+from django.template.defaultfilters import slugify
+
+
+class TeacherWaitlist(models.Model):
+	school = models.CharField(max_length=256, null=True, blank=True)
+	how_hear = models.CharField(max_length=256, null=True, blank=True)
+	firstname = models.CharField(max_length=64, null=True, blank=True)
+	lastname = models.CharField(max_length=64, null=True, blank=True)
+	study = models.BooleanField(default=False)
+	phone = models.CharField(max_length=16, null=True, blank=True)
+	num_students = models.IntegerField()
+	email = models.CharField(max_length=128)
+	date = models.DateTimeField()
+	convertedToCohort = models.BooleanField(default=False)
+	cohort = models.CharField(max_length=128, null=True, blank=True)
+	num_emails_sent = models.IntegerField(null=True, blank=True)
+	last_email_sent = models.CharField(max_length=128, null=True, blank=True)
+	last_email_sent_date = models.DateTimeField(null=True, blank=True)
+	total_communication_log = models.CharField(max_length=4096, null=True, blank=True)
+	AB_test_description = models.CharField(max_length=4096, null=True, blank=True)
+	sent_halfway_email = models.BooleanField(default=False)
+
+	def __unicode__(self):
+		return self.email + ' ' + self.cohort + ' ' + str(self.num_students)
+
+class PurchaseData(models.Model):
+	code = models.CharField(max_length=128)
+	name = models.CharField(max_length=256)
+	price = models.DecimalField(max_digits=10, decimal_places=2)
+	
+	def __unicode__(self):
+		return self.name
+
+
+class Level(models.Model):
+	name = models.CharField(max_length=100)
+	short_name = models.CharField(max_length=50)
+	picture = models.FileField(upload_to="levels", default="", null=True, blank=True)
+	num = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.name + "(" + self.short_name + ")"
+
+
+class EducationTopic(models.Model):
+	name = models.CharField(max_length=100)
+	order = models.IntegerField()
+
+	def __unicode__(self):
+		return self.name
+
+class UserLevelState(models.Model):
+	user = models.ForeignKey(User)
+	level = models.ForeignKey(Level)
+	completed = models.BooleanField(default=False)
+	stars = models.IntegerField()
+	assigned = models.BooleanField(default=False)
+	checkpoint = models.IntegerField(default=0)
+
+	@classmethod
+	def create(cls, user, levelname):
+		level = None
+		try:
+			level = Level.objects.get(name=levelname)
+		except:
+			level = Level(name=levelname, short_name=levelname[:10])
+			level.save()
+		uls = cls(user=user, level=level, completed=False, stars=0)
+		return uls
+
+	def __unicode__(self):
+		return self.user.username + ":" + self.level.name	
+
+class UserTopicState(models.Model):
+	user = models.ForeignKey(User)
+	topic = models.ForeignKey(EducationTopic)
+	mastery = models.FloatField()
+	attempts = models.IntegerField()
+	correct = models.IntegerField()
+
+	@classmethod
+	def create(cls, user, topic_name):
+		topic = None
+		try:
+			topic = EducationTopic.objects.get(name=topic_name)
+		except:
+			topic = EducationTopic(name=topic_name, order=-1)
+			topic.save()
+		uts = cls(user=user, topic=topic, mastery=0, attempts=0, correct=0)
+		return uts
+
+	def __unicode__(self):
+		return self.user.username + ":" + self.topic.name	
+
+# Whenever a UTS gets saved, recompute the mastery value
+@receiver(pre_save, sender=UserTopicState)
+def uts_save_cb(sender, instance, *args, **kwargs):
+	instance.mastery = get_mastery(instance)
+
+def get_mastery(uts):
+	mastery = math.ceil(float(uts.correct) / float(uts.attempts) * 100)
+	return mastery
+
+class GalleryImage(models.Model):
+	owner = models.ForeignKey(User)
+	image_file = models.FileField(upload_to="uploads", default="")
+	gallery = models.CharField(max_length=128)
+
+class Bug(models.Model):
+	description = models.CharField(max_length=1024, null=True, blank=True)
+	date = models.CharField(max_length=64, null=True, blank=True)
+	level = models.CharField(max_length=64, null=True, blank=True)
+	position = models.CharField(max_length=32, null=True, blank=True)
+	vers = models.CharField(max_length=32, null=True, blank=True)
+	user = models.CharField(max_length=64, null=True, blank=True)
+	session = models.CharField(max_length=64, null=True, blank=True)
+	def __unicode__(self):
+		return (self.description[:75] + "...") if len(self.description) > 72 else self.description
+
+class CCLessonCategory(models.Model):
+	name = models.CharField(max_length=128)
+
+	def __unicode__(self):
+		return self.name
+
+class CCLessonGrade(models.Model):
+	name = models.CharField(max_length=128)
+	number = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.name	
+
+class CCLesson(models.Model):
+	name = models.CharField(max_length=32)
+	description = models.CharField(max_length=4096)
+	short_description = models.CharField(max_length=128)
+	grade = models.ForeignKey(CCLessonGrade)
+	category = models.ForeignKey(CCLessonCategory)
+	mb = models.CharField(max_length=32)
+
+	def __unicode__(self):
+		if len(self.short_description) > 0:
+			return self.short_description
+		return self.name + ": " + (self.description[:75] + "...") if len(self.description) > 72 else self.description
+
+class Classroom(models.Model):
+	name = models.CharField(max_length = 256)
+	school = models.CharField(max_length = 512)
+	grade = models.CharField(max_length = 64)
+	num_students = models.IntegerField()
+	activated = models.BooleanField(default=False)
+
+	def __unicode__(self):
+		return self.name + " at " + self.school + " : grade " + self.grade
+
+class ClassroomActivityBin(models.Model):
+	classroom = models.ForeignKey(Classroom)
+	num_seconds = models.IntegerField()
+	date = models.DateTimeField()
+
+	def __unicode__(self):
+		return str(self.date) + " - " + self.classroom.name
+
+class UserClassroomAssignment(models.Model):
+	user = models.ForeignKey(User)
+	classroom = models.ForeignKey(Classroom)
+
+	def __unicode__(self):
+		return self.user.username + " in " + self.classroom.name
+
+class UserProfile(models.Model):  
+	user = models.OneToOneField(User, related_name="profile") 
+	school = models.CharField(max_length = 255, blank=True, default="")
+	school_su = models.BooleanField(default=False)
+	teacher_of_classroom = models.ForeignKey(Classroom, blank=True, null=True, default=None)
+	# upgraded = teacher who has paid $x/student to disable the trial timer.
+	upgraded = models.BooleanField(default=False)
+	unlimited_licenses = models.BooleanField(default=False)
+	num_licenses = models.IntegerField(default=0)
+	send_news = models.BooleanField(default=False)
+	playtime = models.IntegerField(default=0)
+	def __str__(self):  
+		return "%s's profile" % self.user  
+
+def create_user_profile(sender, instance, created, **kwargs):  
+	if created:  
+	   profile, created = UserProfile.objects.get_or_create(user=instance)
+
+post_save.connect(create_user_profile, sender=User) 
+
+class ClassroomTeacherRel(models.Model):
+	user = models.ForeignKey(User)
+	classroom = models.ForeignKey(Classroom)
+	date = models.DateTimeField()
+
+	def __unicode__(self):
+		return self.user.username + " is teaching " + self.classroom.name
+
+class LevelGroup(models.Model):
+	name = models.CharField(max_length=100)
+	levels = models.ManyToManyField(Level)
+	upgrade_required = models.BooleanField(default=True)
+	order = models.IntegerField(default=0)
+	secret = models.BooleanField(default=False)
+
+	def __unicode__(self):
+		return self.name
+
+class GamePurchase(models.Model):
+	user = models.ForeignKey(User)
+	deluxe = models.BooleanField(default = False)
+	time = models.DateTimeField()
+	def __unicode__(self):
+		return self.user.username + " ...  deluxe?: " + str(self.deluxe)
+
+class GamePurchaseEmail(models.Model):
+	email = models.EmailField()
+	time = models.DateTimeField()
+	code = models.CharField(max_length=256)
+	downloads = models.IntegerField(default=0)
+	def __unicode__(self):
+		return unicode(self.email)
+
+class ButtonLog(models.Model):
+	page = models.CharField(max_length=100)
+	name = models.CharField(max_length=100)
+	user = models.ForeignKey(User, null=True, blank=True)
+	ip = models.IPAddressField(blank=True, null=True)
+	time = models.DateTimeField()
+	tracking_cookie = models.CharField(max_length=256, blank=True, null=True)
+
+	def __unicode__(self):
+		if self.user:
+			return self.user.username + " clicked " + self.name + " on " + self.page
+		else:
+			return "Anonymous clicked " + self.name + " on " + self.page
+
+class PreorderRegistration(models.Model):
+	code = models.CharField(max_length=1024)
+	user = models.ForeignKey(User, blank=True, null=True)
+	response = models.CharField(max_length=2048, blank=True, null=True)
+
+	def __unicode__(self):
+		if self.user is None:
+			return "Unclaimed: " + self.code
+		if self.response is None:
+			return self.user.username + " (before responses were recorded)"
+		return self.user.username + " - \"" + self.response + "\""
+
+class HeatmapPoint(models.Model):
+	user = models.ForeignKey(User, blank=True, null=True)
+	time = models.DateTimeField()
+	point_x = models.FloatField()
+	point_y = models.FloatField()
+	point_z = models.FloatField()
+	point_type = models.IntegerField()
+	level_name = models.CharField(max_length=1024)
+
+	def __unicode__(self):
+		return self.user.username + " on " + self.level_name
+
+class PurchaseRecord(models.Model):
+	user = models.ForeignKey(User, blank=True, null=True)
+	stripe_token = models.CharField(max_length=512)
+	email = models.EmailField()
+	code = models.CharField(max_length=512)
+	params = models.CharField(max_length=1024, blank=True, null=True)
+	price = models.IntegerField()
+	date = models.DateTimeField(blank=True, null=True)
+
+	def __unicode__(self):
+		return self.email + " - " + self.code
+
+class GameMenuClick(models.Model):
+	user = models.ForeignKey(User, blank=True, null=True)
+	button = models.CharField(max_length=256)
+	time = models.DateTimeField()
+	click_type = models.IntegerField()
+
+class KickstarterRedirect(models.Model):
+	referrer = models.CharField(max_length=256)
+	num = models.IntegerField()
+
+	def __unicode__(self):
+		return self.referrer + " : " + str(self.num)
+
+class MathExperiment(models.Model):
+	title = models.CharField(max_length=256)
+	desc = models.CharField(max_length=256)
+	picture = models.FileField(upload_to="labs", default="", null=True, blank=True)
+	url = models.CharField(max_length=512, null=True, blank=True)
+	future = models.BooleanField(default=True)
+
+	def __unicode__(self):
+		if self.future:
+			return "(future) " + self.title
+		else:
+			return self.title
+
+class EmailSurveyResponse(models.Model):
+	response = models.CharField(max_length = 1024)
+	post_answer_message_title = models.CharField(max_length=1024)
+	post_answer_message_description = models.CharField(max_length=1024, null=True, blank=True)
+	num = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		return self.response
+
+class EmailSurvey(models.Model):
+	name = models.CharField(max_length=1024)
+	responses = models.ManyToManyField(EmailSurveyResponse)
+	total = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		ret = self.name + ": "
+		ret += ", ".join( [ (resp.response + " (" + str(resp.num) + ")") for resp in self.responses.all()] )
+		return ret
+
+class RoboterraLogin(models.Model):
+	ip = models.IPAddressField(blank=True, null=True)
+	time = models.DateTimeField()
+
+	def __unicode__(self):
+		ret = str(self.ip) + " (" + str(self.time) + ")"
+		return ret
+
+class PasswordReset(models.Model):
+	time = models.DateTimeField()	
+	user = models.ForeignKey(User)
+	code = models.CharField(max_length=1024)
+
+	def __unicode__(self):
+		return self.code + " for " + self.user.username
+
+class UserAdaptiveSkill(models.Model):
+	user = models.ForeignKey(User)
+	skill_id = models.CharField(max_length=128)
+	skill_level = models.FloatField()
+
+	def __unicode__(self):
+		return self.user.username + " - " + self.skill_id + " - " + str(self.skill_level)
+
+class RobotSentEmail(models.Model):
+	email = models.EmailField()
+	title = models.CharField(max_length=1024)	
+	content = models.CharField(max_length=10000)
+	time = models.DateTimeField()
+
+	def __unicode__(self):
+		return self.email + " : " + self.title
+
+class InventoryItem(models.Model):
+	user = models.ForeignKey(User)
+	item_name = models.CharField(max_length=1024)
+	equipped = models.BooleanField(default=False)
+	variation = models.IntegerField(default=0)
+
+	def __unicode__(self):
+		if self.equipped:
+			return self.user.username + " : EQUIPPED " + self.item_name
+		else:
+			return self.user.username + " : " + self.item_name
+
+
+class NewInventoryItem(models.Model):
+	user = models.ForeignKey(User)
+	item_type = models.CharField(max_length = 256)
+	properties = models.CharField(max_length = 4096)
+	equip_slot = models.CharField(max_length=256, null=True, blank=True)
+
+
+class Character(models.Model):
+	user = models.ForeignKey(User)
+	gems = models.IntegerField(default=0)
+	
+class ClassroomSession(models.Model):
+	classroom = models.ForeignKey(Classroom, null=True, blank=True)
+	code = models.CharField(max_length=64)
+	start_time = models.DateTimeField()
+	update_time = models.DateTimeField(null=True, blank=True)
+	end_time = models.DateTimeField(null=True, blank=True)
+	ip = models.IPAddressField()
+	tracking_cookie = models.CharField(max_length=256, null=True, blank=True)
+
+	def __unicode__(self):
+		return self.classroom.name + " session, started " + str(self.start_time)
+
+class TryLater(models.Model):
+	email = models.EmailField()
+	time = models.DateTimeField()
+	ip = models.IPAddressField()
+	schedule_support = models.BooleanField(default=False)
+	schedule_play = models.DateTimeField(blank=True, null=True)
+
+	def __unicode__(self):
+		return self.email
+
+class SUTeacherNote(models.Model):
+	tracking_cookie = models.CharField(max_length=256)
+	column = models.CharField(max_length=256)
+	checked = models.BooleanField(default=False)
+
+class CohortTracking(models.Model):
+	tracking_cookie = models.CharField(max_length=256)
+	cohort = models.CharField(max_length=256)
+	def __unicode__(self):
+		return self.cohort + " : " + self.tracking_cookie	
+
+
+class Partnerships(models.Model):
+	organization = models.CharField(max_length=256, blank=True, null=True)
+	our_contact = models.CharField(max_length=256, blank=True, null=True)
+	estimated_reach = models.CharField(max_length=256, blank=True, null=True)
+	wholesale_price = models.CharField(max_length=128, blank=True, null=True)
+	retail_price = models.CharField(max_length=128, blank=True, null=True)
+	start_date = models.DateTimeField(blank=True, null=True)
+	end_date = models.DateTimeField(blank=True, null=True)
+	remarks = models.CharField(max_length=2048, blank=True, null=True)	
+	tracking_cookie = models.CharField(max_length=256)
+	start = models.DateTimeField(blank=True, null=True)
+
+
+class TeacherSignupFlow(models.Model):
+	tracking_cookie = models.CharField(max_length=256)
+	start = models.DateTimeField(blank=True, null=True)
+
+	order = models.IntegerField(default=0)
+
+	cohort = models.CharField(max_length=256, blank=True, null=True)
+	cohort_color = models.CharField(max_length=16, blank=True, null=True)
+	started_cohort = models.BooleanField(default=False)
+
+	clicked_teacher_start = models.BooleanField(default=False)
+	btn1_count = models.IntegerField(default=0)
+	clicked_start_session = models.BooleanField(default=False)
+	session_started = models.BooleanField(default=False)
+	classroom_name = models.CharField(max_length=256,blank=True, null=True)
+	username = models.CharField(max_length=256,blank=True, null=True)
+	has_students = models.BooleanField(default=False)
+	num_students = models.IntegerField(default=0)
+	num_students_created_manually = models.IntegerField(default=0)
+	has_playtime = models.BooleanField(default=False)
+	playtime = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+	median_playtime = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+	second_visit = models.BooleanField(default=False)
+	num_visits = models.IntegerField(default=0)
+
+	max_level_reached = models.IntegerField(default=0)
+	sum_level_reached = models.IntegerField(default=0)
+
+	pressed_purchase_nav = models.BooleanField(default=False)
+	pressed_purchase_timer = models.BooleanField(default=False)
+	purchased = models.BooleanField(default=False)
+	purchase_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+
+
+class Cohorts(object):
+	def __init__(self, letter, teacherCount, last_email_sent, last_email_sent_date,total_communication_log,AB_test_description):
+		self.letter = letter
+		self.teacherCount = teacherCount
+		self.last_email_sent = last_email_sent
+		self.last_email_sent_date = last_email_sent_date
+		self.total_communication_log = total_communication_log
+		self.AB_test_description = AB_test_description
+
+class FullDownloadCodeEmailEntry(models.Model):
+	code = models.CharField(max_length=256)
+	email = models.EmailField()
+	date = models.DateTimeField()
+
+	def __unicode__(self):
+		return unicode(self.email)
+
+class Unsubscribed(models.Model):
+	email = models.CharField(max_length=256)
+	date = models.DateTimeField()
+	def __unicode__(self):
+		return unicode(self.email)
+
+class ClassroomLog(models.Model):
+	classroom = models.ForeignKey(Classroom)
+	message = models.CharField(max_length=4096)
+	date = models.DateTimeField()
+
+	def __unicode__(self):
+		return "%s (%s): %s" % (
+			self.classroom.name,
+			self.classroom.classroomteacherrel_set.all()[0].user.username,
+			self.message)
+
+class EducentsCode(models.Model):
+	code = models.CharField(max_length=256)
+	user = models.ForeignKey(User, null=True, blank=True)
+	date_claimed = models.DateTimeField(null=True, blank=True)
+	
+	def __unicode__(self):
+		if self.user:
+			return "%s - %s" % (self.code, self.user.username)
+		else:
+			return "%s - (unclaimed)" % self.code

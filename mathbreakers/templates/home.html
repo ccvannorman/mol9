@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/home.css?refresh=3" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/jquery.animate-shadow.js" %}'></script>
+<script src='{% static "js/home.js" %}'></script>
+<script src='{% static "js/ajaxform.js" %}'></script>
+<script src='{% static "js/signup.js" %}'></script>
+
+<script>
+window.fbAsyncInit = function() {
+// init the FB JS SDK
+FB.init({
+	appId : '576533445743712',
+//appId	  : '137786243098876',						// App ID from the app dashboard
+channelUrl : '//MATHBREAKERS.COM/channel.html', // Channel file for x-domain comms
+status	 : false,								 // Check Facebook Login status
+xfbml	  : true,								  // Look for social plugins on the page
+kid_directed_site : true
+});
+
+// Additional initialization code such as adding Event Listeners goes here
+};
+
+// Load the SDK asynchronously
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+var haveEmail = {{ have_email }};
+
+</script>
+{% endblock %}
+
+{% block popups %}
+  <div id="downloadEmailPopup" class="popup">
+	<div class="top"></div>
+	<div class="content valign">
+	  <h1>Download</h1>
+	  <form id="downloadEmailForm">
+		<div class="catchAll"></div>
+		{% csrf_token %}
+		{{ download_email_form.as_p }}
+		<a class='button white2green' id='downloadEmailSubmit' href='javascript:void(0)'>Download</a>
+	  </form>
+	</div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div id="container">
+	<div id="mainSplash">
+		<div id="mainSplashTop">
+			<div id="logosmall"></div>
+			<div id="logotext"></div>
+			<!-- <h3>Learn addition, fractions, operators and negatives</h3> -->
+			<h2>A magical learning world for grades 1 - 9</h2>
+
+
+		</div>
+	</div>
+
+
+
+
+<div id="twobuttons">
+	<div id="teachers1">
+		{% if has_class %}
+		<a href="/session/try/" id="teacherclick2" class="button teachersclick">Teacher Portal</a>
+		{% else %}
+		<a href="/session/try/" id="teacherclick1" class="button teachersclick">Teacher Portal</a>
+		{% endif %}
+		<h3 id="subtitle">Common core aligned</h3>
+	</div>	
+	<div id="download1">
+		<a href="/download/" class="button" id="downloadbutton1">Download</a>
+		<h3>Mac, PC, Linux</h3>
+	</div>	
+</div>
+<!--<div id="oneplaysession">
+	<h2>Mathbreakers is the first fully integrated game world for mathematics</h2>
+</div>-->
+		
+		
+<div id="learnmore_outer">
+	<div id="learnmore_inner">
+	<!--<br>Your kids will appreciate the difference! Let them explore our world and master <strong> addition, operators, negatives, and fractions </strong> at their own pace, or assign lessons directly from the dashboard. </h2> -->
+		<!--From geometry to basic counting skills, Mathbreakers provides a strong foundation to explore, discover, and play with math like never before. Recommended for ages 7-17. -->
+		Mathbreakers provides a strong foundation to explore, discover, and play with math like never before. Recommended for ages 7-17.
+
+		<br> <ul>
+			<li>Addition / subtraction</li>
+			<li>Integers</li>
+			<li>Fractions</li>
+			<li>Multiplication / division</li>
+			<li>Algebra <span class="greeny">NEW!</span></li>
+			<li>Geometry<span class="greeny">NEW!</span></li>
+		</ul>
+		<div class="link"><a href="/learnmore/" id="learnmorebutton">Learn More</a></div>
+
+
+		<!-- Thanks to everyone for our success on <a href="http://kickstarter.com/projects/mathbreakers/mathbreakers-a-3-d-math-exploration-game" target="_blank"><img src="static/img/Kickstarter_Logo.jpg" width=200  /></a>!<br>As promised, our iPad version is coming soon. -->
+	</div>		
+
+	<div id="vimeobox">
+		Watch our introductory video:<br><br>
+		<iframe src="//player.vimeo.com/video/98703372" width="700" height="396" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="splashVideo"></iframe>
+	</div>
+</div>
+	
+
+<div id="newsletter">
+		<form method=POST action="/newsletter/">
+			<p>Join our mailing list to stay informed on updates to Mathbreakers - new lessons, math topics, and game features - as well as any special deals or promotions. </p>
+			<div style="width:350px;margin:auto">
+				Email: <input type="text" name="email"/>
+			</div>
+			{% csrf_token %}
+			<input type="submit" />
+		</form>
+	</div>
+</div>
+<div id="testimonials2" class="clear-fix">
+	<h1>Customer success stories</h1>
+	<h2>	<a href="/testimonials/">View all</a> </h2>
+
+	<div class="cell2">
+		<div class="top" style="background-color:#7cf"></div>
+		<div class="content">
+			<span class="quote"></span>
+			<br>
+			<br>
+			<span class="author"></span>
+		</div>
+	</div>
+	<div class="cell2">
+		<div class="top" style="background-color:#7cf"></div>
+		<div class="content">
+			<span class="quote"></span>
+			<br>
+			<br>
+			<span class="author"></span>
+		</div>
+	</div>
+<!--	<div class="cell2">
+		<div class="top" style="background-color:#55ccee"></div>
+		<div class="content">
+			<span class="quote"></span>
+			<br>
+			<br>
+			<span class="author"></span>
+		</div>
+	</div>
+	<div class="cell2">
+		<div class="top" style="background-color:#7799ee"></div>
+		<div class="content">
+			<span class="quote"></span>
+			<br>
+			<br>
+			<span class="author"></span>
+		</div>
+	</div> -->
+</div>
+<div id="press">
+	<h1>Press</h1>
+	<div class="pressCellContainer">
+		<a class="cell3" href="http://www.forbes.com/sites/jordanshapiro/2014/09/15/zynga-orgs-game-based-learning-accelerator-pairs-newbies-with-experienced-players/" target="_blank" 
+		style="background-image:url('static/img/press_forbes.jpg')">
+		
+		<a class="cell3" href="http://www.huffingtonpost.com/matthew-lynch-edd/how-to-make-math-learning_b_5454159.html" target="_blank"
+		style="background-image:url('static/img/press_huffpost.png')"></a>	
+		
+		<a class="cell3" href="http://indiegames.com/2014/06/kickstarter_pick_mathbreakers.html" target="_blank"
+		style="background-image:url('static/img/press_indiegames.png')"></a>
+
+	
+		<!--<a class="cell3" href="http://blackmannrobin.com/?p=18814" target="_blank"
+		style="background-image:url('static/img/press_blackmannrobin.png')">	</a>-->
+
+		<a class="cell3" href="http://www.twinfinite.net/2014/01/07/mathbreakers-hands-preview/" target="_blank"
+		style="background-image:url('static/img/press_twinfinite.png')"></a>	
+
+		<a class="cell3" href="http://www.magicalmaths.org/have-you-seen-this-virtual-math-toybox-mathbreakers/" target="_blank"
+		style="background-image:url('static/img/press_magicalmaths.png')">	</a>
+
+		<a class="cell3" href="http://www.gamespot.com/articles/developers-teaching-math-through-a-new-game/1100-6420562/" target="_blank"
+		style="background-image:url('static/img/press_gamespot.png')">	</a>
+		
+		<a class="cell3" href="http://blogs.edweek.org/edweek/education_futures/2014/04/gaming_in_k-12_classrooms_fun_should_be_intrinsic.html" target="_blank"
+		style="background-image:url('static/img/press_edweek.jpg')"></a>	
+
+		<a class="cell3" href="http://www.mv-voice.com/print/story/2014/07/04/learning-through-gaming" target="_blank"
+		style="background-image:url('static/img/press_mvv.png')">	</a>
+
+
+
+	</div>
+</div>
+<div id="mooc">
+	<a class="anchor" id="mooc"></a>
+	<h2>Featured in Stanford Course: <em>How to Learn Math</em></h2>
+	<div class="container">
+		<img class="left" src="{% static 'img/joboaler.jpg' %}"/>
+		<p class="mid">Math educators are excited about the teaching power of virtual worlds, which is why Dr. Jo Boaler is using Mathbreakers in her <a href="https://class.stanford.edu/courses/Education/EDUC115-S/Spring2014/about">online course</a> at Stanford. She has also joined on as an advisor for our <a href="/about/">development team!</a></p>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}

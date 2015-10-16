@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/dashboard.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+<h1> Dashboard - Example Class </h1>
+</div>
+<div id="main">
+	<p style="width:600px;margin:30px auto">This is a screenshot of one teacher's dashboard, showing what lessons have been completed by her students. She can quickly see where individual students are struggling, and can assign in-game lessons on an individual basis.</p>
+	<img style="margin-bottom:30px;border:1px solid #ddd" src='{% static "img/sampledashboard.png" %}' />
+	<div id="key">
+		<div class="row"><div class="icon onestar"></div> Success - one star</div>
+		<div class="row"><div class="icon twostar"></div> Success - two stars</div>
+		<div class="row"><div class="icon threestar"></div> Success - three stars</div>
+		<div class="row"><div class="icon failed"></div> Failed attempt</div>
+		<div class="row"><div class="icon assigned"></div> Assigned</div>
+	</div>
+	<div style="clear:both"></div>
+</div>
+{% endblock %}

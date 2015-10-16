@@ -1,0 +1,39 @@
+h1 {
+	font-size:30pt;
+	font-family:"Raleway";
+}
+
+h2 {
+	font-size:16pt;
+}
+
+img {
+	margin:auto;
+	display:block;
+	width:100%;
+}
+
+.leftalign{
+	text-align:left;
+}
+
+.gifcontainer{	
+	width:960px;
+	margin:0;
+	border:0;
+	padding:0;
+}
+.gifcontainer img {
+	width:290px;
+	height:180px;
+	float:left;
+	margin: 0 10px 20px 10px;
+}
+p, h1 {
+	margin: 15px auto;
+	width:660px;
+}
+h1 {
+	margin: 0 auto;
+	text-align:center;
+}

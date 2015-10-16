@@ -1,0 +1,30 @@
+.pair {
+	width: 960px;
+}
+
+.pair:after {
+	display:block;
+	visibility:hidden;
+	content:".";
+	height:0;
+	clear:both;
+}
+
+.profile {
+	float:left;
+	width:440px;
+	padding:20px;
+	text-align:left;
+}
+.profile p {
+	font-size:12pt;	
+	line-height:16pt;
+}
+
+.profile img {
+	width:175px;
+	float:left;
+	padding:1px;
+	border:1px solid #ccc;
+	margin:0px 16px 8px 0px;
+}

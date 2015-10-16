@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/about.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Meet the Team</h1>
+</div>
+<div id="main">
+	<div class="pair">
+		<h2>Advisory Team</h2>
+		<div class="profile">
+			<img src="{% static 'img/joboaler.jpg'%}" />
+			<p>
+				Dr. Jo Boaler is a Professor of Mathematics Education at Stanford University and founder of youcubed. Former roles have included being the Marie Curie Professor of Mathematics Education at the University of Sussex, England, a mathematics teacher in London comprehensive schools, and a lecturer and researcher at King’s College, London. She is the editor of the Research Commentary Section of The Journal for Research in Mathematics Education (JRME), and the author of seven books including What’s Math Got To Do With It? (2009) Penguin, US, and The Elephant in the Classroom (2010) Souvenir Press, UK. She is the author of the first MOOC on mathematics learning for teachers and parents, a White House presenter, and an advisor to the PISA team at the OECD.
+			</p>
+		</div>
+		<div class="profile">
+			<img src="{% static 'img/fed1.jpg'%}" />
+			<p>
+				Federico Chialvo is a Math Specialist at Synapse School. He holds a B.S. in Mathematics and an M.A. in Education from the University of Arizona. He believes all students deserve to experience the thrill of mathematical discovery, and to feel empowered to understand and change the world through mathematical thinking. His journey as an educator started 10 years ago at City High School. Later he taught K-8 in Micronesia, then managed a non-profit in Costa Rica while completing his masters degree. Federico finally settled in the Bay Area with his wife in 2008. Most recently he worked as a Math Specialist at The Nueva School for two years. Besides his passion for mathematics, he loves spending time with his wife and two boys, traveling, gardening, eating good food, swimming, and playing Ultimate.
+			</p>
+		</div>		
+	</div>
+	<div class="pair">
+		<h2>Founding Team</h2>
+		<div class="profile">
+			<img src="{% static 'img/viv1.png'%}" />
+			<p>
+				Vivian Tan is passionate about enhancing real-life experiences through games and virtual worlds. She has been experimenting with creating interactive art galleries and learning experiences since the 1990's (when HTML was much more blah and 3D games were totally out of reach unless you had a bazillion dollars to burn). Starting 2006 Vivian taught herself 3D modeling/animation and built a virtual fashion brand in Second Life that attracted thousands of nerdy fashionistas. In 2010 she graduated from Santa Clara University School of Law and worked with criminal/civil law firms while continuing to teach herself to code. Vivian eventually caved into her true calling and became a full-time edtech game developer with the launch of Mathbreakers.
+			</p>
+		</div>
+		<div class="profile">
+			<img src="{% static 'img/charlie.jpg'%}" />
+			<p>
+				Charlie Van Norman is a natural game designer who knows what kids want and how to engage them. While in school, Charlie was enthralled by epic video games such as Super Mario, Half Life and Starcraft that opened up a world of action and adventure and captivated his imagination.  At the same time, he grew up in the traditional public school system and was consistently underwhelmed by the games and technology available in the classroom. When Charlie became a tech teacher at Synapse, a top-notch middle school in Menlo Park, California, he experienced first-hand how deeply engaging experiences could completely transform a child's mindset towards learning. Today, Charlie's mission is to bring that same enchantment to children in schools with games that are on par with the best in terms of fun, while being built on interactions that are educational at their core.
+			</p>
+		</div>				
+	</div>	
+	<div class="pair">
+		<div class="profile">
+			<img src="{% static 'img/morgan.jpg'%}" />
+			<p>
+				Morgan Quirk is the code master capable of hacking up almost any solution and building beautiful tools and interfaces; he does much of the programming and technical wizardry behind Mathbreakers and secretly commands all the number minions. Morgan studied game development at the Worcester Polytechnic Institute and has been working in the games industry for several years, including at Demiurge Studios, building prototypes as well as helping ship large-scale game projects. Morgan believes math can and should be taught using highly interactive game environments. During his (increasingly scarce) off-time, Morgan makes indie-games and cool, quirky apps, like an app for petting cats.
+			</p>
+		</div>
+	</div>	
+</div>
+{% endblock %}

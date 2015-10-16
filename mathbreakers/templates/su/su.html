@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Superuser stuff</h1>
+<a href="/su/company_stats/">Company stats</a><br/>
+<a href="/su/teachersignupflow/">Teacher Signup Flow</a><br/>
+<a href="/su/teachers/">Teacher Classroom Info</a><br/>
+<a href="/su/userinfo/">User Info</a><br/>
+<a href="/su/classrooms/">View Classrooms</a><br/>
+<a href="/su/buttons/9999999999">Button Presses</a><br/>
+<a href="/su/teacher_emails/">List of teacher emails</a><br/>
+<a href="/su/manage_licenses/">Manage School Licenses</a><br/>
+<br><br>
+	<form style="display:inline-block" action='/su/generatefullgamecode/' method='POST'>
+	Generate Full Game Code:
+		{% csrf_token %}
+	
+	<input id="email" type="text" name="email" value="enter email address" style="display:inline-block;" /><input style="display:inline-block;" type="submit" method="POST" value="Generate code"><br>
+<!-- <a href="/su/userprogress/">User Progress</a><br/> -->
+<!-- <a href="/su/purchaseusers/">Users who have purchased</a><br/> -->
+<!-- <a href="https://docs.google.com/spreadsheets/d/1ZDrHCOLD_Xf-MbXMnRzrPwM-XiU4ekJQDmHAg0-zL-Q/edit#gid=0">Lifetime Data</a><br/> -->
+<!--<a href="/su/preorder/">Make Preorder Code (old, probably don't use) </a><br/>-->
+<!-- <a href="/su/campsignups/">Camp Signups</a><br/> -->
+<!-- <a href="/su/makehugs/">Make Hugs</a><br/> -->
+<!-- <a href="/su/getsurveys/">Get Surveys</a><br/> -->
+
+{% endblock %}

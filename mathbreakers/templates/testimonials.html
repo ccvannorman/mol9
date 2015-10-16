@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/testimonials.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+<img id="labslogo" src='{% static "img/mblogo_big.png" %}' />
+
+	<div id="desc"><p><br>
+
+Mathbreakers has become an important part of our remedial math program. The combination of math skills, problem solving, gamification, and a truly enjoyable interface has been a very effective tool in helping students overcome engagement issues and foundational mathematical misconceptions.</p>
+ <p><br>
+One of my favourite moments during our implementation of Mathbreakers was when a Gr. 6 student complained to me, “I don’t like fractions. I can’t do fractions. I won’t be able to do this.” Ten minutes later she was celebrating out loud a conquered challenge in Mathbreakers. At the end of the period, she told me, “I was wrong. Fractions are easy!” Mathbreakers has helped many of our students overcome apprehension and confidence issues that were preventing them from taking on more challenging math work.
+ 
+ </p>
+<p><br>
+Hope that helps!
+ </p>
+<br>Thanks,
+<br>Matt
+ <br>
+<br>Matt Clements
+<br>Vice Principal
+<br>TA Norris Middle School
+	<br><p><br> Have feedback? Contact us: <a href="mailto:.team@mathbreakers.com">team@mathbreakers.com</a>
+	</div>
+
+</div>
+<div id="main">
+	<div id="experimentContainer">
+	{% for exp in experiments %}
+		{% if exp.future %}
+		<a class="experiment" style="background-image:url({{ exp.picture.url }})">
+		{% else %}
+		<a class="experiment link" href="{{ exp.url }}" style="background-image:url({{ exp.picture.url }})">
+		{% endif %}
+			<div class="inside">
+				<h1>{{ exp.title }}</h1>
+				<p><br>{{ exp.desc }}</p>
+			</div>
+		</a>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

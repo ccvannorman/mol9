@@ -1,0 +1,73 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Hey, your Mathbreakers class is now ready!
+From: charlie@mathbreakers.com
+To: charlie+1@mathbreakers.com
+Date: Tue, 24 Feb 2015 00:23:21 -0000
+Message-ID: <20150224002321.3680.3654@charlies-macbook-pro.local>
+
+
+Hello,
+
+A few weeks ago, you signed up to use Mathbreakers in your classroom. Great news -- we've finished our teacher portal, and it's ready for you! Just follow this link to get started:
+
+mathbreakers.com/start/A
+
+Mathbreakers is a 3-D adventure game where kids can explore with addition, fractions, operators and negatives in a stress-free, fun environment.
+
+Don't hesitate to contact me if you have any questions!
+
+Best,
+
+Charlie Van Norman
+Co-founder, mathbreakers.com
+	
+
+-------------------------------------------------------------------------------
+sent a message to charlie+1@mathbreakers.com
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Hey, your Mathbreakers class is now ready!
+From: charlie@mathbreakers.com
+To: charlie+2@mathbreakers.com
+Date: Tue, 24 Feb 2015 00:23:22 -0000
+Message-ID: <20150224002322.3680.82899@charlies-macbook-pro.local>
+
+
+Hello,
+
+A few weeks ago, you signed up to use Mathbreakers in your classroom. Great news -- we've finished our teacher portal, and it's ready for you! Just follow this link to get started:
+
+mathbreakers.com/start/A
+
+Mathbreakers is a 3-D adventure game where kids can explore with addition, fractions, operators and negatives in a stress-free, fun environment.
+
+Don't hesitate to contact me if you have any questions!
+
+Best,
+
+Charlie Van Norman
+Co-founder, mathbreakers.com
+	
+
+-------------------------------------------------------------------------------
+sent a message to charlie+2@mathbreakers.com
+no database records were updated.
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Just sent 2 emails of type 1 to teachers in file emails.txt
+From: robot@mathbreakers.com
+To: team@mathbreakers.com
+Date: Tue, 24 Feb 2015 00:23:23 -0000
+Message-ID: <20150224002323.3680.13755@charlies-macbook-pro.local>
+
+the last email sent was ..:
+			subject:Hey, your Mathbreakers class is now ready!
+			body:
+Hello,
+
+A few weeks ago, you signed up ....
+-------------------------------------------------------------------------------

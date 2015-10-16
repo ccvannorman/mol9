@@ -1,0 +1,66 @@
+#desc{
+	font-size:1.3em;
+	margin:0 auto;
+	width:700px;
+}
+
+#labslogo{
+}
+
+.experiment {
+	width:400px;
+	height:300px;
+	color:#fff;
+	padding:0;
+	text-align:left;
+	border:0;
+	float:left;
+	background-position:center center;
+	margin:0px 0px 50px 50px;
+	border-radius:13px;
+	-webkit-transition:height 2s;
+    transition:height 2s;
+}
+
+.experiment.link:hover {
+	border:0;
+	color:#fff;
+	background-position:center center;
+}
+
+.experiment .inside {
+	background-color:rgba(10,10,10,0.85);
+	border-top-left-radius:13px;
+	border-top-right-radius:13px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	padding:10px 15px;
+	height:80px;
+    transition:all 0.5s;
+}
+
+.experiment h1 {
+	font-family:"Raleway";
+	margin:0;
+	font-size:20pt;
+}
+
+.experiment p {
+	margin-top:10px;
+	line-height:16pt;
+}
+
+.experiment.link:hover .inside {
+	height:280px;
+	border-bottom-left-radius:13px;
+	border-bottom-right-radius:13px;
+    transition:all 0.5s;	
+}
+
+#experimentContainer:after {
+	display:block;
+	content:".";
+	visibility:hidden;
+	line-height:0;
+	clear:both;
+}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/download.css" %}' type='text/css'>
+<link rel='stylesheet' href='{% static "css/home.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	$(document).ready(function() {
+		$("#tosagree").click(function() {
+			if($("#tosagree").is(":checked")) {
+				$("#dlcontainer").show();
+			}
+			else {
+				$("#dlcontainer").hide();	
+			}
+		})
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="aboveTheFold">
+	<img id="preorderlogo" src='{% static "img/mblogo_big.png" %}' />
+	<h1>Download Mathbreakers Full!</h1>
+	<div id="tosnotice">
+		<input type="checkbox" id="tosagree">
+		I agree to the <a href="/tos/" target="_blank">Terms of Service</a>
+	</div>
+	<div id='dlcontainer' style="display:none">
+		<a class='download' href='https://mathbreakers.s3.amazonaws.com/builds/mathbreakers_mac_home.zip'>
+			Mac <div id='dl_full_mac'></div>
+		</a>
+		<a class='download' href='https://mathbreakers.s3.amazonaws.com/builds/mathbreakers_windows_home.exe'>
+			Windows <div id='dl_full_windows'></div>
+		</a>
+		<a class='download' href='https://mathbreakers.s3.amazonaws.com/builds/mathbreakers_linux_home_32bit.zip'>
+			Linux <div id='dl_full_linux'></div>
+		</a>
+		<div style='clear:both'>
+		</div>
+	</div>
+<br><div style="margin:0 auto">
+<a href="https://twitter.com/intent/tweet?button_hashtag=Mathchat&text=I%20just%20downloaded%20the%20coolest%20math%20game!%20You%20should%20try%20it%20-%20mathbreakers.com.%20The%20best%20way%20to%20learn%20fractions." class="twitter-hashtag-button" data-related="themathbreakers">Tweet #mathchat</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br><br>
+	</div>
+	<!--<img src="/static/img/howdownload.png" style="width:960px"/>-->
+	<div style="font-size:1.2em; width:500px;margin: 0 auto;padding-top:20px;">	Need help installing or running the game? Check our <a href="faq.html">FAQ</a> for answers. If you're still having trouble, please contact us at <a href="mailto:team@mathbreakers.com?subject=download%20help">team@mathbreakers.com</a>.
+</div>
+<br><br><br>
+</div>
+<div id='helpcontainer'>
+	<div style='clear:both'></div>
+	<br>
+	<!--	<a class="button green" style="margin:auto;"  href="preorder.html">Pre-order</a> -->
+	<br>
+	<a href="/" class="button blue" style="margin:auto">Home</a>
+</div>
+{% endblock %}

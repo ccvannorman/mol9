@@ -1,0 +1,94 @@
+{% extends "teacher/classbase.html" %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+<link rel='stylesheet' href='{% static "css/status.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "js/session.js?asdf" %}'></script>
+{% endblock %}
+
+{% block classTop %}
+<h1>Classroom Lobby</h1>
+<h2>Your students should download the game now by visiting: <span style="color:#ff6600">mathbreakers.com/download</span></h2>	
+<p style="margin-top:25px">Not in the classroom? <a href="/session/later/">Schedule your first play session</a></p>
+{% endblock %}
+
+{% block classMain %}
+<div id="main">
+	
+	<!--<a href="javascript:void(0);" id="expandInstructions">Looking for help? Click here.</a>-->
+	<div id="instructions" style="display:none">
+		<h3>Instructions</h3>
+		<!--
+			<iframe src="//player.vimeo.com/video/98703372" width="600" height="340" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="teacherVideo"></iframe>	
+		-->
+		<ul>
+			<li>Mathbreakers is intended to be played by each student on their computer in the classroom. To get started, follow the instructions below.</li>
+			<li>Have your students visit the website above in their web browser. On this page they can download the game for Mac or for PC by clicking the appropriate download button.</li>
+			<li>When the download completes, install and run the game. If you're having trouble, check our <a href="/faq/">FAQ</a> for help.</li>
+			<li>Your students should see your classroom name come up when the game starts on their computer. They should choose this class and then type their name and click "log in" to start playing.</li>
+		</ul>
+
+		<a href="javascript:void(0);" id="closeInstructions">Close</a>
+	</div>
+
+
+	<div id="lobbyinfo">
+		<div class="inforow">
+
+			<div class="key">Class Name</div> 
+			<div class="value">{{ classroom.name }}</div>
+			<label>
+				When your students launch Mathbreakers, they will select this name to join the classroom.
+			</label>			
+		</div>
+		<div class="inforow">		
+			<div class="key">Lobby Code</div> 
+			<div class="value">{{ session.code }}</div>
+			<label>
+				If your students don't see the classroom listed, or if they want to play at home, they can enter this code in-game to join.
+			</label>				
+		</div>
+		<div class="inforow">
+		
+			<div class="key">Status</div> 
+			{% if profile.num_licenses > 0 %}
+			<div class="value">
+				Teacher License ( {{ profile.num_licenses }} seats )
+			</span>
+			</div>
+			<label>
+				If you need to purchase more seats, <a href="/purchase/teacher">click here</a>.
+			</label>
+			{% else %}
+			<div class="value">
+				Trial<span id="playtimenotice"> - <span id="playtime">...loading...</span>
+				<a href="/purchase/teacher/" id="teacherbuy" class="flatbutton">Buy now for unlimited play time!</a>
+			</span>
+			</div>
+			<label>
+				Your students can each play for 60 minutes as a trial.
+				<a href="/purchase/teacher">Purchase a license</a>
+				 if you're happy with Mathbreakers and want to play all year!
+			</label>	
+			{% endif %}			
+		</div>
+		<div class="inforow">
+			<div class="key">Students</div> 
+			<div class="value">
+				<div id="userlist">
+					Your students will show up here when they start Mathbreakers.
+				</div>				
+			</div>
+			<label>
+				To assign lessons and track progress, check out the <a href="/class/dashboard">Dashboard.</a><br/>To manage students, see the <a href="/class/">Classroom Students</a> page. 
+			</label>			
+		</div>
+		<p class="notice">Looking for help setting up your class? Check our <a href="/faq/">FAQ</a> or send an email to team@mathbreakers.com</p>
+	</div>
+</div>
+{% endblock %}

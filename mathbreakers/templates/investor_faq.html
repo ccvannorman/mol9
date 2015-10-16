@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/learnmore.css" %}' type='text/css'>
+		{% endblock %}
+
+{% block content %}
+<div id="screen1" class="screens"></div>
+<div class="screenshotCaption">
+	<h2>A world of toys and machines</h2>
+	Once you get your hands on them, you can begin tinkering to get different results. The high-speed feedback and total freedom to experiment helps reinforce the underlying concepts the toys are based on.
+</div>
+<div class="chart">
+<table id = 'learnmoretable'>
+	<tr>
+		<td><img src='/static/img/icon_numbers.png'>
+		<td>Loose Number
+		<td>Can be picked up and moved around. When any two numbers touch, they add together immediately.
+	<tr>
+		<td><img src='/static/img/icon_hoops.png'>
+		<td>Number Hoop
+		<td>Performs an operation on any number that passes through it going forwards, and the inverse operation going backwards.
+	<tr>
+		<td><img src='/static/img/icon_plusminushoop.png'>
+		<td>Sign Flipper
+		<td>Changes positives to negatives, and vice versa.
+	<tr>
+		<td><img src='/static/img/icon_nopass.png'>
+		<td>No Pass Archway
+		<td>Prevents any number from passing.
+	<tr>
+		<td><img src='/static/img/icon_risers.png'>
+		<td>Elevator
+		<td>Moves up or down depending on the size of the number. Insert numbers into the red funnel to operate.
+	<tr>
+		<td><img src='/static/img/icon_icosahedron.png'>
+		<td>Triangle Number
+		<td>This special number is always blue, and is used as fuel for batteries.
+	<tr>
+		<td><img src='/static/img/icon_bridge.png'>
+		<td>Battery with Bridge
+		<td>The drawbridge will lower when the battery fuel is filled to 100%.
+	<tr>
+		<td><img src='/static/img/icon_rocket.png'>
+		<td>Battery with Rocket
+		<td>The pre-loaded rocket will launch when the battery fuel is filled up to 100%.
+	<tr>
+		<td><img src='/static/img/icon_posneglight.png'>
+		<td>Positive / Negative Shower
+		<td>If any number passes under the positive shower, it will be turned positive. Similarly, any number under a negative shower will be negative.
+</table>
+</div>
+<div class="screens" id="screen2"></div>
+<div class="screenshotCaption">
+	<h2>Build strong foundations</h2>
+	<p>	Mathematics is full of wonder, but you won't get far without the basics. Using novel gadgets, we teach addition, fractions, operators, and negatives for intuitive understanding.
+
+<br>	
+<br>
+	<p>	Mathbreakers is <a href="/cc/">Common Core</a> aligned.
+
+</div>
+<div class="chart">
+<table>
+
+	<tr>
+		<td><img src='/static/img/icon_multiblaster.png'>
+		<td>Multi-blaster
+		<td>Holds up to 10 numbers at once.
+	<tr>
+		<td><img src='/static/img/icon_zooka.png'>
+		<td>Zooka
+		<td>Holds up to 3 numbers at once. When used, the number will launch forwards and explode, adding to everything within the blast radius.		
+		
+	<tr>
+		<td><img src='/static/img/icon_subtraction.png'>
+		<td>Subtractor
+		<td>Holds one number, and can be used to subtract from any other number. Hold down the mouse button to use.
+	<tr>
+		<td><img src='/static/img/icon_sword.png'>
+		<td>Sword
+		<td>Chops numbers into exact halves.		
+	<tr>
+		<td><img src='/static/img/icon_multiplier.png'>
+		<td>Multiplier
+		<td>Holds one number, and when the number is launched, it will multiply with whatever number it touches.
+	<tr>
+		<td><img src='/static/img/icon_jetpack.png'>
+		<td>Jetpack
+		<td>Lets player fly for a short time. Costs gems to use.
+	<tr>
+		<td><img src='/static/img/icon_spellbook.png'>
+		<td>Spellbook
+		<td>Lets player spend gems to cast various spells, including conjuring a circle of numbers.
+</table>
+</div>
+<div class="screens" id="screen3"></div>
+<div class="screenshotCaption">
+	<h2>Learning through play</h2>
+	Mathbreakers fully immerses the player, for smooth and enjoyable gameplay. There are no worksheets or flash cards, but you will find castles, puzzles, and magic.
+</div>
+<div class="chart">
+<table>
+
+
+	<tr>
+		<td><img src='/static/img/icon_wall.png'>
+		<td>Number Wall
+		<td>A wall made of numbers. To break through a wall, add to the bricks until they equal zero.
+	<tr>
+		<td><img src='/static/img/icon_spikeys.png'>
+		<td>Spikey
+		<td>Live numbers that have a mind of their own. And spikes. Watch out!
+	<tr>
+		<td><img src='/static/img/icon_guard.png'>
+		<td>Guard
+		<td>These numbers won't move, but get too close and they'll shock you.
+	<tr>
+		<td><img src='/static/img/icon_bees.png'>
+		<td>Bees
+		<td>Ahhh!
+	<tr>
+		<td><img src='/static/img/icon_boss.png'>
+		<td>Number Boss
+		<td>This is the final boss. Beware, he is immune to regular attacks!
+		
+</table>
+</div>
+<div class="screens" id="screen4"></div>
+<div class="screenshotCaption" id="screenFooter">
+	<h2>Get Mathbreakers now!</h2>
+	<div class="bottombutton">
+	{% if cohort == "B" %}
+	<a href="/session/try2/" id="teacherclick1" class="button teachersclick">Teacher portal</a>
+	{% else %}
+	<a href="/session/try/" id="teacherclick1" class="button teachersclick">Teacher portal</a>
+	{% endif %}</div>
+	<div class="bottombutton"><a class="buyit" href="/buy">Buy Full Version</a></div>
+
+</div>
+
+
+		{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/bugs.css" %}' type='text/css'>
+{% endblock %}
+{% block scripts %}
+<script src='{% static "js/bugs.js" %}'></script>
+
+{% endblock %}
+
+{% block content %}
+<table class="">
+		<tr style="background-color:#aaa">
+			<td>DATE</td>
+			<td>description</td>
+			<td>level </td>
+			<td>position </td>
+			<td>user </td>
+			<td>version </td>
+			<td>session </td>
+			<td></td>
+	{% for bug in bugs %}
+		<tr>
+			<td>{{ bug.date }} </td>
+			<td>{{ bug.description }} </td>
+			<td>{{ bug.level }} </td>
+			<td>{{ bug.position }}</td>
+			<td>{{ bug.user }} </td>
+			<td>{{ bug.vers }} </td>
+			<td>{{ bug.session }} </td>
+			<td><a class='delete' onclick="DeleteBug( '{{ bug.description }}' )">Delete</a></td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/labs.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+<img id="labslogo" src='{% static "img/labslogo.png" %}' />
+	<meta property="og:image"
+content="http://mathbreakers.com//static/img/labsheader.png" />
+	<h1>Mathbreakers!
+ Labs
+</h1>
+	<div id="desc"><p>We meet with teachers and math geeks to bring to life another concept, adding to the machines and puzzles available in the Mathbreakers world.</p>
+	<br><p> Have an idea for a lab? Contact us: <a href="mailto:.team@mathbreakers.com">team@mathbreakers.com</a>
+		<a style="margin:20px auto; width:360px" class="button blue" id="kickstarterButton" href='/kickstarter/home1'>Back us on Kickstarter!</a>
+	</div>
+
+</div>
+<div id="main">
+	<div id="experimentContainer">
+	{% for exp in experiments %}
+		{% if exp.future %}
+		<a class="experiment" style="background-image:url({{ exp.picture.url }})">
+		{% else %}
+		<a class="experiment link" href="{{ exp.url }}" style="background-image:url({{ exp.picture.url }})">
+		{% endif %}
+			<div class="inside">
+				<h1>{{ exp.title }}</h1>
+				<p>{{ exp.desc }}</p>
+			</div>
+		</a>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

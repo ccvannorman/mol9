@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/message.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<img id="preorderlogo" src='{% static "img/mblogo_big.png" %}' />
+
+	<h1>Thanks for your payment!</h1>
+</div>
+<div id="main">
+	<a href="/" class="button green" style="margin:auto">Home</a>
+			<br><br>
+
+
+<a href="https://twitter.com/intent/tweet?button_hashtag=Mathbreakers&text=I%20just%20bought%20this%20awesome%20math%20game%20called%20#Mathbreakers,%20and%20you%20should%20check%20out%20what%20they%20have%20to%20offer!%20mathbreakers.com" class="twitter-hashtag-button" data-related="themathbreakers">Tweet #Mathbreakers</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+</div>
+{% endblock %}

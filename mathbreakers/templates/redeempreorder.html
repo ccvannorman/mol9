@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+	.errorlist li {
+		list-style:none;
+		background-color:#ff9999;
+		width:250px;
+		margin:auto;
+	}
+	form input[type=text]{
+		border: 1px solid #ddd;
+	}	
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/redeem.js" %}'></script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Redeem preorder</h1>
+</div>
+<div id="main">
+
+{% if user.is_authenticated %}
+<p style="font-size:16pt; width:700px; margin:auto">
+After clicking redeem, you will be directed to the home page where you can download the full version of the game for Windows or Mac.
+</p>
+<form method=POST action="/redeem/code/">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="hidden" name="code" id="code" value="{{code}}"/>
+<input type="submit" value="Redeem!" style="margin:20px auto;cursor:pointer" class="button green"/>
+</form>
+{% else %}
+Hi! To redeem your pre-order:
+<a id="mainlogin" class="button green" style="margin:20px auto" href="javascript:void(0);">Log In</a>
+or
+<a id="mainsignup" class="button blue" style="margin:20px auto" href="javascript:void(0);">Make an account</a>
+Then we will activate the full game on that account. 
+{% endif %}
+</div>
+<div style='margin: 0 auto; width:520px; font-size:1.2em;'>
+After clicking Redeem, download and start the game, and log in with your username and password. All level packs will be unlocked.
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "teacher/classbase.html" %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+<link rel='stylesheet' href='{% static "css/manageclass.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "js/manageclass.js" %}'></script>
+{% endblock %}
+
+{% block classTop %}
+<h1>Manage class</h1>
+<h2>
+	Add or remove students, or change their passwords. 
+</h2>
+{% endblock %}
+{% block classMain %}
+<div id="main">
+<div id="ajaxing">...</div>	
+<div id="nostudents">You have no students! When your students play Mathbreakers they can join your Lobby and they'll show up on this page.</div>	
+<table><tbody></tbody></table>
+</div>
+{% endblock %}

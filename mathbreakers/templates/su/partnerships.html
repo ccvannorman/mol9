@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+table {
+	text-align:left;
+	width:900px;
+	font-size:10pt;
+	margin:0 auto;
+	border:0;
+	border-spacing:0;
+	font-family:Arial;
+}
+th {
+	font-weight:bold;
+	margin:0;
+	padding:4px;
+	text-align:left;
+}
+td {
+	font-weight:bold;
+	margin:0;
+	padding:4px;
+	height:16px;
+	border-bottom:1px solid #060;
+	text-align:center;
+}
+tr {
+	margin:0;
+
+}
+td.True {
+	background-color:rgba(6,11,63,0.2);
+	/*border:1px solid rgba(6,11,63,0.75);*/
+	padding:3px;
+	color:#000;
+	text-align:left;
+}
+td.False {
+}
+span.count {
+	color:#fff;
+	background-color:#000;
+	padding:2px;
+	border-radius:3px;
+}
+a {
+	color:#000;
+	text-decoration:underline;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Partnerships</h1>
+<table>
+<tr>
+	<th>Organization</th>
+	<th>Our contact</th>
+	<th>Estimated reach</th>
+	<th>Wholesale price</th>
+	<th>Retail price</th>
+	<th>Start date</th>
+	<th>End date</th>
+	<th>Remarks</th>
+</tr>
+</tr>
+{% load tz %}
+{% for p in partnerships %}
+<tr>
+	<td>p.organization</td>
+	<td>p.our_contact</td>
+	<td>p.estimated_reach</td>
+	<td>p.wholesale_price</td>
+	<td>p.retail_price</td>
+	<td>p.start_date</td>
+	<td>p.end_date</td>
+	<td>p.remarks</td>
+</tr>
+{% endfor %}
+<tr height=20>
+</tr>
+<tr>
+	<td colspan=8>	Add a new contract</td>
+</tr>
+<tr>
+	<form action="../mathbreakers/addpartnership.py" method="GET">	
+	<td><input type="text" name="organization" style="width:80%"></td>
+	<td><input type="text" name="our_contact" style="width:80%"></td>
+	<td><input type="text" name="estimated_reach" style="width:80%"></td>
+	<td><input type="text" name="wholesale_price" style="width:80%"></td>
+	<td><input type="text" name="retail_price" style="width:80%"></td>
+	<td><input type="text" name="start_date" style="width:80%"></td>
+	<td><input type="text" name="end_date" style="width:80%"></td>
+	<td><input type="text" name="remarks" style="width:80%"></td>
+<tR>
+	<td colspan=8><input type="submit" value="Submit" style="width:50px;height:20px;" /></td>
+	</form>
+</tr>
+
+</table>
+{% endblock %}
+

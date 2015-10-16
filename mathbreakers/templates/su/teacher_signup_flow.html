@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+table {
+	text-align:left;
+	width:100%;
+	font-size:10pt;
+	margin:0;
+	border:0;
+	border-spacing:0;
+	font-family:Arial;
+}
+th {
+	font-weight:bold;
+	margin:0;
+	padding:4px 10px;
+	text-align:left;
+}
+td {
+	font-weight:bold;
+	margin:0;
+	padding:4px;
+	height:16px;
+	border-bottom:1px solid #060;
+	text-align:center;
+}
+tr {
+	margin:0;
+
+}
+td.True {
+	background-color:rgba(6,11,63,0.2);
+	/*border:1px solid rgba(6,11,63,0.75);*/
+	padding:3px;
+	color:#000;
+	text-align:left;
+}
+td.False {
+}
+
+span.count {
+	color:#fff;
+	background-color:#000;
+	padding:2px;
+	border-radius:3px;
+}
+a {
+	color:#000;
+	text-decoration:underline;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	$(document).ready(function() {
+		$("input[type=checkbox]").change(function(e) {
+			var tracking = $(e.target).attr("tracking");
+			var column = $(e.target).attr("column");
+			var val = $(e.target).is(":checked");
+			$.post("/su/ajax/markteacher/",
+				{"tracking":tracking,
+				"column":column,
+				"value":val,
+				"csrfmiddlewaretoken":csrf},
+				function(resp) {
+
+				}
+			);
+		});
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Teacher Funnel</h1>
+<form action="/su/teachersignupflow/" method=GET >
+	Comma-separated list of cohorts:<br/>
+	<input type="text" name="cohorts" value="{{cohortslist}}"/>
+	<input type="submit" class="flatbutton"/>
+</form>
+<table>
+<tr>
+	<th>Cohort</th>
+	<th>Click "Teachers click here"</th>
+	<th>Click "Start Lobby"</th>
+	<th>Lobby Started</th>
+	<th><a href="/su/teachersignupflow/?sort=email">(Email)</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-check_A">A</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-check_B">B</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-check_C">C</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-students_joined">Students Joined</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-student_playtime">Student Playtime</a></th>
+	<th><a href="/su/teachersignupflow/?sort=-max_level">Max Level</a></th>
+	<th>Second Lobby</th>
+	<th>Click Nav Purchase</th>
+	<th>Click Timer Purchase</th>
+	<th><a href="/su/teachersignupflow/?sort=-paid">Paid</a></th>
+</tr>
+</tr>
+{% load tz %}
+{% for t in teachers %}
+	<tr style="background-color:{{ t.cohort_color }}">
+		<td style="background-color:{{ t.cohort_color }}" class="{{ t.started_cohort }}">
+			{% if t.cohort %}
+				{{ t.cohort }}
+			{% endif %}
+		</td>
+		<td class="{{ t.clicked_teacher_start }}">
+			{% if t.btn1_count > 1 %}
+			<span class="count">(x{{t.btn1_count}})</span>
+			{% endif %}
+			{{ t.start|timezone:"US/Pacific" }}
+		</td>
+		<td class="{{ t.clicked_start_session }}"></td>
+		<td class="{{t.session_started}}">
+			{% if t.classroom_name %}
+				{{ t.classroom_name }}
+			{% endif %}
+		</td>
+		<td class="{{t.session_started}}">
+			{% if t.username %}
+				<a href="/su/userinfo/?username={{ t.username|urlencode }}">{{t.username}}</a>
+			{% endif %}
+		</td>
+		<td style="background-color:#fe4">
+			{% if t.note_a %}
+				<input type="checkbox" checked column="a" tracking="{{t.tracking_cookie}}" />
+			{% else %}
+				<input type="checkbox" column="a" tracking="{{t.tracking_cookie}}" />
+			{% endif %}
+		</td>
+		<td style="background-color:#3da">
+			{% if t.note_b %}
+				<input type="checkbox" checked column="b" tracking="{{t.tracking_cookie}}" />
+			{% else %}
+				<input type="checkbox" column="b" tracking="{{t.tracking_cookie}}" />
+			{% endif %}
+		</td>
+		<td style="background-color:#58f">
+			{% if t.note_c %}
+				<input type="checkbox" checked column="c" tracking="{{t.tracking_cookie}}" />
+			{% else %}
+				<input type="checkbox" column="c" tracking="{{t.tracking_cookie}}" />
+			{% endif %}
+		</td>	
+		<td class="{{ t.has_students }}">
+		{% if t.has_students %}
+			{{ t.num_students }}
+		{% endif %}
+		{% if t.num_students_created_manually > 0 %}
+			({{ t.num_students_created_manually }})
+		{% endif %}
+		</td>
+		<td class="{{ t.has_playtime }}">
+		{% if t.has_playtime %}
+			{{ t.playtime }}
+			[{% widthratio t.playtime t.num_students 1 %}]
+			minutes
+		{% endif %}
+		</td>		
+		<td class="{{ t.has_playtime }}">
+		{% if t.has_playtime %}
+			{{ t.max_level_reached }}
+			[{% widthratio t.sum_level_reached t.num_students 1 %}]
+		{% endif %}
+		</td>
+		
+		<td class="{{ t.second_visit }}">
+			{% if t.num_visits > 1 %}
+			<span class="count">(x{{t.num_visits}})</span>
+			{% endif %}
+		</td>
+		<td class="{{ t.pressed_purchase_nav }}"></td>
+		<td class="{{ t.pressed_purchase_timer }}"></td>
+		<td class="{{ t.purchased }}">
+		{% if t.purchased %}
+			{% if t.purchase_price > 0 %}
+				${{ t.purchase_price }}
+			{% else %}
+				Past
+			{% endif %}
+		{% endif %}
+		</td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

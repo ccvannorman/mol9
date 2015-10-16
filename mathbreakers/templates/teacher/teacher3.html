@@ -1,0 +1,32 @@
+{% extends "teacher/teacherbase.html" %}
+{% load static %}
+
+{% block teacherstep %}	
+	<div class="stepimg s3"></div>
+	<div id="stepcontent">		
+		<h2>Get the game</h2>
+		<h3>You can now use Mathbreakers in the classroom!</h3>
+		<div class="sectionsep">
+			<p>
+				Just download the game from <a href="/download/">mathbreakers.com/download</a> and have your students log in using the accounts you just created.
+			</p>
+			<img src="/static/img/howdownload.png" style="width:100%"/>
+			<p>Having trouble running the game? See our <a href="/faq/">FAQ</a> for help troubleshooting.</p>
+		</div>
+		<div class="sectionsep">
+			<p>	
+				You will instantly have access to our lesson plans for a limited time, and you can track the progress of your students in your dashboard.
+			</p>			
+			<p>
+				You can also use the dashboard to assign lessons to students. When they launch Mathbreakers on their computer they will be directed to the assigned lessons.
+			</p>
+				<a id="dashboard" href="/class/dashboard/" target="_blank" class="button blue" style="margin:20px auto">Dashboard</a>				
+		</div>
+		<div class="sectionsep">
+			<p>
+				You can always add students and access your dashboard from the navigation bar above.
+			</p>
+			<img src="/static/img/teachernav.png" style="margin:auto"/>
+		</div>		
+	</div>
+{% endblock %}

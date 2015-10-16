@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/teacher.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Mathbreakers in your classroom</h1>
+	<h2>Guide for teachers in 3 easy steps</h2>
+</div>
+<div id="main">
+	<ul id="steps">
+		<li>Make an account</li>
+		<li>Add students</li>
+		<li>Get the game</li>
+	</ul>	
+	{% block teacherstep %}
+	{% endblock %}
+</div>
+{% endblock %}

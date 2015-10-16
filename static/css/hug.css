@@ -1,0 +1,54 @@
+#robot {
+	position:fixed;
+	width:100%;
+	height:100%;
+	/*background-image:url("/static/img/hug.png");*/
+	background-position:50% 40%;
+	background-repeat:no-repeat;
+	background-size:20%;
+	left:0px;
+	top:0px;
+    -webkit-animation: scaleup 6s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+	-webkit-animation-delay:2s;
+    animation: scaleup 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+	animation-delay:2s;
+    z-index:99;
+	background-color:#fff;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes scaleup {
+    from {background-size: 20%;background-color:#fff;}
+    to {background-size: 100%;background-color:#000;background-position:50% 20%;}
+}
+
+/* Standard syntax */
+@keyframes scaleup {
+    from {background-size: 20%;background-color:#fff;}
+    to {background-size: 100%;background-color:#000;background-position:50% 20%}
+}
+
+#robotinside {
+	display:none;
+	color:#fff;
+}
+
+#privacyfooter {
+	border-top:1px solid #111;
+	color:#fff;
+}
+
+#header {
+	background-color:#000;
+	border-bottom:1px solid #111;
+}
+
+#huginc {
+	font-size:30pt;
+	font-family:"Courier New";
+	padding-top:60px;
+}

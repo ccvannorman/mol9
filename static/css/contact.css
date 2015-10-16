@@ -1,0 +1,31 @@
+br { clear: both; }
+.contactrow{
+      display:block;
+      /* 		border: 2px solid black; */
+      width:540px;
+      height:80px;
+      
+}
+.contactrowleft{
+      display:inline-block;
+      /*       	outline:1px dotted green; */
+      width:125px;
+      height:80px;
+      line-height: 80px;	
+      text-align: left;
+
+}
+.contactrowright{
+      display:inline-block;
+      text-align:left;
+
+      /*       	outline:1px dotted red; */
+      width:280px;
+      height:80px;
+      line-height: 80px;
+      padding-left:50px;
+
+}
+.contactrow:last-of-type {
+      border:none;
+}

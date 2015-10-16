@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/game.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/game.js" %}'></script>
+{% endblock %}
+
+{% block content %}
+<div id="setup">
+	<h1>Set up your character</h1>
+	<div id="robotsetup">
+		<div id="robot">
+			<div id="robothat"></div>
+			<div id="robothair"></div>
+			<div id="roboteyes"></div>
+			<div id="robotbody"></div>
+			<div id="robotarms"></div>
+		</div>
+		<div id="robotbuttons">
+			<div class="row">
+				<div class="robotbutton left" id="hatleft"></div>
+				Hat
+				<div class="robotbutton right" id="hatright"></div>
+			</div>		
+			<div class="row">
+				<div class="robotbutton left" id="hairleft"></div>
+				Hair
+				<div class="robotbutton right" id="hairright"></div>
+			</div>		
+			<div class="row">
+				<div class="robotbutton left" id="eyesleft"></div>
+				Eyes
+				<div class="robotbutton right" id="eyesright"></div>
+			</div>		
+			<div class="row">
+				<div class="robotbutton left" id="bodyleft"></div>
+				Body
+				<div class="robotbutton right" id="bodyright"></div>
+			</div>
+			<div class="row">
+				<div class="robotbutton left" id="armsleft"></div>
+				Arms
+				<div class="robotbutton right" id="armsright"></div>
+			</div>
+			<div class="row">
+				<div id="play">Save</div>
+			</div>
+		</div>
+	</div>
+	<div id="loadingbg">
+		<div id="loadingfg"></div>
+		<div id="loadingtext">Loading</div>
+	</div>	
+</div>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+      <!--<div class="fullscreen"><img src="/static/webgl/TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>-->
+<script>
+	var part = 0;
+	var Module = {
+	    filePackagePrefixURL: "",
+	    memoryInitializerPrefixURL: "",
+	    preRun: [],
+	    postRun: [],
+	    print: (function() {
+	      return function(text) {
+	        console.log (text);
+	      };
+	    })(),
+	    printErr: function(text) {
+	      console.error (text);
+	    },
+	    canvas: document.getElementById('canvas'),
+	    progress: null,
+	    setStatus: function(text) {
+	    	var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+	    	if(m!=null && m.length) {
+	    		console.log(m);
+	    		var prog = 0;
+	    		if(m[1] == "Downloading data... ") {
+	    			var prog = parseFloat(m[2]) / parseFloat(m[4]) * 79 + 1;
+	    		}
+	    		else if(m[1] == "Preparing... ") {
+	    			var prog = parseFloat(m[2]) / parseFloat(m[4]) * 19 + 80;
+	    		}
+	    		$("#loadingfg").css("width", prog + "%")
+	    	}
+	    	
+	    	if(text == "") {
+	    		$("#loadingfg").css("width", 100 + "%")
+	    		$("#loadingtext").text("Ready to play!");
+	    		$("#play").html("Save &amp; Play");
+	    		$("#play").click(function() {
+	    			$("#canvas").show();
+	    			$("#setup").hide();
+	    		 	var jsoncostume = JSON.stringify(settings);
+	    			SendMessage(")Player", "SetCostumeJSON", jsoncostume);
+	    		});
+	    	}
+	    },
+	    totalDependencies: 0,
+	    monitorRunDependencies: function(left) {
+	      this.totalDependencies = Math.max(this.totalDependencies, left);
+	      Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+	    }
+  	};
+  	Module.setStatus('Downloading (0/1)');
+</script>
+<script src="/static/webgl/UnityConfig.js"></script>
+<script src="/static/webgl/fileloader.js"></script>
+<script>
+function loadgame() {
+	if (!(!Math.fround)) {
+  		var script = document.createElement('script');
+  		script.src = "/static/webgl/webgl_empty.js";
+  		document.body.appendChild(script);
+	} else {
+		var codeXHR = new XMLHttpRequest();
+  		codeXHR.open('GET', '/static/webgl/webgl_empty.js', true);
+  		codeXHR.onload = function() {
+    		var code = codeXHR.responseText;
+    		if (!Math.fround) { 
+				console.log('optimizing out Math.fround calls');
+				code = code.replace(/Math_fround\(/g, '(').replace("'use asm'", "'almost asm'")
+ 			}
+    		var blob = new Blob([code], { type: 'text/javascript' });
+    		codeXHR = null;
+    		var src = URL.createObjectURL(blob);
+    		var script = document.createElement('script');
+    		script.src = URL.createObjectURL(blob);
+    		script.onload = function() {
+      			URL.revokeObjectURL(script.src);
+    		};
+    		document.body.appendChild(script);
+  		};
+  		codeXHR.send(null);
+	}
+}
+loadgame();
+</script>
+{% endblock %}

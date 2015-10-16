@@ -1,0 +1,550 @@
+import math
+import json
+import uuid
+import datetime
+from time import time
+
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.forms.util import ErrorList
+from django.core.mail import send_mail
+from django.conf import settings
+from django.db.models import Q, Count, Sum
+from django.utils import timezone
+
+from mathbreakers.auth import *
+from mathbreakers.util import *
+from mathbreakers.models import *
+from mathbreakers.queries import *
+from mathbreakers import analytics
+
+# How this all works:
+# Relevant models: User, Classroom, ClassroomTeacherRel, ClassroomSession
+
+# A user is considered a teacher if they have a ClassroomTeacherRel object
+# associated with them because this means they have at least one classroom. In
+# their WEB session, we keep track of which classroom they're editing/looking at
+# with session['classroom_id']. 
+
+# There's another type of session, which is a classroom session. This represents
+# the classroom being associated with a particular IP address to make the signup
+# flow easy for kids to follow in their (physical) classroom. 
+
+# I'm not sure there remains any reason for the session part to be separate from
+# the Classroom model object. Sessions have timestamps associated with them and
+# maybe they can expire while the classroom lives on to make a new session~
+
+TRIAL_PLAYTIME_SECONDS = 60 * 60
+
+def get_real_username(classroom_id, name):
+	return str(classroom_id) + "_" + name
+
+def get_user_from_name(classroom_id, name):
+	try:
+		return User.objects.get(username=get_real_username(classroom_id, name))
+	except User.DoesNotExist:
+		uca = UserClassroomAssignment.objects.get(
+			classroom__id=classroom_id,
+			user__username=name)
+		return uca.user
+
+
+def alphaencode(number, alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZ'):
+    code = ''
+    if 0 <= number < len(alphabet):
+        return alphabet[number]
+    while number != 0:
+        number, i = divmod(number, len(alphabet))
+        code = alphabet[i] + code
+    return code
+
+def make_session(request, classroom=None):
+	if classroom is None:
+		classroom = get_classroom(request)
+	ip = get_ip(request)
+	code = alphaencode(uuid.uuid1().int)[-6:]
+	session = ClassroomSession(classroom=classroom, ip=ip, start_time=timezone.now(), code=code, tracking_cookie=tracking_cookie(request))
+	session.save()		
+	classroom_log(classroom, "Made new ClassroomSession: id = %d, ip = '%s'" % (session.id, ip))
+
+def selectclass(request):
+	if request.method == "POST":
+		form = WhichClassForm(request.user, request.POST)
+		if form.is_valid():
+			ip = get_ip(request)
+			# If they chose to create a new classroom
+			if int(form.cleaned_data['which']) == 0:
+				# Make the classroom, the relation to the user, and the session.
+				classroom = Classroom(name=form.cleaned_data['new_class'], num_students=0)
+				classroom.save()
+				classroom_log(classroom, "Classroom created from selectclass")
+				ctr = ClassroomTeacherRel(user=request.user, classroom=classroom, date=timezone.now())
+				ctr.save()
+				make_session(request, classroom)
+				analytics.person_append(request.user, "Classrooms", classroom.name)
+			else:	
+				# Find the classroom and make a session if necessary
+				classroom = Classroom.objects.get(id=int(form.cleaned_data['which']))
+				try:
+					session = ClassroomSession.objects.get(classroom=classroom)		
+				except ClassroomSession.DoesNotExist:
+					make_session(request, classroom)
+			# And mark that we're currently managing this one classroom in the web session
+			request.session['classroom_id'] = classroom.id
+			analytics.person_increment(request.user, "Sessions Started")
+			analytics.person_append(request.user, "Sessions", str(timezone.now()))			
+			return HttpResponseRedirect("/session/status/")
+		else:
+			return renderWithNav(request, "teacher/whichclass.html", {"form":form})
+	else:
+		return renderWithNav(request, "teacher/whichclass.html", {"form":WhichClassForm(request.user)})
+
+def process_later_form(form, request):
+	if form.is_valid():
+		em = form.cleaned_data['email']
+		day = form.cleaned_data['day']
+		print day
+		tl = TryLater(
+			email = em,
+			schedule_support=True,
+			schedule_play = day,
+			ip = get_ip(request),
+			time = timezone.now()
+		)
+		tl.save()
+		
+		send_mail_threaded(
+			str(em) + " wants to schedule a support session - "  + str(timezone.now()),
+			str(em) + " will play on " + str(day),
+			"robot@imaginarynumber.co",
+			["team@mathbreakers.com"])
+		description = "We'll be in contact soon to schedule a trial in your classroom."
+
+		return True, description
+	return False, ""
+
+def teacher_try(request):
+	analytics.track_event("visit_teacher_try", request)
+	if request.user.is_authenticated() and ClassroomTeacherRel.objects.filter(user=request.user).exists():
+		return mbredirect("/session/selectclass")
+
+	return renderWithNav(request, "teacher/try.html")
+
+def start(request):
+	if request.method == "POST":
+		start_form = StartLobbyForm(request.POST)
+		if start_form.is_valid():
+			ip = get_ip(request)
+			email = start_form.cleaned_data['email']
+			password = start_form.cleaned_data['password']
+			classroom_name = start_form.cleaned_data['classroom_name']
+
+			# Let's check if they already have an account and they've gone to this page
+			# because they forgot / didn't know to log in
+			user = perform_signin(request, email, password)
+			if user is None:
+				# send_mail_threaded("User was none.", "user was none, with email:"+email, "robot@imaginarynumber.co", ["team@mathbreakers.com"])
+				# They don't have an account, let's try to make one
+				truncated_username = email[:30] #Django doesn't like usernames over 30 chars.
+				try:
+					#user = User.objects.create_user(email, email, password)
+					user = User.objects.create_user(truncated_username, email, password)
+				except:
+					# Must be a duplicate account
+					errors = start_form._errors.setdefault("email", ErrorList())
+					errors.append(u"That email address is already in use")
+					return renderWithNav(request, "teacher/nowform.html", {
+						"start_form":start_form,
+						})
+
+				# This second step (logging in after successfully registering) should not ever fail.
+				try:
+					user = perform_signin(request, email, password)
+				except:
+					log_error(request)
+					errors = start_form._errors.setdefault("email", ErrorList())
+					errors.append(u"Something went wrong! Try a different email address please.")					
+					return renderWithNav(request, "teacher/nowform.html", {
+						"start_form":start_form,
+						})
+				analytics.alias(request, user)
+				analytics.person_set_once(user, {"$created":timezone.now()})
+
+			if user is None:
+				log_and_email(request, "User is None somehow in /session/start/ POST handler")
+				errors = start_form._errors.setdefault("email", ErrorList())
+				errors.append(u"Something went wrong! Try a different email address please.")					
+				return renderWithNav(request, "teacher/nowform.html", {
+					"start_form":start_form,
+					})
+			
+			analytics.person_increment(user, "Sessions Started")
+			analytics.person_append(user, "Sessions", str(timezone.now()))
+			# Now that we're logged in let's make a classroom unless one exists
+			ctr = None
+			classroom = None
+			if ClassroomTeacherRel.objects.filter(user=user).exists():
+				# If one exists let's give them the "choose a class" form so they don't
+				# make a duplicate classroom! 
+				whichclassform = WhichClassForm(user, initial={"new_class":""})
+				return renderWithNav(request, "teacher/whichclass.html", {"form":whichclassform})
+
+			else:
+				# Okay cool let's make the classroom and relate it to this user with a CTR
+				classroom = Classroom(name=classroom_name, num_students=0)
+				classroom.save()
+				classroom_log(classroom, "Classroom created from start")
+				ctr = ClassroomTeacherRel(user=user, classroom=classroom, date=timezone.now())
+				ctr.save()
+
+				analytics.person_append(user, "Classrooms", classroom.name)
+				# Set the session value so we can keep track of which classroom they're monitoring
+				# currently if they have multiple classes
+				request.session['classroom_id'] = classroom.id
+
+				send_mail_threaded("New teacher started a session - " + str(timezone.now()), "Username: "+user.username, "robot@imaginarynumber.co", ["team@mathbreakers.com"])
+
+			# Now find and update (or create) the session
+			try:
+				session = ClassroomSession.objects.get(classroom=classroom)
+				session.ip = ip
+				session.update_time = timezone.now()
+				session.save()				
+			except ClassroomSession.DoesNotExist:
+				make_session(request, classroom)
+
+			
+			analytics.track_event("post_teacher_start", request)
+			
+
+			return HttpResponseRedirect("/session/status/")
+		else:
+			# Something went wrong in the form, give them the form + errors
+			return renderWithNav(request, "teacher/nowform.html", {
+				"start_form":start_form,
+				})	
+	else:
+		analytics.track_event("visit_teacher_start", request)
+		if request.user.is_authenticated() and ClassroomTeacherRel.objects.filter(user=request.user).exists():
+			return mbredirect("/session/selectclass")		
+
+		return renderWithNav(request, "teacher/nowform.html", {
+			"start_form":StartLobbyForm(),
+			})			
+
+def later(request):
+	if request.method == "POST":
+		later_form = LobbyLaterForm(request.POST)
+		valid, desc = process_later_form(later_form, request)	
+		if valid:
+			analytics.track_event("post_teacher_later", request)
+			return renderWithNav(request, "postlater.html", {"description":desc})
+		else:
+			return renderWithNav(request, "teacher/laterform.html", {
+				"later_form":later_form
+			})
+	else:
+		analytics.track_event("visit_teacher_later", request)
+		if request.user.is_authenticated():
+			later_form = LobbyLaterForm(initial={"email":request.user.email})
+		else:
+			later_form = LobbyLaterForm()
+		return renderWithNav(request, "teacher/laterform.html", {
+			"later_form":later_form
+			})		
+
+def status(request):	
+	# Some people are finding this page from google somehow, so let's make sure it
+	# doesn't throw a 500 error if they don't have a login!
+	if not request.user.is_authenticated():
+		return HttpResponseRedirect("/session/try/")
+	analytics.track_event("visit_teacher_status", request=request)
+	handle_class_selection(request)
+	classroom, all_classes = get_classroom(request)	
+
+	ip = get_ip(request)
+
+	classroom_log(classroom, "Visit status page, ip = '%s'" % ip)
+
+	try:
+		session = ClassroomSession.objects.get(classroom=classroom)
+		if not request.COOKIES.has_key("fakelogin"):
+			session.ip = ip
+		session.save()		
+	except ClassroomSession.DoesNotExist:
+		session = make_session(request, classroom)
+	
+	return renderWithNav(request, "teacher/session.html", {"profile":request.user.profile, "classroom":classroom, "classrooms":all_classes, "session":session})
+
+@client_get
+def classdetails(request, code):
+	try:
+		classroom = ClassroomSession.objects.get(code=code).classroom
+	except ClassroomSession.DoesNotExist:
+		return json_response({"success":False, "error":"Classroom with that code does not exist"})	
+
+	classroom_log(classroom, "Client requested details")
+	return json_response({"success":True, "id":classroom.id, "name":classroom.name})
+
+#def get_classroom(request):
+#	if request.session.has_key('classroom_id'):
+#		try:
+#			return Classroom.objects.get(id=int(request.session['classroom_id']))
+#		except Classroom.DoesNotExist as e:
+#			print "Failed to find the classroom even though we had a classroom id in session"
+#			raise e
+#	else:
+#		try:
+#			return ClassroomTeacherRel.objects.filter(user=request.user)[0].classroom
+#		except ClassroomTeacherRel.DoesNotExist as e:
+#			print "This user doesn't have a classroom"
+#			raise e			
+
+def ajax_classroom_required(view):
+	def wrapper(request, *args, **kwargs):
+		if request.user.is_authenticated():
+			try:
+				classroom, all_classrooms= get_classroom(request)
+			except (Classroom.DoesNotExist, ClassroomTeacherRel.DoesNotExist):
+				print "no classroom"
+				return json_response({"success":False, "error":"No classroom"})
+			return view(classroom, request, *args, **kwargs)
+		else:
+			print "not logged in"
+			return json_response({"success":False, "error":"Not logged in"})
+	return wrapper
+
+@ajax_classroom_required
+def ajax_users(classroom, request):
+	two_minutes_ago = timezone.now() - datetime.timedelta(minutes=2)
+	users = []
+	for uca in UserClassroomAssignment.objects.filter(classroom=classroom):
+		obj = {"name":uca.user.first_name, "active":False, "playtime":uca.user.profile.playtime / 60}
+		if HeatmapPoint.objects.filter(user=uca.user, time__gt=two_minutes_ago).exists():
+			obj["active"] = True
+		users.append(obj)
+
+	return json_response({"success":True, "users":users})
+
+@ajax_classroom_required
+def ajax_playtime(classroom, request):
+	""" Desired functionality:
+		No licenses:		Trial mode, tell the teacher how much time they
+							have left and if there are expired students.
+
+		Enough licenses:	Don't show anything.
+
+		Not enough:			Show how many students are in thier class vs how many
+							licenses they have purchased.
+
+	"""
+	user = request.user
+
+	def strtime(dt):
+		s_m,s_s = divmod(dt, 60)
+		s_h,s_m = divmod(s_m, 60)
+		if s_h > 0:
+			return "%d hours %02d minutes" % (s_h, s_m)
+		else:
+			return "%02d minutes" % (s_m,)		
+
+	playtime = get_student_playtime_seconds(user)
+	num_students = get_num_teacher_students(user)
+	expired = [str(e[0]) for e in get_expired_students(user)]
+
+	if num_students == 0:
+		avg_remaining = TRIAL_PLAYTIME_SECONDS
+	else:
+		avg_remaining = TRIAL_PLAYTIME_SECONDS - (float(playtime) / float(num_students))
+	avg_str = strtime(avg_remaining)
+
+	obj = {
+		"success":True,
+		"avg":avg_str, # Average amount of playtime remaining
+		"expired":expired, # List of all expired student first_names
+		"licenses":user.profile.num_licenses, # How many licenses the teacher has
+		"num_students":num_students, # How many students total in the class
+		"has_playtime":playtime > 0,
+	}
+
+	return json_response(obj)
+
+@client_get
+def client_nearby(request):
+	ip = get_ip(request)
+	obj = []
+	for session in ClassroomSession.objects.filter(ip=ip):
+		obj.append({"name":session.classroom.name, "id":session.classroom.id})
+	return json_response({"success":True, "sessions":obj})
+
+@client_post
+def client_classroom_names(request):
+	classroom_id = request.POST['classroom']
+	classroom = Classroom.objects.get(id=classroom_id)
+	classroom_log(classroom, "Client requested classroom users")
+	names = []
+	for uca in UserClassroomAssignment.objects.filter(classroom=classroom):
+		names.append(uca.user.first_name)
+	return json_response({"success":True, "names":names})
+
+@client_post
+def client_login(request):
+	classroom_id = request.POST['classroom']
+	username = request.POST['name']
+	password = request.POST.get("password","default")
+
+	# Make sure the class is real
+	try:
+		classroom = Classroom.objects.get(id=classroom_id)
+	except Classroom.DoesNotExist:
+		return json_response({"success":False, "error":"Error: No classroom with that id"})	
+
+	# Make sure there's a teacher for it
+	try:
+		ctr = ClassroomTeacherRel.objects.get(classroom=classroom)
+	except ClassroomTeacherRel.DoesNotExist:
+		classroom_log(classroom, "Client login error: No teacher for classroom, reported for user: %s", username)
+		return json_response({"success":False, "error":"Error: No teacher for that classroom"})	
+
+	teacher = ctr.user
+	total_students = get_num_teacher_students(teacher)
+
+	analytics.track_event("student_second_login", user=teacher, data={"total_students":total_students})
+	analytics.person_update(teacher, {"num_students":total_students})
+	
+	# Get the user who's going to sign in
+	try:
+		user_to_signin = get_user_from_name(classroom.id, username)
+	except UserClassroomAssignment.DoesNotExist:
+		classroom_log(classroom, "Client login error: Not a real user: %s" % username)
+		return json_response({"success":False, "error":"Error: Not a real user!"})	
+
+	# Check if we have enough licenses or if our trial is still going
+	num_exp = get_num_playing_expired_students(teacher)
+	num_lic = teacher.profile.num_licenses
+
+	if user_to_signin.profile.playtime > TRIAL_PLAYTIME_SECONDS:
+		# If the teacher has no licenses then don't let them log in after the trial time expires
+		if num_lic == 0:
+			classroom_log(classroom, "Client login error: Trial time expired for user: %s" % username)
+			return json_response({"success":False, "error":"Error: your trial time expired!"})
+
+		# If they have licenses but not enough, tell the student about it
+		elif num_exp >= num_lic:
+			classroom_log(classroom, "Client login error: Not enough licenses, reported for user: %s" % username)
+			return json_response({"success":False, "error":"Error: %d students but only %d licenses!" % (num_exp+1, num_lic)})
+
+	# Try to sign in!
+	user = perform_signin_no_password(request, user_to_signin.username)
+	if user:
+		classroom_log(classroom, "Client login: %s" % username)
+		return json_response({"success":True, "sessionid":request.session.session_key})
+
+	classroom_log(classroom, "Client login error: Not a real user: %s" % username)
+	return json_response({"success":False, "error":"Error: Not a real user!"})	
+
+
+@client_post
+def client_register(request):
+	classroom_id = request.POST['classroom']
+	try:
+		classroom = Classroom.objects.get(id=classroom_id)
+	except Classroom.DoesNotExist:
+		return json_response({"success":False, "error":"Error: No classroom with that id"})	
+	try:
+		ctr = ClassroomTeacherRel.objects.get(classroom=classroom)
+	except ClassroomTeacherRel.DoesNotExist:
+		classroom_log(classroom, "Client register error: No teacher for class.")
+		return json_response({"success":False, "error":"Error: No teacher for that classroom"})	
+	teacher = ctr.user
+	total_students = get_num_teacher_students(teacher)
+	analytics.track_event("student_first_login", user=teacher, data={"total_students":total_students+1})
+	analytics.person_update(teacher, {"num_students":total_students+1})
+
+	real_username = get_real_username(classroom_id, request.POST['name'])
+
+	try:
+		user = User.objects.get(username=real_username)
+	except User.DoesNotExist:		
+		user = None
+
+	if user:
+		if UserClassroomAssignment.objects.filter(user=user, classroom=classroom).exists():
+			classroom_log(classroom, "Client register error: User already exists: %s" % real_username)
+			return json_response({"success":False, "error":"Error: User exists already!"})
+
+		elif UserClassroomAssignment.objects.filter(user=user).exists():
+			classroom_log(classroom, "Client register error: User exists in another class: %s" % real_username)
+			return json_response({"success":False, "error":"Error: User exists in another class!"})
+
+		else:
+			uca = UserClassroomAssignment(user=user, classroom=classroom)
+			uca.save()
+			user = perform_signin(request, real_username, "default")
+			classroom_log(classroom, "Client register (already exists, logging in): %s" % real_username)
+			return json_response({"success":True, "sessionid":request.session.session_key})			
+			
+	else:
+		try:
+			user = User.objects.create_user(real_username, "", "default")
+		except:
+			classroom_log(classroom, "Client register error: Username taken: %s" % real_username)
+			return json_response({"success":False, "error":"Error: Username taken"})	
+		user = perform_signin(request, real_username, "default")
+		if user:
+			user.first_name = request.POST['name']
+			user.save()
+
+			uca = UserClassroomAssignment(user=user, classroom=classroom)
+			uca.save()
+
+			classroom_log(classroom, "Client register: %s" % real_username)
+			return json_response({"success":True, "sessionid":request.session.session_key})
+		else:
+			log_and_email(request, "User successfully created but couldn't sign in!")
+			return json_response({"success":False, "error":"Error: Something went wrong. Try again!"})	
+
+def get_student_playtime_seconds(user):
+	seconds = user.classroomteacherrel_set.aggregate(\
+		total = Sum("classroom__userclassroomassignment__user__profile__playtime"))["total"]
+	if seconds is None:
+		return 0
+	else:
+		return seconds
+
+def get_playtime_limit_seconds(user):
+	return get_num_teacher_students(user) * TRIAL_PLAYTIME_SECONDS
+
+def get_num_expired_students(user):
+	return get_expired_students(user).count()
+
+def get_expired_students(user):
+	return user.classroomteacherrel_set.filter(\
+		classroom__userclassroomassignment__user__profile__playtime__gt=TRIAL_PLAYTIME_SECONDS)\
+		.values_list("classroom__userclassroomassignment__user__first_name")
+
+def get_num_playing_expired_students(user):
+	t = timezone.now()-datetime.timedelta(minutes=5)
+	students = user.classroomteacherrel_set.filter(\
+		classroom__userclassroomassignment__user__profile__playtime__gt=TRIAL_PLAYTIME_SECONDS)\
+		.values("classroom__userclassroomassignment__user")
+	num = HeatmapPoint.objects.filter(user__in=students, time__gt=t)\
+		.values("user").annotate(Count("user")).count()
+	return num
+
+
+def is_trial_half_expired(user):
+	limit = get_playtime_limit_seconds(user)
+	if limit > 0:
+		return get_student_playtime_seconds(user) >= limit / 2
+	else:
+		return False
+
+def is_trial_expired(user):
+	limit = get_playtime_limit_seconds(user)
+	if limit > 0:
+		return get_student_playtime_seconds(user) >= limit
+	else:
+		return False

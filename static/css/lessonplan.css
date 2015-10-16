@@ -1,0 +1,121 @@
+iframe {
+	border-radius:7px;
+}
+
+#main .left {
+	float:left;
+	width:600px;
+	text-align:left;
+}
+
+#main .right {
+	float:right;
+	width:340px;
+	text-align:center;
+}
+
+#main .pair {
+	width:960px;
+	margin-bottom:20px;
+}
+#main .pair:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:".";
+	line-height:0px;	
+}
+
+#main .box {
+	border-radius:5px;
+	background-color:#222;
+	padding:12px;
+	color:#fff;
+	width:160px;
+	margin:20px auto 20px auto;
+}
+
+#pdf {
+	background-image:url("/static/img/pdf-logo.png");
+	width:120px;
+	height:120px;
+	display:block;
+	background-size:100% 100%;
+	margin:10px auto;
+}
+
+#mb {
+	background-image:url("/static/img/mathbreakers_logo.png");
+	width:120px;
+	height:120px;
+	display:block;
+	background-size:100% 100%;
+	margin:10px auto;
+}
+
+.time {
+	background-color:#ddd;
+	padding:10px;
+	border-radius:5px;
+	width:165px;
+	margin:20px auto;
+	color:#000;
+}
+
+.time span {
+	font-weight:bold;
+	display:block;
+}
+
+p {
+	margin:5px auto 25px auto;
+}
+
+.cc {
+	text-align:left;
+	margin:20px 0px;
+}
+
+.cc:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:".";
+	line-height:0px;	
+}
+
+.cclesson {
+	font-family:"helvetica", "arial", sans-serif;
+	font-size:9pt;
+	padding:3px 3px;
+	text-align:center;
+	background-color:#777;
+	color:#fff;
+	float:left;
+	border-radius:3px;
+	margin-right:5px;
+	margin-top:4px;
+	font-weight:100;
+}
+
+.cclesson:hover {
+	background-color:#888;
+}
+
+#locked {
+	width:700px;
+	margin:auto;
+	padding:20px;
+	background-color:#ffa;
+	border:1px solid #ee9;
+	border-radius:7px;
+}
+
+#locked p{
+	font-size:14pt;
+}
+
+#locked .button {
+	float:none;
+	margin:30px auto 5px auto;
+}

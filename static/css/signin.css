@@ -1,0 +1,14 @@
+form {
+	background-color:#eee;
+	width: 600px;
+	margin:20px auto;
+	padding:10px;
+}
+
+form .line {
+	margin-bottom:10px;
+}
+
+form .error {
+	margin: 0px auto;
+}

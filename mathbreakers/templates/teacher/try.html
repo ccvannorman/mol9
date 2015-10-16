@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/try2.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+<div class="section" style="text-align:center">
+	<iframe src="//player.vimeo.com/video/106751966" width="800" height="453" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="teacherVideo"></iframe>
+</div>
+
+<div class="section">
+	<h2>It's Not Mario or MineCraft &mdash; This Game Teaches Math</h2>
+	<p>Set your students free in our expansive world full of number monsters, gadgets, and interactive machines. <a href="/learnmore" target="_blank">Learn more</a></p>
+</div>
+
+<div class="section">
+	<h2 style="text-align:center;font-size:1.3em;margin-bottom:-10px;">Set up your Mathbreakers class in 60 seconds!</h2>
+</div>
+
+<div class="section" id="buttonpair" style="width:324px;margin-top:0px">
+	<a href="/session/start/" class="button start" id="startnow">Start Lobby Now</a>
+	<!--<a href="/session/later/" class="button start" id="startlater">Try it Later</a>-->
+</div>	
+
+
+{% endblock %}

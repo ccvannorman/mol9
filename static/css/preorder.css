@@ -1,0 +1,25 @@
+#preorderText {
+	padding:30px 20px;
+	border-radius:7px;
+	width:394px;
+	margin:30px auto;
+	font-size:15pt;
+}
+#preorderlogo{
+	width:200px;
+	height:200px;
+	margin: 50px auto;
+}
+#stripeBuy {
+	margin:auto;
+	width:450px;
+}
+#earlybutton{
+	background-image:url('https://mathbreakers.com/static/img/unlock_white.png');
+background-repeat:no-repeat;
+background-size:23px 31px;
+background-position: -100px 0;
+	width:450px;
+	margin:auto;
+}
+

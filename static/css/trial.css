@@ -1,0 +1,31 @@
+#preorderlogo{
+	width:140px;
+	height:140px;
+	margin: 40px auto 0 auto;
+}
+
+
+form {
+	background-color:#fff;
+	border:1px solid #ddd;
+	border-radius:7px;
+	text-align:left;
+	padding:10px 10px 10px 100px;
+	width:360px;
+	margin:20px auto;
+	font-size:1.3em;
+
+}
+#main {
+	width: 520px;
+	font-size: 1.2em;
+}
+#main input[type=text], #main input[type=password], #main input[type=email]{
+	border:1px solid #ddd;
+    border-radius:3px;
+    font-family:"Raleway";
+    margin-bottom:15px;
+}
+label {
+	font-size:1.1em;
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/su_campsignups.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+	{% for s in signups %}
+	<div class="signup">{{s.session}}, {{s.child_name}}, {{ s.child_age }}, {{ s.plus_kit }}, , {{ s.parent_email }}, {{ s.parent_name }}</div>
+	{% endfor %}
+{% endblock %}

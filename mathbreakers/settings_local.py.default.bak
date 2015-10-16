@@ -1,0 +1,7 @@
+TEMPLATE_DIRS = (
+    "<your stuff here>/mathbreakers.com/mathbreakers/templates/",
+)
+
+STATICFILES_DIRS = (
+    '<your stuff here>/Documents/mathbreakers.com/static/',
+)

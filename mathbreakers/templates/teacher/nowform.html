@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/session.css" %}' type='text/css'>
+<link rel='stylesheet' href='{% static "css/nowform.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<div class="main">
+	<div class="full-width-image" style="background-image:url('/static/img/screen_risers.jpg')">
+		<h1>Start a Mathbreakers Lobby!</h1>
+		<form id="nowform" method=POST action="/session/start/">
+			{% csrf_token %}
+			{{ start_form }}
+			<input type="submit" id="startSession" class="button" value="Start!">
+		</form>
+	</div>
+	<div id="moreinfo">
+	You're just moments away from your first Mathbreakers session! Your students will appreciate the difference Mathbreakers offers, in our open and expansive video game world.
+	<Br/><br/>
+	Let math become your superpower!
+	<br/><br/>
+	</div>
+</div>
+{% endblock %}

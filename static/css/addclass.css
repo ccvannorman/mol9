@@ -1,0 +1,22 @@
+form {
+	width:450px;
+	margin:30px auto;
+	border:1px solid #ddd;
+	border-radius:7px;
+	padding:20px;
+}
+
+input[type=text] {
+	border:1px solid #ddd;
+}
+
+input[type=submit] {
+	cursor: pointer;
+	margin:auto;
+	float:none;
+}
+
+.errorlist li {
+	list-style: none;
+	background-color:#ff9999;
+}

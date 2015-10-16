@@ -1,0 +1,91 @@
+#main p {
+	width:600px;
+	margin:20px auto;
+}
+
+#main p strong {
+	font-size:14pt;
+	font-weight:bold;
+}
+
+table {
+	text-align:left;
+	border-collapse: collapse;
+	margin:50px auto;
+}
+
+td {
+	padding:4px 12px;
+	
+}
+
+tr:not(:last-child) {
+	border-bottom:1px solid #ddd;
+}
+
+.name {
+	font-size:16pt;
+}
+
+table input[type=text] {
+	width:150px;
+	padding:3px;
+	font-family:"Raleway";
+	font-weight:300;
+	color:#222;
+	font-size:16pt;
+	border:1px solid #ccc;
+}
+
+form input[type=text] {
+	border:1px solid #ccc;
+}
+
+.formPart {
+	float:left;
+	margin-right:20px;
+}
+
+#addStudent {
+	margin-top:25px;
+	display:block;
+}
+
+#createStudent {
+	margin-top:25px;
+	display:block;
+}
+
+.createStudentForm, .addStudentForm {
+	margin:20px auto 60px auto;
+	text-align:left;
+	width:480px;
+	padding:20px;
+	background-color:#fff;
+	border-radius:7px;
+	border:1px solid #ccc;
+}
+
+form h2 {
+	font-size:24pt;
+	margin:0px 0px 0px 0px;
+}
+form h3 {
+	font-size:12pt;
+	color:#666;
+	margin:0px 0px 30px 0px;
+}
+
+#nostudents {
+	display:none;
+	background-color:#ffffcc;
+	padding:6px;
+	width:500px;
+	margin:0px auto -80px auto;
+	border-radius:7px;
+	border:1px solid #cccc99;
+}
+
+#ajaxing {
+	font-size:18pt;
+}

@@ -1,0 +1,154 @@
+
+h1 {
+	font-size:30pt;
+	font-family:"Raleway";
+}
+
+h2 {
+	font-size:16pt;
+}
+
+iframe {
+	border-radius:7px;
+}
+
+img {
+	margin:auto;
+	display:block;
+	width:100%;
+	border-radius:5px;
+}
+
+.sectioncontainer {
+	background-color:#eee;
+	border-radius:7px;
+	padding:20px 0px;
+	margin:40px auto 30px auto;
+}
+
+.section {
+	width:920px;
+	margin:auto;
+	padding:7px 0px;
+	text-align:left;
+	background-color:#fff;
+	border-radius:7px;
+	border:0;
+	margin:50px auto;
+}
+
+.section:nth-child(2) {
+	margin:auto;
+}
+.section:nth-child(5) {
+	margin:auto;
+}
+
+.section:after {
+	content:".";
+	display:block;
+	visibility:none;
+	line-height:0;
+	clear:both;
+}
+
+.section .left {
+	float:left;
+	width:460px;
+	position:relative;
+	height:100%;
+}
+
+.section .left p {
+	padding:30px 20px;
+}
+
+.section .left p:after {
+	content:".";
+	display:block;
+	visibility:none;
+	line-height:0;
+	clear:both;
+}
+
+.section .left a.readmore {
+	margin-left:17px;
+	font-size:16pt;
+}
+
+.section .right {
+	float:right;
+	width:440px;
+	padding:10px;
+}
+
+.section h1 {
+	margin:0px 0px 10px 0px;
+	font-size:24pt;
+}
+
+.section h1 span {
+	padding:8px 20px;
+	background-color:#ff0000;
+	border-top-left-radius:6px;
+	border-bottom-right-radius:6px;
+	margin-left:-1px;
+	color:#fff;
+}
+
+#getmathbreakers{
+	background-color:rgba(30,50,200, 0.8);
+	color:#fff;
+	font-family:"Raleway";
+	border:none;
+	width:300px;
+	display:block;
+	margin:40px auto 20px auto;
+	float:none;
+}
+
+#getmathbreakers:hover {
+	background-color:rgb(30,50,200);
+	color:#fff;
+}
+
+ul {
+	text-align:left;
+	width:700px;
+	margin:auto;
+}
+li {
+	list-style:decimal;
+	font-size:14pt;
+	margin-bottom:10px;
+}
+
+h1 {
+	margin:30px auto 10px auto;
+
+}
+
+.wantmore{
+	text-align:left;
+	line-height:2em;
+	width:700px;
+	margin:10px auto;
+	font-size:14pt;
+	
+}
+#earlybutton{
+	background-image:url('/static/img/unlock_white.png');
+	background-repeat:no-repeat;
+	background-size:23px 31px;
+	background-position: 20px 7px;
+	text-align:right;
+	width:490px;
+	font-size:22px;
+	padding:12px 10px 12px 0px;
+	margin:18px auto 0px auto;
+}
+
+#earlybutton img {
+	display:inline;
+	width:auto;
+}

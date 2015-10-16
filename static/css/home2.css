@@ -1,0 +1,660 @@
+/* Layout */
+#mainSplash{
+	background-image:url('/static/img/splash2.jpg');
+	background-position:center top;
+	background-repeat:no-repeat;
+	background-size:cover;
+	width:100%;
+	border-bottom:1px solid #ddd;
+	height:350px;
+	color:#fff;
+	text-align:left;
+	margin-top:-60px;
+}
+
+#testimonials {
+	width:960px;
+	margin:auto;
+	padding:40px 0px 0px 0px;
+	font-family:"Raleway";
+	font-weight:400;
+	font-size:18pt;
+	line-height:24pt;
+}
+
+#testimonials2
+{
+	padding:50px 0;
+}
+
+#testimonials .testimonial {
+	background-color:white;
+	padding:14px 30px;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
+}
+
+.section{
+	padding:70px 0px 50px 0px;
+	font-size:18px;
+	text-align:left;
+	width:960px;
+	margin:auto;
+}
+
+#downloadSection {
+	background-color:#fff;
+	padding:40px 0px;
+	margin:auto;
+	font-size:1.5em;
+}
+
+#mooc {
+	padding:30px 0px 30px 0px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background-color:#fff;
+	margin-bottom:30px;
+	margin-top:-40px;
+}
+
+/* Main splash - the top box with the splash image and intro stuff */
+#mainSplash h1 {
+	font-size: 60px;
+}
+
+#mainSplash h2 {
+	font-size:30px;
+	font-family:"Raleway";
+	color:#ddd;	
+}
+
+#mainSplashContent {
+	position:absolute;
+	left:120px;
+	top:240px;
+}
+
+#kickstarterButton{
+	background-color:rgba(10,90,200, 1);
+	color:#fff;
+	font-family:"Raleway";
+	border:none;
+	float:left;
+	font-size:26pt;
+	width:400px;
+}
+#kickstarterButton:hover {
+	background-color:rgba(20,140,240, 1);
+	color:#fff;
+}
+#kickstarterButton:active {
+	background-color:#fff;
+	color:rgb(30,50,200);
+}
+
+#kickstarterButton2 {
+	width:500px;
+	font-size:28pt;
+	margin:auto
+}
+
+#learnMoreButton{
+	background-color:rgba(0,160,25, 0.7);
+	color:#fff;
+	font-family:"Raleway";
+	border:none;
+	float:left;
+}
+#viewLessonsButton{
+	background-color:rgba(0,160,25, 0.7);
+	color:#fff;
+	padding-left:30px;
+	padding-right:30px;
+	font-family:"Raleway";
+	border:none;
+	float:left;
+}
+#viewLessonsButton:hover {
+	background-color:rgb(0,160,25);
+	color:#fff;
+}
+#viewLessonsButton:active {
+	background-color:#fff;
+	color:rgb(0,160,25);
+}
+#learnMoreButton:hover {
+	background-color:rgb(0,160,25);
+	color:#fff;
+}
+#learnMoreButton:active {
+	background-color:#fff;
+	color:rgb(0,160,25);
+}
+
+#newsletter {
+	margin-right:20px;
+	padding:20px;
+	border-radius:7px;
+	/*background-color:rgba(0,0,0,0.6);
+	border:1px solid rgba(255,255,255,0.1);
+	*/
+	background-color:rgba(255,255,255,0.1);
+	border:1px solid rgba(0,0,0,0.1);	
+	width:450px;
+	float:left;
+	height:176px;
+}
+
+#inClassDownload {
+	float:left;
+	width:445px;
+	padding:20px;
+	background-color:rgba(255,255,255,0.1);
+	border:1px solid rgba(0,0,0,0.1);	
+	border-radius:7px;
+	height:176px;
+}
+
+#newsletter_email {
+	margin-top:5px;
+}
+
+#newsletter_submit {
+	width:80px;
+	height:35px;
+	font-size:15pt;
+	background-color:#000;
+	color:#ddd;
+	font-family:Raleway;
+	margin-top:1px;
+}
+
+#newsletter_submit:hover {
+	background-color:#050;
+	cursor:pointer;
+	color:#fff;
+}
+
+#splashContent2 {
+	position:absolute;
+	left:120px;
+	top:470px;
+	width:1000px;
+}
+
+/* Mid section stuff, the left-right image-text pairings */
+.section h1{
+	font-size:24pt;
+}
+.section:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:".";
+	line-height:0px;
+}
+
+.section .right{
+	float:right;
+	width:460px;
+}
+
+.section .left{
+	float:left;
+	width:460px;
+}
+
+.section img {
+	width:400px;
+}
+
+.section p {
+	line-height:22pt;
+	color:#333;
+	padding:3px;
+}
+
+.sectionLink {
+	margin-top:15px;
+	font-size:16pt;
+}
+
+.getstarted {
+	margin-top:10px;
+	color:#0044ff;
+	display:inline-block;
+}
+
+.getstarted:hover {
+	background-color:#0044ff;
+}
+
+#mooc .container {
+	width:700px;
+	margin:20px auto 0px auto;
+}
+#mooc .container:after {
+	display:block;
+	content:".";
+	visibility: hidden;
+	line-height:0;
+	clear:both;	
+}
+#mooc .left {
+	float:left;
+	width:160px;
+	margin-right:20px;
+}
+#mooc .mid {
+	width:500px;
+	float:left;
+	text-align:left;
+	font-size:16pt;
+}
+
+/* The second big splash image, which has another download call-to-action */
+#downloadSplash {
+	background-image:url("/static/img/downloadsplash.jpg");
+	background-size:cover;
+	background-position:50% 50%;
+	width:100%;
+	height:550px;
+	margin:30px 0px;
+}
+
+#downloadSplashContent {
+	position:relative;
+	left:20%;
+	top:30px;
+	text-align:right;
+	color:#fff;
+	width:70%;
+}
+
+#downloadSplash h1 {
+	font-size: 60px;
+}
+
+#downloadSplash h2 {
+	font-size:30px;
+	font-family:"Raleway";
+	color:#ddd;
+}
+
+#download2 {
+	width:300px;
+	float:right;
+}
+
+
+/* Testimonials stuff */
+#testimonials2 .cell2container {
+	width:960px;
+	margin:40px auto 20px auto;
+}
+#testimonials2 .cell2container:after {
+	display:block;
+	content:".";
+	visibility: hidden;
+	line-height:0;
+	clear:both;
+}
+
+#testimonials2 .cell2 {
+	width:400px;
+	float:left;
+	background-color:#fff;
+	border-radius:5px;
+	margin:0px 39px;
+	min-height:170px;
+	font-size:14pt;
+	box-shadow:3px 3px 5px rgba(0,0,0,0.25);
+}
+
+#testimonials2 .cell2 .top {
+	height:10px;
+	width:100%;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+#testimonials2 .cell2 .content {
+	padding:16px;
+}
+
+#testimonials2 .quote {
+}
+
+#testimonials2 .author {
+	font-style: italic;
+}
+
+#testimonials2 h1 {
+	padding:0px 20px;
+}
+
+.getoptioncontainer {
+	width:960px;
+	margin:40px auto;
+}
+
+.getoptioncontainer:after {
+	display:block;
+	content:".";
+	visibility: hidden;
+	line-height:0;
+	clear:both;
+}
+
+.getoptionsub {
+	width:307px;
+	float:left;
+}
+
+.getoption {
+	height:329px;
+	border-radius:7px;
+	text-align:left;
+	position:relative;
+	margin:0px 8px;
+	padding:0px;
+	color:#000;
+	background-color:#f4f4f4;
+}
+
+.getoption:hover {
+	color:#000;
+	padding:0px;
+	background-color:#f4f4f4;
+}
+
+.getoption>.top {
+	border-top-left-radius:7px;
+	border-top-right-radius:7px;
+	padding:4px 8px;
+}
+
+.getoption h2 {
+	color:#fff;
+	font-family:"Montserrat Alternates";
+	font-size:24pt;
+	margin:0;
+	padding:5px;
+	text-align:center;
+}
+
+.getoption>.middle>ul {
+	margin-top:0px;
+	margin-left:0px;
+	font-weight:400;
+	list-style:none;
+	font-size:14pt;
+	line-height:26pt;
+}
+
+.getoption>.middle>ul>li {
+	clear:both;
+	height:26pt;
+}
+
+.getoption>.middle>ul>li:not(:last-child) {
+	border-bottom:1px solid #e2e2e2;
+}
+
+.getoption>.bottom {
+	position:absolute;
+	bottom:0px;
+	border-top-left-radius:7px;
+	border-bottom-right-radius:7px;
+	right:0px;
+	width:120px;
+	color:#000;
+	text-align:center;
+	padding:4px 0px;
+}
+
+.getoption>.bottom>h3 {
+	color:#000;
+	font-size:20pt;
+	font-family:"Montserrat Alternates";
+}
+
+.check {
+	display:block;
+	float:left;
+	padding-left:28px;
+	background-image:url("/static/img/check.png");
+	background-repeat:no-repeat;
+	background-position:8px 50%;
+}
+
+.pending {
+	display:block;
+	float:left;
+	padding-left:28px;
+	background-image:url("/static/img/pending.png");
+	background-repeat:no-repeat;
+	background-position:8px 50%;
+}
+
+.getoptionbutton {
+	width:307px;
+	text-align:center;
+}
+
+.getoptionbutton .button {
+	margin:auto;
+	border:1px solid #666;
+	color:#444;
+	float:none;
+	font-weight:300;
+	background-color:#fff;
+	font-family:"Raleway";
+	margin-top:20px;
+}
+
+.getoptionfree:hover {
+	background-color:#5ec10e;
+	color:#fff;
+	border:none;
+	padding:11px;
+}
+#getoptionfull:hover {
+	background-color:#1e50c2;
+	color:#fff;
+	border:none;
+	padding:11px;
+	cursor:pointer;
+	font-family:"Raleway";
+}
+#getoptiondeluxe:hover {
+	background-color:#f68507;
+	color:#fff;
+	border:none;
+	padding:11px;
+	cursor:pointer;
+}
+
+#downloadEmailPopup {
+	width:470px;
+}
+
+#teachersGetStarted {
+	padding:30px 0px;
+	background-image:url("/static/img/teachersbg.jpg");
+	/* https://www.flickr.com/photos/cali4beach/8104594017/ */
+	background-size:cover;
+	margin-bottom:0;
+}
+#teachersGetStarted h1 {
+	color:#fff;
+	margin-bottom:40px;
+}
+#teachersGetStarted h2 {
+	color:#ccc;
+}
+
+@media (max-width: 960px) {
+	#mainSplashContent {
+		position:absolute;
+		left:20px;
+		top:240px;
+	}
+	#testimonials {
+		width:auto;
+		padding:40px 10px 0px 10px;
+	}
+	.section{
+		padding:50px 0px 20px 0px;
+		width:auto;
+		margin:auto 10px;
+	}
+	.section h1 {
+		text-align:center;
+		margin-top:10px;
+	}	
+	.section .right{
+		float:none;
+		margin:auto 10px;
+		width:auto;
+	}
+	.section .left{
+		float:none;
+		margin:auto 10px;
+		width:auto;
+	}
+	.section img {
+		max-width:100%;
+		
+		margin:auto;
+		float:none;
+		display:block;
+	}
+
+	.section p {
+		color:#666;
+		padding:3px;
+	}	
+
+	#testimonials2 .cell2container {
+		width:auto;
+		margin:0px;
+		padding-right:80px;
+	}
+
+	#testimonials2 .cell2 {
+		width:100%;
+		margin-top:30px;
+	}
+
+	.getoptioncontainer {
+		width:100%;
+		margin:40px auto;
+	}	
+
+	.getoptionsub {
+		margin:auto;
+		float:none;
+	}
+
+	.getoptionsub:not(:first-child) {
+		margin:25px auto 0px auto;
+		float:none;
+	}	
+	#downloadSplashContent {
+		width:90%;
+		left:5%;
+	}
+	#downloadSplashContent h1 {
+		font-size:30pt;
+	}
+	#downloadSplashContent h2 {
+		font-size:18pt;
+	}
+	#downloadSplash {
+		height:450px;
+	}		
+
+	#kickstarterButton {
+		width:auto;
+		font-size:18pt;
+	}
+	#kickstarterButton2 {
+		width:400px;
+		font-size:20pt;
+		margin:10px auto;
+	}	
+
+	#mooc .container {
+		width:auto;
+	}
+	#mooc .left {
+		float:none;
+		width:160px;
+	}
+	#mooc .mid {
+		float:none;
+		text-align:left;
+		font-size:12pt;
+		width:auto;
+		margin:auto 10px;
+	}	
+
+}
+
+@media (max-width: 570px) {
+	#mainSplashContent h1 {
+		font-size:26pt;
+	}
+	#mainSplashContent h2 {
+		font-size:16pt;
+	}	
+	#mainSplashContent {
+		top:120px;
+	}
+	#mainSplash {
+		height:550px;
+	}
+	#downloadButton {
+		font-size:16pt; 
+		width:120px;
+	}
+	#learnMoreButton {
+		font-size:16pt; 
+		width:120px;
+	}
+	#downloadSplash {
+		height:300px;
+	}
+	#downloadSplashContent h1 {
+		font-size:24pt;
+	}
+	#downloadSplashContent h2 {
+		font-size:12pt;
+	}	
+	#download2 {
+		width:200px;
+		float:right;
+		font-size:16pt;
+	}
+	#testimonials2 h2 {
+		width:90%;
+		text-align:center;
+		margin:auto;
+	}
+
+	#kickstarterButton {
+		width:auto;
+		font-size:16pt;
+	}
+	#kickstarterButton2 {
+		width:auto;
+		font-size:18pt;
+		margin:10px 40px;
+	}	
+}
+/* aasdf */
+label[for=id_sendstuff] {
+	display:inline;
+}
+input[type=checkbox] { display:inline; width:auto;}

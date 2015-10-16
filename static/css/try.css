@@ -1,0 +1,84 @@
+#startSession {
+	padding:10px 15px;
+	margin:auto;
+	font-size:20pt;
+	width:auto;
+	font-family:Montserrat;
+	cursor:pointer;
+}
+
+#startSessionSection {
+	color:#fff;
+	width:50%;
+	float:left;
+}
+
+#startSessionSection p {
+	font-size:14pt;
+	margin-top:25px;
+	text-align:left;
+}
+
+#startSessionSection h2 {
+	margin:30px 0px 10px 0px;
+	color:#fff;
+}
+
+#startForm {
+	width:380px;
+	margin:auto;
+}
+
+#startForm input[type=text], #startForm input[type=password], #startForm input[type=email] {
+	width:350px;
+}
+
+#startForm label {
+	text-align:left;
+	font-size:14pt;
+	margin-top:20px;
+	margin-left:18px;
+}
+
+#teacherVideo {
+	margin-bottom:20px;
+	border:3px solid black;
+}
+
+#videoSection {
+	text-align:left;
+	background-color:#fff;
+	width:50%;
+	float:left;
+}
+
+#pair:after {
+	content:".";
+	line-height:0;
+	display:block;
+	clear:both;
+	visibility: hidden;
+}
+
+#pair {
+	background-color:#009922;
+}
+
+#laterForm {
+	background-color:#ddd;
+	padding:15px;
+	width:550px;
+}
+
+#laterForm input[type=text],select {
+	border:1px solid #aaa;
+	border-radius:5px;
+}
+
+#laterForm input[type=text] {
+	width:520px;
+}
+
+#laterForm select {
+	width:532px;
+}

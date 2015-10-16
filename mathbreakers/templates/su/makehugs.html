@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/hug.css" %}' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="main">
+	<h1>make some hugs</h1>
+	Enter emails, comma-separated
+	<form action="/su/makehugs/" method=POST>
+		{% csrf_token %}
+		<textarea name="emaillist"></textarea>
+		<input type="submit" value="submit" />
+	</form>
+</div>
+{% endblock content %}

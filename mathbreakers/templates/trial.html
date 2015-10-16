@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/trial.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+	<img id="preorderlogo" src='{% static "img/mblogo_big.png" %}' />
+<div id="pagedescription">
+	<h1>Mathbreakers in your classroom</h1>
+	<h2>Your kids will thank you.</h2>
+</div>
+<div id="main">
+<!--	<p>
+		You may be eligible to use Mathbreakers with your students! We will respond within one business day.
+	</p>
+-->
+	<form action="/trial/" method=POST>
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" class="button blue" style="margin-left:45px"/>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/classbase.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/classbase.js" %}'></script>
+{% endblock %}
+
+{% block content %}
+<div id="classbaseContainer">
+	<div id="classNav">
+		{% if classrooms|length > 1 %}
+		<form id="class_selection_form" action="{{ request.path }}" method=GET>
+			<label>Select Class</label>
+			<select name="class_selection" id="class_selection">
+				{% for cls in classrooms %}
+				{% if classroom.name == cls.name %}
+				<option value="{{ cls.id }}" selected>{{ cls.name }}</option>
+				{% else %}
+				<option value="{{ cls.id }}">{{ cls.name }}</option>
+				{% endif %}
+				{% endfor %}
+			</select>
+		</form>
+		{% else %}
+		<h1>{{ classroom.name }}</h1>
+		{% endif %}
+		<ul>
+			<!-- <li><a id="instructions" href="/teacher/setup/1/">Instructions for Teachers</a></li>-->
+			<li><a id="addclass" href="/session/status/">Lobby Page</a></li>
+			<li><a id="dashboard" href="/class/dashboard/">My Dashboard</a></li>
+			<li><a id="dashboard" href="/class/">Manage Class</a></li>
+			<li><a id="addclass" href="/session/try/">Add new class</a></li>
+			<li><a id="addclass" href="/faq/">FAQ</a></li>
+		</ul>
+	</div>
+	<div id="classContent">
+	{% block classTop %}
+	{% endblock %}
+	</div>
+</div>	
+{% block classMain %}
+{% endblock %}
+{% endblock %}

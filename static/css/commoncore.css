@@ -1,0 +1,112 @@
+th {
+	margin:0px;
+	padding:14px;
+	font-size:12pt;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.info {
+	width: 800px;
+	margin:15px auto 15px auto;
+}
+
+.info p {
+	margin-bottom:10px;
+}
+
+ul {
+	list-style:none;
+	margin:0px;
+	text-align:left;
+}
+
+li {
+	clear:both;
+}
+
+.icondesc {
+	float:left;
+}
+
+.icondesc strong {
+	font-family:Lato;
+	font-weight:bold;
+}
+
+.icon {
+	width:13px;
+	height:16px;
+	background-image:url('/static/img/mb_cc_icons.png');
+	background-position:0px -1px;
+	float:left;
+	margin-right:6px;
+}
+
+.icon.core {
+	background-position:-13px -1px;
+}
+
+.icon.supplementary {
+	background-position:-26px -1px;
+}
+.icon.future {
+	background-position:-39px -1px;
+}
+
+li .icon {
+	margin-top:4px;
+}
+
+td .lesson{
+	padding:4px 5px 4px 5px;
+	border-bottom:1px solid rgba(0,0,0,0.3);
+	cursor:pointer;
+}
+
+td .lesson:hover {
+	font-weight:bold;
+}
+
+td .lesson:nth-child(odd){
+	background-color:rgba(0, 0, 0, 0.1);
+}
+
+td {
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+td.gradetitle {
+	padding:10px;
+	text-align:center;
+	border:none;
+	background-color:#333;
+	color:#eee;
+	font-size:18pt;
+}
+
+tr {
+	vertical-align: top;
+}
+
+table {
+	padding:0px;
+	margin:0px 0px 100px 0px;
+	border:0px;
+	border-collapse:collapse;
+	font-size:10pt;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+}
+
+#lessondesc {
+	width:300px;
+	border:1px solid black;
+	background-color:#fff;
+	color:#222;
+	padding:6px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}

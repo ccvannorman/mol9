@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/session.css" %}' type='text/css'>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+{% endblock %}
+
+{% block scripts %}
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+<h1>Try Mathbreakers in your next class!</h1>
+<h2>Your kids will thank you.</h2>
+</div>
+<div class="main">
+	<form method=POST action="/session/later/">
+		{% csrf_token %}
+		{{ later_form }}
+		<input type="submit" id="later" class="button" value="Submit">
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "teacher/teacherbase.html" %}
+{% load static %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "js/manageclass.js" %}'></script>
+{% endblock %}
+
+{% block styles %}
+{{ block.super }}
+<link rel='stylesheet' href='{% static "css/manageclass.css" %}' type='text/css'>
+{% endblock %}
+
+{% block teacherstep %}		
+	<div class="stepimg s2"></div>
+	<div id="stepcontent">	
+		<h2>Add your students</h2>
+		<p>
+			Create some user accounts for your classroom, so you can track the progress of individual students.
+		</p>		
+		<div id="ajaxing">...</div>	
+		<div id="nostudents">You have no students! Add students below by either creating accounts or adding existing accounts.</div>	
+		<table><tbody></tbody></table>	
+		<form class="createStudentForm hasfloats">
+			<h2>Create a student account</h2>
+			<h3>This will create a new user and add it to your classroom</h3>
+			<div class="formPart">
+				Username<br/>
+				<input type="text" id="createStudentName"></a>
+			</div>
+			<div class="formPart">				
+				Password<br/>
+				<input type="text" id="createStudentPassword"></a>
+			</div>
+			<div class="formPart">
+				<a href="javascript:void(0)" id="createStudent">Create</a>
+			</div>
+		</form>
+		<form class="addStudentForm hasfloats" style="display:none">
+			<h2>Find an existing student</h2>
+			<h3>This will add an account that already exists to your classroom</h3>
+			<div class="formPart">
+				Username<br/>
+				<input type="text" id="addStudentName"></a>
+			</div>
+			<div class="formPart">
+				<a href="javascript:void(0)" id="addStudent">Add</a>
+			</div>
+		</form>		
+	</div>
+	<a class="button blue" href="/teacher/setup/3/" style="margin:20px auto">Step 3</a>
+{% endblock %}

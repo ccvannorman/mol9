@@ -1,0 +1,120 @@
+#levelstats {
+	background-color:#e9ecf0;
+	padding:10px;
+}
+
+#levelstats .levelGroup {
+	height:60px;
+	margin:10px auto;
+}
+#levelstats .levelGroup:after {
+	clear:both;
+	content:" ";
+}
+
+#levelstats .levelGroup>.name {
+	width:180px;
+	display:block;
+	float:left;
+	text-align:right;
+	padding:10px 20px 0px 0px;
+	font-size:20px;
+}
+
+#levelstats .levelGroup .level {
+	width: 110px;
+	background-color:#fff;
+	height:100%;
+	float:left;
+	margin:0px 2px 0px 2px;
+}
+
+#levelstats .levelGroup .level.incomplete {
+	background-color:#999;
+}
+
+#levelstats .levelGroup .level div{
+	height:100%;
+	float:left;
+}
+
+#levelstats .levelGroup .level .name{
+	width:20px;
+	float:left;
+}
+
+#levelstats .levelGroup .level .completed{
+	width:60px;
+	float:left;
+}
+#levelstats .levelGroup .level .completed.yes{
+	background-image:url('/static/img/completed.png');
+	background-position:10px 5px;
+	background-size:50px 50px;
+	background-repeat:no-repeat;
+}
+
+#levelstats .levelGroup .level .stars{
+	width:30px;
+	float:left;
+	background-image:url('/static/img/3stars.png');
+	background-size:87px 58px;
+	background-repeat:no-repeat;
+	background-position:2px 1px;
+}
+#levelstats .levelGroup .level .stars.s1{
+	background-position:2px 1px;
+}
+#levelstats .levelGroup .level .stars.s2{
+	background-position:-25px 1px;
+}
+#levelstats .levelGroup .level .stars.s3{
+	background-position:-52px 1px;
+}
+
+#topicstats {
+	margin:auto;
+	width: 810px;
+}
+
+#topicstats .topic {
+	float:left;
+	width:250px;
+	margin:10px;
+	background-color:#333;
+	color:#fff;
+	padding:4px 0px 4px 0px;
+}
+
+#topicstats .topic .name {
+	padding:4px 0px 4px 0px;
+	font-size:20px;
+	border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+#topicstats .topic table {
+	color:#fff;
+}
+
+#topicstats .topic table td {
+	padding:6px;
+}
+#topicstats .topic table td.left {
+	text-align:right;
+	width:110px;
+}
+
+#topicstats .topic table td .mastery{
+	float:left;
+	background-color:rgba(0,0,0,0.5);
+}
+
+#topicstats .topic table td .masteryParent{
+	width:110px;
+	background-color:rgba(255,255,255,0.2);
+	border-right:1px solid #000;
+}
+
+h1 {
+	padding: 20px;
+}

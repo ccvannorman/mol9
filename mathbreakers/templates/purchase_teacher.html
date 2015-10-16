@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/purchase.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	var num_existing_licenses = {{ num_licenses }};
+</script>
+<script src="{% static 'js/purchase_teacher.js' %}"></script>
+<script src="{% static 'js/ajaxform.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Purchase Teacher License</h1>
+</div>
+<div id="main">
+	<div class="promotion">
+		<h2>Enter promo code</h2>
+		<p style="text-align:left">
+			If you have a promotional code for Mathbreakers, enter it here
+			<form method="POST" action="/promotioncode/">
+				{% csrf_token %}
+				<input type="text" name="code">
+				<input type="submit">
+			</form>
+		</p>
+	</div>	
+	<div id="purchasebox">
+		<p style="text-align:left">
+			Use Mathbreakers in your classroom for a year with no restrictions on play time. 
+			Your purchase includes full customer support, access to the class dashboard, and
+			unlocks all Mathbreakers levels and assignments for your students.
+		</p>
+		<form id="purchaseform" action="/ajax/teacher_purchase/" method=POST>
+		<p style="text-align:left">
+			Pricing for the year license is $3 per student account. You will be able to add more students later if you need to.
+		</p>
+		<p style="text-align:left; margin-top:25px">
+			The classroom edition of Mathbreakers is only available to schools and teachers with at least 10 students. If you intend to buy Mathbreakers for just a few students we ask you to please purchase the <a href="/buy/">Home Edition</a>
+		</p>		
+		<p style="text-align:left">
+			<div id="currentstudents">
+			{% if num_students == 0 %}
+			{% elif num_classrooms > 1 %}
+				You currently have a total of <strong>{{ num_students }} students</strong> between your {{ num_classrooms }} classrooms.
+			{% else %}
+				It looks like you currently have <strong>{{ num_students }} students</strong> in your classroom.
+			{% endif %}
+			</div>
+			{% if num_licenses > 0 %}
+			<div id="currentlicense">
+				You already have a license for {{ num_licenses }} student accounts.
+			</div>
+			{% endif %}
+		</p>		
+		<div id="howmany">
+		{% csrf_token %}
+		{% if num_licenses > 0 %}
+		How many more students would you like to add to your license?
+		<input type="number" value="0" id="id_num_students" name="num_students"/>
+		<div id="errornum">You must total at least 10 licenses</div>
+		{% else %}
+		How many students will be playing Mathbreakers?
+		<input type="number" value="0" id="id_num_students" name="num_students"/>
+		<div id="errornum">Please enter a number of students (at least 10)</div>
+		{% endif %}
+		
+		
+		<div>Total cost:<span id="totalcost"></span></div>
+		</div>
+		<a href="javascript:void(0);" class="button" id="stripeBuy">Buy License</a>
+		<div id="purchaseorder">
+			Alternatively, send us your school's Purchase Order to: team@mathbreakers.com
+		</div>
+		</form>
+	</div>
+	
+</div>
+{% endblock %}

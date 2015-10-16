@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/buyfull.css" %}' type='text/css'>
+<link rel='stylesheet' href='{% static "css/home.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/buyfull.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<img id="preorderlogo" src='{% static "img/mblogo_med.png" %}' />
+	<h1>Home Edition</h1>
+
+<!--	<p>Play the full version of Mathbreakers at home. </p> --!><!-- If you're playing Mathbreakers in class you don't need this unless you want to play at home too!</p> -->
+	<p>( For the <span class="greeny greeny_med">teacher edition</span> please visit our <a href="/purchase/teacher/">Teacher Purchase</a> page. )</p>
+</div>
+<div id="main">
+	<div id="buybox">
+		<p>
+			Mathbreakers costs ${{price}}, and includes access to all levels and subject areas including addition, fractions, operators, and negatives. </p>
+		<br>
+		<p>	After your purchase, we will send you an email with a download link for Mac OS X, Windows, and Linux. Want to try it for free? Check out the <a href="/download/">Free Trial Version</a> first.
+		</p>
+		<a href="javascript:void()" id="stripeBuy" class="button">Buy Now</a>
+		<br>
+	</div>
+</div>
+<form action="" method=POST id="stripeform">{% csrf_token %}</form>
+{% endblock %}

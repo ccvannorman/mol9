@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/purchase.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	var num_existing_licenses = {{ num_licenses }};
+</script>
+<script src="{% static 'js/pay_variable.js' %}"></script>
+<script src="{% static 'js/ajaxform.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Pay Mathbreakers</h1>
+</div>
+<div id="main">
+	<div id="purchasebox">
+		<p style="text-align:left">
+			You can use this form to send us a payment using your credit card
+		</p>
+		<form id="purchaseform" action="/ajax/teacher_purchase/" method=POST>
+		<p style="text-align:left">
+			
+		</p>
+		{% csrf_token %}
+
+		Enter amount to pay in USD. <br/><br/>
+		$
+		<input type="number" value="0" id="id_dollars" name="dollars"/>
+		<div id="errornum">Please enter a number.</div>
+		<a href="javascript:void(0);" class="button" id="stripeBuy">Pay</a>
+		</form>
+	</div>
+	
+</div>
+{% endblock %}

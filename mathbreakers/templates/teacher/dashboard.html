@@ -1,0 +1,102 @@
+{% extends "teacher/classbase.html" %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+<link rel='stylesheet' href='{% static "css/dashboard.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src='{% static "js/dashboard.js" %}'></script>
+{% endblock %}
+
+{% block classTop %}
+<h1>Dashboard</h1>
+<h2>See student progress and assign lessons</h2>
+{% endblock %}
+
+{% block classMain %}
+<div id="main">
+	{% if students|length > 0 %}
+	<p style="font-size:16pt">
+	Click on the grid to assign a lesson.
+	</p>
+	<div class="dashboard">
+		<div id="assignmentLog"></div>
+		<span class="group">
+			<div style="display:block;visibility:hidden">.</div>
+			<div class="studentsContainer">
+				{% for student in students %}
+				<div class="student">
+					{{ student.first_name }}
+				</div>
+			{% endfor %}
+			</div>
+		</span>
+		{% for group in groups %}
+		{% if not group.owned %}
+		<span class="group locked">
+		{% else %}
+		<span class="group">
+		{% endif %}
+			<h2>{{ group.name }}</h2>
+			<div class="groupContainer">			
+				{% for level in group.levels %}
+				<div class="level">
+					<h3>{{ level.short_name }}</h3>
+					{% for entry in level.entries %}
+					<div class="cell">
+						<div 
+						{% if not group.owned %}
+						class="locked"
+						{% endif %}
+						{% if entry.type == "stars" %}
+						class="icon {{ entry.data }}" 
+						{% elif entry.type == "started" %}
+						class="icon assignable started"
+						{% else %}
+						class="assignable"
+						{% endif %}
+						student = "{{ entry.student }}"
+						student_name = "{{ entry.student_name }}"
+						level = "{{ entry.level }}"
+						{% if entry.assigned %}
+						assigned=true
+						{% endif %}
+						>
+							{% if entry.assigned %}
+							<div class="assigned"></div>
+							{% else %}
+							<div class="unassigned"></div>
+							{% endif %}						
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+			{% if not group.owned %}
+			<div class="info">
+				<a class="lockIcon" href="/lessons/{{group.lessonplan}}"></a>
+			</div>
+			{% endif %}
+		</span>
+		{% endfor %}
+	</div>
+	<div id="key">
+		<div class="row"><div class="icon onestar"></div>Success - one star</div>
+		<div class="row"><div class="icon twostar"></div> Success - two stars</div>
+		<div class="row"><div class="icon threestar"></div> Success - three stars</div>
+		<div class="row"><div class="icon started"></div> Started Playing </div>
+		<div class="row"><div class="icon assigned"></div> Assigned</div>
+	</div>	
+	<p class="keydesc"></p>
+	<div style="clear:both"></div>
+	{% else %}
+	<p>
+		When students join your lobby, they will show up on this page so you can assign lessons etc. 
+	</p>
+	{% endif %}	
+</div>
+{% endblock %}

@@ -1,0 +1,157 @@
+#setup {
+	width:900px;
+	margin:auto;
+	position:relative;
+}
+
+#robotsetup {
+	position:relative;
+	height:500px;
+}
+
+@-webkit-keyframes hover {
+	0% {top:60px;}
+	25% {top:70px; -webkit-transform:rotate(0.5deg);}
+	50% {top:60px; -webkit-transform:rotate(1deg);}
+	75% {top:70px; -webkit-transform:rotate(0.5deg);}
+	100% {top:60px; -webkit-transform:rotate(0deg);}
+}
+@-moz-keyframes hover {
+	0% {top:60px;}
+	25% {top:70px; -moz-transform:rotate(0.5deg);}
+	50% {top:60px; -moz-transform:rotate(1deg);}
+	75% {top:70px; -moz-transform:rotate(0.5deg);}
+	100% {top:60px; -moz-transform:rotate(0deg);}
+}
+
+#robot {
+	width:201px;
+	height:335px;
+	position:absolute;
+	left:150px;
+	top:80px;
+	background-image:url("/static/img/robot/base.png");
+	-webkit-animation:hover 6s infinite;
+	-webkit-animation-timing-function: cubic-bezier(0.5, 0.2, 0.3, 1.0);
+	-moz-animation:hover 6s infinite;
+	-moz-animation-timing-function: cubic-bezier(0.5, 0.2, 0.3, 1.0);	
+}
+
+#robotbody {
+	position:absolute; left:0; top:0;
+	width:201px;
+	height:335px;	
+	background-image:url("/static/img/robot/body_red.png");
+}
+
+#robotarms {
+	position:absolute; left:0; top:0;
+	width:201px;
+	height:335px;	
+	background-image:url("/static/img/robot/arms_red.png");
+}
+
+#roboteyes {
+	position:absolute; left:0; top:0;
+	width:201px;
+	height:335px;	
+	background-image:url("/static/img/robot/eyes_red.png");
+}
+
+#robothat {
+	position:absolute;
+	left:-11px; top:-74px;
+	width:240px;
+	height:132px;
+	z-index:2;
+	background-image:url("/static/img/robot/hats.png");
+	background-position:0px 0px;
+	background-repeat:no-repeat;
+}
+
+#robothair {
+	position:absolute;
+	left:-22px; top:-84px;
+	width:222px;
+	height:250px;
+	z-index:1;
+	background-image:url("/static/img/robot/hair.png");
+	background-position:0px 0px;
+	background-repeat:no-repeat;
+}
+
+#robotbuttons {
+	position:absolute;
+	left:500px;
+	top:40px;
+}
+
+#robotbuttons .row {
+	height:51px;
+	margin-bottom:20px;
+	width:300px;
+	font-size:26pt;
+	font-family:Montserrat;
+}
+
+
+.robotbutton {
+	width:45px;
+	height:51px;
+	cursor:pointer;
+}
+
+.robotbutton.left {
+	float:left;
+	background-image:url("/static/img/robot/arrowleft.png");
+}
+
+.robotbutton.right {
+	float:right;
+	background-image:url("/static/img/robot/arrowright.png");
+}
+
+#canvas {
+	display:none;
+}
+
+#play {
+	background-color:#222;
+	color:#fff;
+	border-radius:7px;
+	cursor:pointer;
+}
+
+#play:hover {
+	background-color:#000;
+}
+
+h1 {
+	margin:20px auto 0px auto;
+}
+
+#loadingbg {
+	width:800px;
+	background-color:#000;
+	height:25px;
+	border-radius:15px;
+	margin:0px auto 10px auto;
+	border:2px solid #000;
+	position:relative;
+}
+
+#loadingfg {
+	width:100%;
+	background-color:#04b;
+	height:25px;
+	border-radius:15px;	
+}
+
+#loadingtext {
+	width:100%;
+	font-size:15pt;
+	color:#fff;
+	position:absolute;
+	top:0px;
+	height:100%;
+}

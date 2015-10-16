@@ -1,0 +1,53 @@
+.screenshot {
+    width:420px;
+    margin:0px;
+}
+
+.section {
+	width:866px;
+	margin:20px auto;
+	background-color:#ddd;
+	border-radius:7px;
+	padding:10px;
+}
+
+.section:after {
+	display:block;
+	visibility:none;
+	content:".";
+	line-height:0;
+	clear:both;
+}
+
+.level {
+	width:140px;
+	height:140px;
+	float:left;
+	position:relative;
+	background-color:#fff;
+	margin:5px 2px 5px 2px;
+}
+
+.level .name {
+	position:absolute;
+	bottom:3px;
+	display:block;
+	text-align:center;
+	width:100%;
+}
+
+div.icon {
+	position:absolute;
+	right:10px;
+	top:8px;
+	width:45px;
+	height:41px;
+	background-image:url("/static/img/dashicons.png");
+	background-repeat:no-repeat;
+}
+
+.onestar { background-position:0 0; }
+.twostar { background-position:-90px 0; }
+.threestar { background-position:-45px 0; }
+.failed { background-position:-135px 0; }
+.assigned { background-position:-180px 0; }

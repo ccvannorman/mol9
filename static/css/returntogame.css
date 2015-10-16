@@ -1,0 +1,18 @@
+p {
+	width:750px;
+	margin:20px auto 20px auto;
+}
+
+img {
+	margin:5px;
+}
+
+h1 {
+	margin-top:30px;
+}
+
+strong {
+	font-family:Lato;
+	font-weight:bold;
+	font-size:14pt;
+}

@@ -1,0 +1,22 @@
+	{% if classrooms|length > 1 %}
+	<form id="class_selection_form" action="{{ request.path }}" method=GET>
+		<select name="class_selection" id="class_selection">
+			{% for cls in classrooms %}
+			{% if classroom.name == cls.name %}
+			<option value="{{ cls.name }}" selected>{{ cls.name }}</option>
+			{% else %}
+			<option value="{{ cls.name }}">{{ cls.name }}</option>
+			{% endif %}
+			{% endfor %}
+		</select>
+	</form>
+	{% else %}
+	<h1>{{ classroom.name }}</h1>
+	{% endif %}
+	<script>
+		$(document).ready(function() {
+			$("#class_selection").change(function() {
+				$("#class_selection_form").submit();
+			});
+		});
+	</script>

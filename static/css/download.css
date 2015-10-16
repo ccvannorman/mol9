@@ -1,0 +1,221 @@
+#aboveTheFold{
+	background-color:#e6e7eb;
+	background-image:url('/static/img/top.jpg');
+	background-position:center top;
+	background-size:cover;
+	background-repeat:no-repeat;
+	width:100%;
+	border-bottom:1px solid #ddd;
+	padding-bottom:5px;
+	min-height:100%;
+}
+
+#belowTheFold{
+	background-color:white;
+	width:100%;
+}
+
+.buyit {
+	display:block;
+	width: 200px;
+	height:auto;
+	font-weight:bold;
+	background-color:rgb(220,30,30);
+	padding:15px 25px 5px 25px;
+	color:#fff;
+	font-size:30px;
+	margin:10px auto;
+	text-decoration:none;
+	box-shadow: inset 0px -12px 0px rgba(0,0,0,0.2);
+	border-radius:50px;
+	border: 3px solid black;
+	text-shadow: 2px 2px rgba(0,0,0,.25);
+	height:44px;
+}
+.buyit:hover {
+	background-color:rgb(200,10,10);
+	color:#fff;
+	text-decoration: none;
+}
+
+.buyit2 {
+	background-color:rgb(0,200,50);
+}
+
+.buyit2:hover {
+	background-color:rgb(0,170,36);
+	color:#fff;
+	text-decoration: none;
+}
+
+
+.download {
+	display:block;
+	width: 200px;
+	height:auto;
+	font-weight:bold;
+	background-color:rgb(0,200,50);
+	padding:15px 25px 5px 25px;
+	color:#fff;
+	font-size:30px;
+	float:left;
+	margin:10px;
+	text-decoration:none;
+	box-shadow: inset 0px -12px 0px rgba(0,0,0,0.2);
+	border-radius:50px;
+	border: 3px solid black;
+	text-shadow: 2px 2px rgba(0,0,0,.25);
+	height:44px;
+}
+.download:hover {
+	background-color:rgb(0,170,36);
+	color:#fff;
+	text-decoration: none;	
+}
+.download:active {
+	box-shadow: inset 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.download.disabled {
+	background-color:#222;
+}
+.download.disabled:hover {
+	background-color:#333;
+}
+.download.disabled:active {
+	padding:15px;
+	border:none;
+	color:#fff;
+}
+#mac {
+	width:44px;
+	height:54px;
+	background-image:url('/static/img/mac.png');
+	float:left;
+	margin-top:-12px;
+	background-repeat:no-repeat;
+}
+#windows {
+	width:55px;
+	height:49px;
+	background-image:url('/static/img/windows.png');
+	float:left;
+	margin-top:-9px;
+	background-repeat:no-repeat;
+}
+
+#linux {
+	width:42px;
+	height:49px;
+	background-image:url('/static/img/linux.png');
+	float:left;
+	margin-top:-7px;
+	background-repeat:no-repeat;	
+}
+
+#dlcontainer {
+	width: 840px;
+	margin:20px auto 10px auto;
+}
+
+#tosnotice {
+	width:360px;
+	margin:20px auto 10px auto;	
+	padding:20px;
+	background-color:rgba(255,255,255,0.75);
+	border:1px solid #ccc;
+	font-size:14pt;
+}
+
+#aboveTheFold h1 {
+	font-family:"Raleway";
+	font-weight:200;
+	font-size:40px;
+	padding:40px 0px 20px 0px;
+	margin:0px;
+}
+h2 {
+	margin:20px;
+}
+.bigbutton {
+	padding:15px;
+	display:block;
+	margin:5px 15px 5px 15px;
+	text-decoration:none;
+	color:#222;
+	float:left;
+	width:320px;
+	background-repeat:no-repeat;
+	background-color:#ccc;
+}
+.bigbutton h2 {
+	margin:10px 15px 15px 15px;
+}
+.bigbutton p {
+	text-indent:0;
+}
+#buyit {
+	color:#eee;
+	background-color:#ff3300;
+}
+#buyit:hover {
+	background-color:#dd2200;
+}
+#sharefb {
+}
+#sharefb:hover {
+	background-color:#2244dd;
+	color:#eee;
+}
+#sharetw {
+}
+#sharetw:hover {
+	background-color:#77aaff;
+	color:#eee;
+}
+#helpcontainer {
+	width: 1140px;
+	margin:25px auto;
+}
+
+#back {
+	text-decoration:none;
+	color:#ff2200;
+	font-size:25px;
+	margin-top:22px;
+	display:block;
+}
+
+@media (max-width: 1180px) {
+	#helpcontainer {
+		width:360px;
+	}
+}
+@media (max-width: 900px) {
+	#dlcontainer {
+		width: 320px;
+	}
+}
+
+form {
+	text-align:left;
+	width:250px;
+	margin:auto;
+}
+
+form .line {
+	margin-top:15px;
+}
+#enterEmail {
+	margin:0 auto;
+	margin-top:30px;
+	width:500px;
+	height:30px;
+	line-height: 30px;
+	text-align:center;
+	display:block;
+}
+#aboveTheFold {
+	min-height:0px;
+}
+

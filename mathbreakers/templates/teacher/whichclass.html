@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/session.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+	$("#id_which").change(function(e){
+		var val = $("#id_which").val();
+		console.log(val);
+		if(val == 0) {
+			$("#id_new_class").show();
+			$("label[for='id_new_class']").show();
+		} else {
+			$("#id_new_class").hide();
+			$("label[for='id_new_class']").hide();
+		}
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+	<h1>Select a Class</h1>
+<h2>It looks like you already have a class.</h2>
+<h2>Do you want to create a new one or use an existing one?</h2>
+</div>
+<div class="main">
+	<form method=POST action="/session/selectclass/">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" id="picklobby" class="button" value="Start Lobby">
+	</form>
+</div>
+{% endblock %}

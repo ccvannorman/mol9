@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/discussion.css" %}' type='text/css'>{% endblock %}
+
+{% block content %}
+<div id="screen1" class="screens"></div>
+<div class="screenshotCaption">
+	<h1>Discussion Questions</h1>
+<p>	Use Mathbreakers as a conversation-starter for tough topics like negatives and fractions. </p>
+<br><p>The following questions go along with each level so you can be in step with your students as they play and learn. </p>
+<!--	<h2>On the importance of problem solving</h2>
+	<p>	We learn math so we can apply those concepts in the real world to get results. Mathbreakers is a simluation world where you also apply math to get results, in a way that is very engaging and entertaining to kids. 
+-->
+</div>
+<div class="divider"></div>
+<div class="chart">
+<table id = 'learnmoretable'>
+</tr>
+	<tr>
+	<td>Level 1 (B1 Intro)</td>
+	<td>This level will get your students familiar with moving around and interacting with numbers.
+			<br><br>Teacher's note: When two numbers touch they add. If the result is zero, the numbers disappear. Positive numbers are white, while negatives are black.
+			<br><br>
+			<br><br>- What happens when two numbers touch?
+			<br><br>- What if a bigger number touches a smaller number?
+			<br><br>- Can you tell me what makes numbers disappear?</td>
+	<td>Addition
+</tr>
+	<tr>
+	<td>Level 2 (B2 Adding)</td>
+	<td>Now that your students are good at the controls, the adding problems get a little harder.
+			<br><br>- Can you tell the difference bewteen even and odd numbers?
+			<br><br>- Why is it important? (Can you break a 3 wall with a combination of 2s?)
+			<br><br>- Can you make two numbers disappear if they're the same color?</td>
+	<td>Addition
+</tr>
+	<tr>
+	<td>Level 3 (B3 Countryside)</td>
+	<td>Here we introduce numbers up to 52.
+			<br><br>- How can you use two big numbers to get a single small number like "1"? 
+			<br><br>- What did the red doorway do? (It multiplies or divides)</td>
+	<td>Addition
+</tr>
+	<tr>
+	<td>Level 4 (B4 Wildlife)</td>
+	<td>This level requires a bit of higher thinking and two step addition processes.
+			<br><br>- How can you break a wall that has two different numbers? 
+			<br><br>- Did anyone break the 1024 wall? How?</td>
+	<td>Addition
+	</table>
+
+<div class="divider"></div>
+<table>
+</tr>
+	<tr>
+	<td>Level 5 (C1 Operators)</td>
+	<td>Multiplication is introduced in this lesson.
+			<br><br>- What happens when you go backwards through a number hoop? (The red hoop) 
+			<br><br>- How can you make a 5 out of a 1, using just a x2 and x3 hoop?</td>
+	<td>Multiplication
+</tr>
+	<tr>
+	<td>Level 6 (C2 Castle)</td>
+	<td>A bit more complicated operator logic.
+			<br><br>- How can you make a 3 with starting with a 4 and a x2, x3 and x5 hoop? 
+			<br><br>- What strategy did you use to break the two 9 walls?</td>
+	<td>Multiplication
+</tr>
+	<tr>
+	<td>Level 7 (c3 Giant Spikey)</td>
+	<td>More complicated operator logic, culminating in a 128 spikey boss.
+			<br><br>- How did you defeat the 128 boss? 
+			<br><br>- What do you notice about the number 2?</td>
+	<td>Multiplication
+</tr>
+	<tr>
+	<td>Level 8 (D1 Fractions)</td>
+	<td>Here we introduce two new machines, the elevator and the bridge, which require the use of fractions to operate.
+			<br><br>- How can you make a staircase?
+			<br><br>- How does the bridge work? (You must add to 1 with blue triangle numbers)</td>
+	<td>Fractions
+</tr>
+	<tr>
+	<td>Level 9 (D2 Sword)</td>
+	<td>Here we give students the fraction sword which cuts numbers into equal halves.
+			<br><br>- How can you make a 1/2 when only given a bunch of 1/3 and a sword? (You add 1/3 + 1/3 + 1/3 and chop it in half to get 1/2 + 1/2) 
+			<br><br>- What happens when you keep chopping a number in half?
+			<br><br>- After chopping a 1 in half a bunch of times, can you return it back to a 1?</td>
+	<td>Fractions
+</tr>
+	<tr>
+	<td>Level 10 (D3 Risers)</td>
+	<td>This level focuses on the number line with elevators.
+			<br><br>- When you make a staircase, what is important to remember about each step? 
+			<br><br>- Did anyone find the jetpack?</td>
+	<td>Fractions
+</tr>
+	<tr>
+	<td>Level 11 (D4 Rockets)</td>
+	<td>This level reinforces fractions with both hoops and the sword.
+			<br><br>-  How can you get to 1/10?
+			<br><br>- Did anyone find the spellbook?</td>
+	<td>Fractions
+</tr>
+	<tr>
+	<td>Level 12 (D5 Boss)</td>
+	<td>This is the end of the game for now, requiring multiple puzzles of adding fractions to "1".
+			<br><br>- Name three different fractions that you can add together to get to 1.</td>
+	<td>Addition
+</table>
+</div>
+<div class="screens" id="screen2"></div>
+<div class="screenshotCaption">
+
+	<br><br>We'd love to hear how Mathbreakers has improved your math class -- please write to us at <a href="mailto:team@mathbreakers.com">team@mathbreakers.com</a> with any comments, questions or suggetsions!
+
+<br>	
+<br>
+	<p>	Mathbreakers is <a href="/cc/">Common Core</a> aligned.
+	<br><br>
+
+</div>
+<div class="screens" id="screen4"></div>
+<div class="screenshotCaption" id="screenFooter">
+	<h2>Want to play?</h2>
+	Get the home edition now:
+	<a class="buyit" href="/buy">Buy now</a>
+</div>
+
+
+{% endblock %}
+

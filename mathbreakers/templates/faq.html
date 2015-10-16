@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/faq.css" %}' type='text/css'>
+{% endblock %}
+
+
+{% block content %}
+
+<div id="FAQ">
+
+	<h1>FAQ</h1>
+	<ul>
+		<li><strong>I'm a teacher. How do I use Mathbreakers?</strong>
+			<p>Create your Teacher Account at <a href="/trial/">mathbreakers.com/trial</a> to start your free trial.</p></li>
+		<li><strong>How do I set up my classroom?</strong>
+			<p>Manage your classroom at <a href="/class/">mathbreakers.com/class</a>. Here you can assign lessons and track progress.</p></li>
+		<li><strong>How should I use the game with my students?</strong> 
+			<p>You can assign it for homework, or use it in the computer lab. Allow about 45 - 60 minutes per play session.</p></li>
+		<li><strong>When should I use it?</strong> 
+			<p>Mathbreakers is great for introducing a subject like fractions, then using it as a way to talk about how fractions work. It's also good for practice, and can replace redundant math worksheets.</p></li>
+		<!--<li><strong>How do I download Mathbreakers?</strong> 
+			<p>You can get it at <a href="/download/">mathbreakers.com/download</a>. You will need a teacher or student account to play all the levels, but the first level doesn't require a login.</p></li>-->
+		<li><strong>What does Mathbreakers teach?</strong>
+			<p> Integers, Negatives, Addition, Multiply and Divide operations, and Fractions. It also improves number sense and number flexibility, which means understanding and solving problems from multiple different angles.</p></li>
+		<li><strong>Is it Common Core aligned?</strong>
+			<p> Yes! See <a href="/cc">mathbreakers.com/cc</a> for a full breakdown.</p></li>
+		<li><strong>I can't open the game!</strong> 
+			<p>Windows and Mac will not recognize the app, so you need to RIGHT CLICK on the icon in order to install and run the game. Find the .zip file you downloaded. Extract the zip file, then <i>right click</i> on the game icon and select "run/open" from the pop-up menu. Using this method you should be able to open the game. If this fails, please email us at <a href="mailto:team@mathbreakers.com">team@mathbreakers.com</a>.</p></li>
+		<li><strong>Is Mathbreakers available on Mac, PC, Android, or iPad?</strong>
+			<p> Mac, PC and Linux only. We are working on a tablet / iPad version now.</p></li>
+		<li><strong>What grade levels is it for?</strong> 
+			<p>K - 6th grade is best, but the game can be used in higher grades for practice and reinforcement of foundational concepts.</p></li>
+		<li><strong>When will Mathbreakers have levels and lessons for higher grade levels?</strong> We are expanding the curriculum soon. If you have a particular request, please<a href="mailto:team@mathbreakers.com?subject=Request">e-mail us!</a></p></li>
+		<li><strong>I pre-ordered the game. How / when can I get my copy?</strong>
+			<p> We are still working out a few specific bugs in the current release. When these are solved, we will send everyone who pre-ordered the game an activation token at mathbreakers.com/redeem/code. If you would like to receive yours early, please <a href="mailto:charlie@mathbreakers.com?subject=preorder%20code">email us.</a></p></li>
+	</ul>
+</div>
+
+{% endblock %}

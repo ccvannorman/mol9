@@ -1,0 +1,14 @@
+form {
+	width:300px;
+	padding:20px 40px;
+	margin:auto;
+	text-align:left;
+	border:1px solid #eee;
+	border-radius:7px;
+	background-color:#fff;
+	margin-bottom:20px;
+}
+
+input[type=text], input[type=password] {
+	border:1px solid #ddd;
+}

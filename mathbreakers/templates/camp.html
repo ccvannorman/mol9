@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/camp.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/ajaxform.js" %}'></script>
+<script src='{% static "js/camp.js" %}'></script>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<div id="mainSplash">
+	<div id="mainSplashContent">
+		<h1 id="title">Math Discovery Camp
+		<h2 id="subtitle">A week-long workshop where girls and boys can explore a world of mathematics beyond textbooks, pencils and paper.</h2>
+	</div>
+	<div id="mblogo"></div>
+</div>	
+<div id="main">
+<div class="description">
+<p>
+For advanced and beginning learners, we have a host of fun activities and projects that will unlock a spectrum of mathematics, including fractions, 3-D graphs, platonic solids, fractals, Calculus, and more.  Our program combines learning and practice through hands-on projects, outdoor play, and digital games.
+</p>
+
+<p><strong>Math Discovery Camp</strong> is for kids aged 7-12 in the Bay Area. Camp sessions are one week long, Monday through Friday from 9AM - 3PM.</p>
+<p>It will take place at <a href="http://synapseschool.org">Synapse School</a>: 3375 Edison Way, Menlo Park, CA 94025</p>
+<p><a href="#signup">Sign up now!</a></p>
+</div>
+<div class="section">
+	<div class="left">
+		<img src="/static/img/creative.jpg" id="howdoesitwork"/>
+	</div>
+	<div class="right">
+		<h1>Hands-On Projects</h1>
+		<p>
+			At Math Discovery Camp, we have created a host of hands-on activities and projects, including building geodesic forts and fractal castles. Kids can take home their work as well as a games and puzzles kit. 
+		</p>
+	</div>
+</div>
+
+<div class="section">
+	<div class="right">
+		<img src="/static/img/tictactoe.png" id="whatdoesitteach"/>
+	</div>
+	<div class="left">
+		<h1>Board Games &amp; Puzzles</h1>
+		<p>
+			Campers will have a choice of different math board games designed to challenge their skills in new ways, such as Multiples Tic Tac Toe, Math Twister, and Fractions War.
+		</p>
+	</div>
+
+</div>	
+
+<div class="section">
+	<div class="left">
+		<img src="/static/img/castlescreen.png" id="powerofplay"/>
+	</div>
+	<div class="right">
+		<h1>Digital Games</h1>
+		<p>
+			Virtual environments are a great way to play with mathematics and build intuition around numbers. Kids will play Mathbreakers and come up with their own puzzles and challenges.
+		</p>
+	</div>
+</div>
+
+<div class="description">
+<p>Each camp session will have 10-15 kids and 2 instructors.</p>
+<p><strong>About the teachers:</strong> Charlie is the Tech specialist at Synapse middle school, and is also one of the math game designers at Mathbreakers. Dora is a Tech Shop veteran and will be teaching as well as creating many of the toys and puzzles for the camp.</p>
+</div>
+<a href="#signup" class="button blue" style="margin:20px auto">Sign up</a>
+
+<div id="activityList">
+	<h1>Activity List</h1>
+	<ul>
+		<li><strong>Multiplication Tables Tic Tac Toe</strong> - use multiples and logic to fill a 3 x 3 game board with over 50 numbers.
+		<li><strong>Number Dodge Ball</strong> - all new game modes depending on what number you have; primes, factors, multiples, greater than/less than
+		<li><strong>Platonic solids</strong> - start with square, triangle and pentagon tiles in a board game. When the right tiles join, snap together the corresponding platonic solid for a new game piece.
+		<li><strong>Fractal Snowball Forts</strong> - what fractal equation gives you the best graph to defend against snowballs?			
+		<li><strong>Fraction War</strong> - use your quick fraction manipulation skills to take as many tiles as possible.
+		<li><strong>Number Twister</strong> - solve an equation every round to decide what tiles are safe to put your limbs on.
+		<li><strong>Infinite Regress</strong> - experiment with series and patterns to learn how to wrangle with infinity on paper using Markov chains.
+		<li><strong>Geodesic Forts</strong> - learn to use the geodesic equation to make life-size forts.
+		<li><strong>Dragon Fractal</strong> - try to tame the Dragon with a simple folding pattern on a strip of paper.
+		<li><strong>Prisoner's Dilemma</strong> - exploring probability and paradox in decision making
+		<li><strong>Spider and the Ant</strong> - discover graph theory through a few simple rules
+		<li><strong>Mathbreakers</strong> - a 3-D virtual world where you must add and multiply integers and fractions for use in machines and puzzles.
+		<li>And more!
+</div>
+
+<a id="signup"></a>
+<h2>Sign up!</h2>
+<form id="campForm">
+{% csrf_token %}
+{{ camp_form.as_p }}
+<a id="submitCampForm" class="button blue" style="margin:auto" href="javascript:void(0);">Continue</a>
+</form>
+
+<div id="faq">
+	<h1>FAQ</h1>
+	<h2>Will lunch be provided?</h2>
+
+	<p>No. Due to the many different types of diet-restrictions, we require students to bring their own lunch. Please note that we strive to be a peanut and tree-nut free environment. We may have several children with severe nut allergies and exposure to any nut product could have serious effects on their health. Therefore, we ask that you take extreme caution whenever food is sent into camp.</p>
+
+	<h2>What will my kids be learning?</h2>
+
+	<p>Our program covers the areas of fractions, factoring, multiplication, primes, and more! Through hands-on games and activities, children will learn team-building and collaboration skills while developing flexibility with numbers. Kids will discover mathematical concepts and patterns that exist in every-day life through creative projects and story-telling.</p>
+
+	<h2>Do my kids need to bring their own laptops?</h2>
+
+	<p>We strongly encourage campers to bring a Windows or Mac laptop if possible, as one of the activities is playing in a virtual 3-D math world. At least 1GB of free disk space is required. If the laptop only has that much space, we highly recommend freeing up some space for a better performance. 4GB of RAM would work, but 8GB is recommended. Higher memory will work, of course!</p>
+
+	<h2>Will you have recess breaks?</h2>
+
+	<p>Yes, and we'll use this time for some outdoor math activities as well :-)</p>
+
+	<h2>Will my kids be able to take home the projects they've worked on?</h2>
+
+	<p>Yes! Kids will be able to bring home the creative projects that they’ve built during the camp. They’ll also receive a copy of Mathbreakers, a 3D adventure video game. Board games, card games, and other hands-on games and puzzles are part of an activity kit that can be purchased separately.</p>
+	<h2>What's your cancellation policy?</h2>
+	<p>If you cancel at least 30 days in advance of the first day of your camp, we will be happy to refund the full amount of tuition. If you refund 10 days before the first day of your camp, we will only be able to refund 50% of your tuition. We will not be able to refund any cancellations made less than 10 days in advance of the start of camp.</p>
+	<h2>If you have any more questions, please contact us at <a href="mailto:camp@mathbreakers.com?subject=Question%20about%20summer%20camp">camp@mathbreakers.com</a>.
+
+</div>
+
+<div class="attribution">
+	Creative Commons Images: 
+	<a href="https://www.flickr.com/photos/32428572@N07/3031288221">Solids</a>
+</div>
+
+{% endblock %}
+

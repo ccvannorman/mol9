@@ -1,0 +1,58 @@
+#class_selection {
+	font-size:14pt;
+	/*background-color:transparent;*/
+	width:auto;
+	border-radius:7px;
+	border:1px solid #ddd;
+	background-color:#ffb;
+}
+
+#classbaseContainer {
+	width:960px;
+	margin:30px auto;
+	text-align:left;
+}
+
+#classbaseContainer label {
+	font-size:14pt;
+}
+
+#classbaseContainer:after {
+	content:".";
+	display:block;
+	visibility: hidden;
+	line-height: 0;
+	clear: both;
+}
+
+#classNav {
+	width:300px;
+	float:left;
+	border:1px solid #eee;
+	background-color:#fff;
+	padding:9px;
+	border-radius:7px;
+}
+
+#classNav h1 {
+	font-size:18pt;
+}
+
+#classNav li {
+	list-style: none;
+	margin-bottom:10px;
+}
+
+#classNav ul {
+	margin-top:15px;
+}
+
+#classContent {
+	width:600px;
+	float:left;
+	padding:10px 20px;
+}
+
+#classContent h1 {
+
+}

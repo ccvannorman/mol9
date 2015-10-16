@@ -1,0 +1,18 @@
+.bug {
+	background-color:#e5e5e5;
+	padding:4px;
+}
+
+.bug:nth-child(odd) {
+	background-color:#f4f4f4;
+}
+
+.bugContainer {
+	width: 800px;
+	text-align:left;
+	margin:10px auto 30px auto;
+}
+
+table td {
+	text-align:left;
+}

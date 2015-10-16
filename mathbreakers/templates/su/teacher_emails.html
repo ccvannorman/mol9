@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+table {
+	text-align:left;
+	width:100%;
+	border-spacing:0;
+}
+td {
+	padding:3px;
+}
+th {
+	font-weight:bold;
+}
+.data-notice {
+	color:#cc4400;
+}
+.data-warn {
+	color:#ff0000;
+}
+.data-sad {
+	color:#0022cc;
+}
+
+tr.teacher {
+	background-color:#ddd;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Teachers</h1>
+<table>
+
+	<tr>	
+		<th><a href="/su/teacher_emails/?sort=-email">Email</a></th>
+		<th><a href="/su/teacher_emails/?sort=-tdatejoined">Date Joined</a></th>
+	</tr>
+
+	{% for t in teachers %}
+
+	<tr class="teacher">
+		<td>{{ t.user.email }}</td>
+		<td>{{ t.user.date_joined }}</td>
+	</tr>
+		
+
+	{% endfor %}
+
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Survey Email Links</h1>
+{% for survey in surveys %}
+	<div>
+		<h2>{{ survey.name }}</h2>
+		<ul>
+			{% for q in survey.responses.all %}
+			<li>&lt;a href="https://mathbreakers.com/survey/?surveyid={{ survey.id }}&amp;responseid={{ q.id }}"&gt;{{ q.response }}&lt;/a&gt;</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel='stylesheet' href='{% static "css/commoncore_full.css" %}' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/commoncore_highlight.js" %}'></script>
+{% endblock %}
+
+{% block content %}
+<div class="cccontainer">
+	<table>
+		{% for cat in categories %}
+			<th style="background-color:{{cat.color}}">{{cat.name}}</th>
+		{% endfor %}
+		{% for grade in grades %}
+			<tr>
+				{% for cat in grade.data %}
+				<td class="gradetitle">{{ grade.name }}</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for cat in grade.data %}
+				<td style="background-color:{{cat.color}}">
+					{% for lesson in cat.data %}
+						<div class='lesson'>
+							<a class="anchor" id="{{ lesson.name }}"></a>
+							<div class='icon {{ lesson.mathbreakers }}' title='{{ lesson.mathbreakers }}'></div>
+							<div class='name'>{{ lesson.name }}</div>
+							<div class='desc'>{{ lesson.description}}</div>
+						</div>
+					{% endfor %}
+				</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

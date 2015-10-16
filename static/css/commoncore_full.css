@@ -1,0 +1,64 @@
+th {
+	margin:0px;
+	padding:20px;
+	font-size:16pt;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+.lesson .icon {
+	width:13px;
+	height:16px;
+	background-image:url('/static/img/mb_cc_icons.png');
+	background-position:0px -1px;
+	float:left;
+	margin-right:6px;
+}
+
+.lesson .icon.core {
+	background-position:-13px -1px;
+}
+
+.lesson .icon.supplementary {
+	background-position:-26px -1px;
+}
+.lesson .icon.future {
+	background-position:-39px -1px;
+}
+
+td .lesson{
+	padding:8px 10px 8px 10px;
+	width:400px;
+}
+
+td .lesson:nth-child(odd){
+	background-color:rgba(0, 0, 0, 0.1);
+}
+
+td .lesson .name{
+	border-bottom:1px solid #777;
+}
+
+td {
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+td.gradetitle {
+	padding:10px;
+	text-align:center;
+	border:none;
+	background-color:#333;
+	color:#eee;
+}
+
+tr {
+	vertical-align: top;
+}
+
+table {
+	padding:0px;
+	margin:0px;
+	border:0px;
+	border-collapse:collapse;
+}

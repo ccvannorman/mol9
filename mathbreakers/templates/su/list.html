@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{% for el in list %}
+	<div>{{ el }}</div>
+{% endfor %}
+{% endblock %}

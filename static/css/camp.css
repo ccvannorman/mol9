@@ -1,0 +1,190 @@
+#mainSplash{
+	background-image:url('/static/img/camptitle.jpg');
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	width:100%;
+	border-bottom:1px solid #ddd;
+	height:500px;
+	color:#fff;
+	text-align:left;
+	margin-top:-60px;
+	position:relative;
+}
+
+#mainSplashContent {
+	position:absolute;
+	right:4%;
+	top:170px;
+	text-align:right;
+}
+
+#mainSplash h1 {
+	font-size: 61px;
+}
+
+#mainSplash h2 {
+	font-size:30px;
+	font-family:"Raleway";
+	color:#ddd;	
+	width:80%;;
+	float:right;
+}
+
+#mblogo {
+	background-image:url("/static/img/mblogo.png");
+	width:264px;
+	height:46px;
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	padding:0;
+}
+
+#mblogo:hover {
+	background-color:transparent;
+}
+
+.description {
+	text-align:left;
+	font-size:16pt;
+	margin:50px auto 0px auto;
+	background-color:#fff;
+	border-radius:7px;
+	border:1px solid #ccc;
+	padding:12px;
+}
+
+.description p {
+	margin:16px 0px;
+}
+
+.section{
+	padding:70px 0px 50px 0px;
+	font-size:18px;
+	text-align:left;
+	width:960px;
+	margin:auto;
+}
+
+.section h1{
+	font-size:24pt;
+}
+.section:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	content:".";
+	line-height:0px;
+}
+
+.right{
+	float:right;
+	width:460px;
+}
+
+.left{
+	float:left;
+	width:460px;
+}
+
+.section img {
+	width:400px;
+}
+
+.section p {
+	line-height:22pt;
+	color:#333;
+	padding:3px;
+}
+
+#activityList{
+	width:700px;
+	text-align:left;
+	font-size:14pt;
+	margin:0 auto;
+	margin-bottom:40px;
+	border-radius:7px;
+	padding:42px 62px 22px 62px;
+}
+
+#activityList h1{
+	text-align:center;
+}
+#activityList li{
+	margin-top:15px;
+}
+
+strong {
+	font-weight:400;
+	color:#000;
+	font-size:15pt;
+}
+
+#faq {
+	width:800px;
+	margin:60px auto 30px auto;
+	background-color:#eee;
+	border-radius:7px;
+	padding:40px;
+}
+
+#faq h2 {
+	color:#222;
+	margin-top:40px;
+	text-align:left;
+}
+
+#faq p { 
+	text-align:left;
+}
+
+#campForm {
+	width:330px;
+	text-align:left;
+	margin:auto;
+}
+
+#campForm input {
+	border:1px solid #ccc;
+	width:325px;
+}
+
+#campForm select {
+	border:1px solid #ccc;
+	width:340px;
+}
+
+.attribution {
+	z-index:2;
+	font-size:10pt;	
+	text-align:left;
+	position:absolute;
+	bottom:12px;
+	left:12px;
+	
+}
+.bold{
+	font-weight:400;
+}
+
+@media (max-width: 960px) {
+	#mainSplash h1 {
+		font-size: 45px;
+	}
+	#mainSplash h2 {
+		font-size: 24px;
+	}	
+	#mainSplash{ 
+		height:460px;
+	}
+}
+
+@media (max-width: 570px) { 
+	#mainSplash h1 {
+		font-size: 35px;
+	}
+	#mainSplash h2 {
+		font-size: 18px;
+	}
+}

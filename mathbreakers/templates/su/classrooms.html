@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+table {
+	text-align:left;
+}
+th {
+	font-weight:bold;
+}
+.data-notice {
+	color:#cc4400;
+}
+.data-warn {
+	color:#ff0000;
+}
+.data-sad {
+	color:#0022cc;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Classrooms</h1>
+<table>
+<tr>
+	<th><a href="/su/classrooms/?sort=name">Class Name</a></th>
+	<th><a href="/su/classrooms/?sort=firstname">First Name</a></th>
+	<th><a href="/su/classrooms/?sort=lastname">Last Name</a></th>
+	<th><a href="/su/classrooms/?sort=school">School</a></th>
+	<th><a href="/su/classrooms/?sort=username">Username</a></th>
+	<th><a href="/su/classrooms/?sort=email">Email</a></th>
+	<th><a href="/su/classrooms/?sort=-numstudents">Students</a></th>
+	<th><a href="/su/classrooms/?sort=trialdays">Days Left</a></th>
+	<th><a href="/su/classrooms/?sort=-weeklyactivity">Weekly Playtime</a></th>
+	<th><a href="/su/classrooms/?sort=-monthlyactivity">Monthly Playtime</a></th>
+	<th><a href="/su/classrooms/?sort=-totalactivity">Total Playtime</a></th>
+</tr>
+</tr>
+{% for el in classes %}
+	<tr>
+		<td>{{ el.name }}</td>
+		<td>{{ el.firstname }}</td>
+		<td>{{ el.lastname }}</td>
+		<td>{{ el.school }}</td>
+		<td>{{ el.username }}</td>
+		<td>{{ el.email }}</td>
+
+		{% if el.students|length = 0 %}
+		<td><span class="data-sad">{{ el.students|length }} students</data></td>
+		{% else %}
+		<td>{{ el.students|length }} students</td>
+		{% endif %}
+	
+		{% if el.trialdays <= 0 %}
+		<td><span class="data-warn">{{ el.trialdays }} days</span></td>
+		{% elif el.trialdays < 7 %}
+		<td><span class="data-notice">{{ el.trialdays }} days</span></td>
+		{% else %}
+		<td>{{ el.trialdays }} days</td>
+		{% endif %}
+
+		{% if el.weeklyactivity == 0 %}
+		<td><span class="data-sad">{{ el.weeklyactivity|floatformat:0 }} min</span></td>
+		{% else %}
+		<td>{{ el.weeklyactivity|floatformat:0 }} min</td>
+		{% endif %}
+
+		{% if el.monthlyactivity == 0 %}
+		<td><span class="data-sad">{{ el.monthlyactivity|floatformat:0 }} min</span></td>
+		{% else %}
+		<td>{{ el.monthlyactivity|floatformat:0 }} min</td>
+		{% endif %}
+
+		{% if el.totalactivity == 0 %}
+		<td><span class="data-sad">{{ el.totalactivity|floatformat:0 }} min</span></td>
+		{% else %}
+		<td>{{ el.totalactivity|floatformat:0 }} min</td>
+		{% endif %}
+
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

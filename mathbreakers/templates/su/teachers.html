@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+<style>
+table {
+	text-align:left;
+	width:100%;
+	border-spacing:0;
+}
+td {
+	padding:3px;
+}
+th {
+	font-weight:bold;
+}
+.data-notice {
+	color:#cc4400;
+}
+.data-warn {
+	color:#ff0000;
+}
+.data-sad {
+	color:#0022cc;
+}
+
+tr.teacher {
+	background-color:#ddd;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<h1>Teachers</h1>
+<table>
+<tr>
+	<th>Active</th>
+	<th><a href="/su/teachers/?sort=email">Email</a></th>
+	<th>Licenses</th>
+	<th><a href="/su/teachers/?sort=-tstudents">Total Students</a></th>
+	<th><a href="/su/teachers/?sort=-tplaytime">Total Playtime</a></th>
+	<th><a href="/su/teachers/?sort=-tlatest">Latest Activity</a></th>
+	<th>Class Name</th>
+	<th>Students</th>
+	<th>Playtime</th>
+</tr>
+{% for t in teachers %}
+	<tr class="teacher">
+		<td>
+			{% if t.active %}
+			<strong style="font-size:22pt; font-family:monospace; line-height:12pt;">*</strong>
+			{% endif %}
+		</td>		
+		<td><a href="/su/userinfo/?username={{ t.user.username|urlencode }}">{{ t.user.email }}</a></td>
+		<td>{{ t.user.profile.num_licenses }}</td>
+		{% if t.total_students = 0 %}
+		<td><span class="data-sad">{{ t.total_students }} students</data></td>
+		{% else %}
+		<td>{{ t.total_students }} students</td>
+		{% endif %}
+
+		{% if t.total_playtime == 0 %}
+		<td><span class="data-sad">{{ t.total_playtime|floatformat:0 }} min</span></td>
+		{% else %}
+		<td>{{ t.total_playtime|floatformat:0 }} min</td>
+		{% endif %}
+		<td>
+			{{ t.latest_activity|date:"D M d Y" }}
+		</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	{% for c in t.classrooms %}
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>{{ c.name }}</td>
+
+			{% if c.num_students = 0 %}
+			<td><span class="data-sad">{{ c.num_students }} students</data></td>
+			{% else %}
+			<td>{{ c.num_students }} students</td>
+			{% endif %}
+
+			{% if c.playtime == 0 %}
+			<td><span class="data-sad">{{ c.playtime|floatformat:0 }} min</span></td>
+			{% else %}
+			<td>{{ c.playtime|floatformat:0 }} min</td>
+			{% endif %}
+
+		</tr>
+	{% endfor %}
+{% endfor %}
+</table>
+{% endblock %}

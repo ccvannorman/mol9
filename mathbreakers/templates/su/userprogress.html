@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+{% for p in user_levels %}
+	<div>{{forloop.counter}} - {{ p.0 }}: played {{ p.1.0 }} levels and has {{ p.1.1 }} assignments.</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,81 @@
+#main {
+	width:650px;
+}
+
+#teacherSignupForm, #teacherConvertForm {
+	background-color:#fff;
+	border:1px solid #ddd;
+	border-radius:7px;
+	text-align:left;
+	padding:10px 10px 10px 100px;
+	width:360px;
+	margin:20px auto;
+}
+
+#main input[type=text], #main input[type=password], #main input[type=email]{
+    border:1px solid #ddd;
+    border-radius:3px;
+    font-family:"Raleway";
+}
+
+#main ul {
+	text-align:left;
+	margin:80px auto 80px auto;
+	position:relative;
+	width:524px;
+}
+
+#main li {
+	font-size:12pt;
+	position:absolute;
+	list-style:none;
+}
+
+#main li:nth-child(1) {
+	left:0px;
+	top:-23px;
+}
+#main li:nth-child(2) {
+	left:212px;
+	top:-23px;
+}
+#main li:nth-child(3) {
+	left:416px;
+	top:-23px;
+}
+
+#main p 
+{
+	margin:20px auto;
+	padding:0px 20px;
+}
+
+.stepimg {
+	background-image:url("/static/img/steps.png");
+	width:524px;
+	height:116px;
+	margin:auto;
+}
+
+.stepimg.s1 {
+	background-position:0 0;
+}
+
+.stepimg.s2 {
+	background-position:0 -116px;
+}
+
+.stepimg.s3 {
+	background-position:0 -232px;
+}
+
+#stepcontent {
+	margin-top:50px;
+}
+
+.sectionsep {
+	background-color:#fff;
+	border:1px solid #ddd;
+	margin:20px auto;
+	padding:10px;
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<div style="width:500px; margin:0 auto; font-size:20px;text-align:left;">
+	<br/>Total licenses: {{ data.total_licenses }}
+	<br/> Total teachers contacted: {{ data.num_teachers_contacted }}
+	<br/> Teachers with classrooms: {{ data.num_teachers_with_classrooms }}
+	<br/> Teachers with PAID classrooms: {{ data.num_paid_classrooms }}
+	<br/> Total teahcer licenses bought: {{ data.num_total_licenses }}
+	<br/> Number of teachers with playtime: {{ data.num_teachers_with_playtime }}
+	<br/> Total students in classrooms: {{ data.num_students_in_classrooms }}
+	<br/> Total playtime of all students: {{ data.total_playtime }}
+	<br/> Total home purchases: {{ data.total_home_purchases }}
+</div>
+
+{% endblock %}
+

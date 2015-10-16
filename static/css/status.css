@@ -1,0 +1,191 @@
+h2 {
+	font-size:20pt;
+}
+
+
+#lobbyinfo {
+	text-align:left;
+	margin:auto;
+	padding:20px 00px;
+}
+#lobbyinfo p{
+	font-size:14pt;
+}
+#lobbyinfo p strong{
+	font-weight:bold;
+}
+
+.inforow {
+	
+	font-size:16pt;
+	background-color:#fff;
+	padding:10px;
+	margin-bottom:15px;
+	border-radius:7px;
+}
+.inforow:after {
+	content:".";
+	clear:both;
+	line-height:0;
+	visibility:hidden;
+	display:block;	
+}
+
+.inforow .key {
+	float:left;
+	width:200px;
+	font-family:Montserrat;
+}
+
+.inforow .value {
+	float:left;
+	font-family:Montserrat;
+	font-weight:bold;
+}
+
+.inforow label {
+	font-size:12pt;
+	margin-left:200px;
+	padding-top:10px;
+	width:700px;
+	clear:both;
+	color:#666;
+}
+
+#expiredstudents {
+	list-style:none;
+	width:350px;
+	text-align:left;
+	margin:auto;
+	padding:10px;
+}
+
+#url {
+	font-family:Montserrat;
+	font-weight:bold;
+	padding:30px;
+	color:rgb(0, 60, 216);
+	margin:auto;
+	font-size:25pt;
+}
+
+
+#id_which {
+	width:294px;
+}
+
+label {
+	font-size:16px;
+}
+
+#container:after {
+	content:".";
+	line-height:0;
+	display:block;
+	clear:both;
+	visibility: hidden;
+}
+
+#users {
+	margin:20px auto;
+	border:1px solid #999;
+	padding:15px;
+	background-color:white;
+	width:550px;
+	border-radius:19px;
+	line-height:32px;
+}
+
+#userlist .user {
+	font-weight:bold;
+}
+
+#userssection {
+	margin-top:30px;
+}
+
+#top {
+	margin:0;
+	padding:30px;
+	border:1px solid #eee;
+}
+
+#top h2 {
+	margin:10px auto 25px auto;
+	padding:0;
+	text-align:left;
+}
+
+#top p {
+	margin:0px auto 15px auto;
+	padding:0;
+	font-size:14pt;
+}
+
+#top ul li {
+	margin-bottom:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:550px;
+}
+
+
+#saveclass {
+	margin:20px auto 5px auto;
+	/*background-color:#eef;*/
+}
+
+#playtimenotice {
+	display:none;
+}
+
+#teacherbuy {
+	font-size:15pt;
+	font-family:Raleway;
+	margin:7px 0px;
+	width:300px;
+	background-color:#f60;
+	color:#fff;
+	border:1px solid #510;
+}
+
+#teacherbuy:hover {
+	background-color:#c40;
+}
+
+#playtimenotice.ended #teacherbuy {
+	background-color:#fff;
+	color:#000;
+}
+
+#playtimenotice.ended #teacherbuy:hover {
+	background-color:#ddd;
+}
+
+#managedash {
+	width:314px;
+	margin:auto;
+}
+
+#managedash .flatbutton {
+	float:left;
+	margin-left:5px;
+}
+
+#managedash:after {
+	content:".";
+	clear:both;
+	line-height:0;
+	visibility:hidden;
+	display:block;
+}
+
+#userlist {
+	font-size:12pt;
+	margin-top:3px;
+}
+
+#lobbyinfo p.notice {
+	font-size:12pt;
+	background-color:transparent;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+<div id="pagedescription">
+<h1> Thanks for your purchase! </h1>
+</div>
+<div id="maincontent">
+	<p>
+		{{ body | safe }}
+	</p>
+</div>
+{% endblock %}

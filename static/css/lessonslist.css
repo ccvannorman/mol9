@@ -1,0 +1,112 @@
+h1 {
+	font-family:Raleway;
+}
+
+.lesson {
+	padding:20px 20px;
+	margin:30px 20px;
+	border-radius:7px;
+	background-color:#ddd;
+	text-align:left;
+	position:relative;
+	top:0px;
+	left:0px;
+}
+
+.lesson h2 {
+	padding:3px 0px 15px 0px;
+	color:#222;
+	font-size:24pt;
+}
+
+.lesson h2 .grade {
+	display:block;
+	font-size: 14pt;
+}
+
+.lesson .buy {
+	float:right;
+	font-size:14pt;
+	border:none;
+	color:#fff;
+	background-color:rgba(0,160,25, 0.7);
+	margin:5px 0px 0px 5px;
+}
+.lesson .buy:hover {
+	background-color:rgba(0,160,25, 1);
+}
+
+.lesson .purchased {
+	float:right;
+	font-size:14pt;
+	border:none;
+	color:#fff;
+	background-color:rgba(30,50,200, 0.7);
+	margin:5px 0px 0px 0px;
+}
+.lesson .purchased:hover {
+	background-color:rgba(30,50,200, 1);
+}
+
+.lesson h2:after {
+	display:block;
+	content:".";
+	clear:both;
+	line-height:0;
+	visibility: hidden;
+}
+
+.lesson .left {
+	float:left;
+	width:490px;
+	min-height:120px;
+}
+
+.lesson .right {
+	float:right;
+	width:385px;
+}
+
+.right p {
+	margin-bottom:16px;
+}
+
+.lesson .pair:after {
+	display:block;
+	content:".";
+	clear:both;
+	line-height:0;
+	visibility: hidden;
+}
+
+.lesson .cc {
+	border-top:1px solid #bbb;
+	padding-top:20px;
+	margin-top:20px;
+}
+.lesson .cc:after {
+	display:block;
+	content:".";
+	clear:both;
+	line-height:0;
+	visibility: hidden;
+}
+
+.cclesson {
+	font-family:"helvetica", "arial", sans-serif;
+	font-size:9pt;
+	padding:3px 3px;
+	text-align:center;
+	background-color:#777;
+	color:#fff;
+	float:left;
+	border-radius:3px;
+	margin-right:5px;
+	margin-top:4px;
+	font-weight:100;
+}
+
+.cclesson:hover {
+	background-color:#888;
+}
+
